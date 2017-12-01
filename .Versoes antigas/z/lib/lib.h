@@ -9,6 +9,7 @@
 #ifndef MAINLIBRARY
 	#define MAINLIBRARY
 	#include <stdbool.h>
+	#include <stdarg.h>
 	typedef void voidvoid(void);
 
 	/*
