@@ -2,8 +2,8 @@ comp= gcc#compilador
 flags = -lm -lpthread
 sdl = -lSDL2 -lSDL2_image
 
-chatoFlags= -Wall  -pedantic #prof
-outros= -D_GNU_SOURCE=1 -D_REENTRANT -lm
+chatoFlags= -Wall -pedantic -ansi #prof
+outros= -D_GNU_SOURCE=1 -D_REENTRANT
 
 head = lib-headers/*.h 
 lib = lib/*.c
