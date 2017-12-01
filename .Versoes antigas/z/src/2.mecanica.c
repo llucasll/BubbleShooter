@@ -4,6 +4,27 @@
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
 */
 
+/* 0-morta
+ * 1-Azul
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
+
 /*
 
 void jogo(void){
@@ -54,7 +75,26 @@ void move(void){
 
 */
 
+void printaBola(Bola *p){
+	SDL_Rect srciRect, dstiRect;
+	SDL_Surface* gprintSurface;
+	
+	srciRect.x = 0; srciRect.y = 0;
+	srciRect.w = npc.x;
+	srciRect.h = npc.y;
+	dstiRect.x = p->x;
+	dstiRect.y = p->y;
+	gprintSurface=p->cor;
+	
+	if( SDL_BlitSurface( gprintSurface, &srciRect, 
+						 gScreenSurface, &dstiRect ) < 0 ) {
+		printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+		quit = true;	
+	}
+}
+
 void execucao(void){
+	int i,posbx;
 	SDL_Rect srcRect, dstRect;
 	SDL_Event e; // Event handler
 
@@ -69,6 +109,13 @@ void execucao(void){
 		0
 	);
 	
+	//Create Ball Grid
+	
+	for(i=0,posbx=0;i<colunas;i++){
+		createBola(0, i, posbx, 0);
+		posbx+=npc.x;
+	}
+	
 	/* SE, QUANDO O SO MANDA O PROGRAMA FECHAR (usando "terminar" ao invés de "matar") REINICIA ELE RECOMEÇA A FUNÇÃO EM EXECUÇÃO NO MOMENTO.
 	static int k=0;
 	printf("i'm here %%%d\n",k);
@@ -82,6 +129,13 @@ void execucao(void){
 		k++;
 		*/
 		
+	//int R = rand() % 255, G = rand() % 255, B = rand() % 255;
+	struct{
+		int R, G, B;
+	}fundo = {rand() % 255, rand() % 255, rand() % 255};
+	
+	//int R = 232, G = 183, B = 56;
+	printf("\nCOR DE FUNDO SORTEADA: {%d, %d, %d};\n\n",fundo.R,fundo.G,fundo.B);
 	
 	//While application is running
 	while( !quit ) {
@@ -94,8 +148,11 @@ void execucao(void){
 					if(e.button.button == SDL_BUTTON_LEFT){
 						if(pri){
 							//println("Clicou!");
-							int x = e.motion.x, y = e.motion.y;
+							//int x = e.motion.x, y = e.motion.y;
+							int x, y;
+							SDL_GetMouseState(&x,&y);
 							//printf("\n%d,%d\n",x,y);
+							if (y>420)y=420;
 							x -= (tela.x)/2;
 							y -= (tela.y)-((npc.y)/2);
 						
@@ -106,8 +163,8 @@ void execucao(void){
 						
 							double d = sqrt( pow(x,2) + pow(y,2) );
 						
-							tiro.vel.x = x/d;
-							tiro.vel.y = y/d;
+							tiro.vel.x = x*3/d;
+							tiro.vel.y = y*3/d;
 							//printf("%f,%f\n",tiro.vel.x,tiro.vel.y);
 							pri = false;
 						}
@@ -123,25 +180,76 @@ void execucao(void){
 					break;
 			}
 		}
-		
-		//Fill the surface white
-		SDL_FillRect( gScreenSurface, NULL, 
-							  SDL_MapRGB( gScreenSurface->format, 
-							  0xFF, 0xFF, 0xFF ) );
 
 		moveNPC();
-
+		
+		for(i=0;i<colunas;i++){
+			float a = pow((gradeBola[0][i].x)-tiro.x,2);
+			float b = pow(((gradeBola[0][i].y)-tiro.y),2);
+			float c = sqrt(a+b);
+			if(c<npc.x){
+				//printf("%f %f",tiro.x,tiro.y);
+				tiro.vel.x=0;
+				tiro.vel.y=0;
+				//tirox=tiro.x; //add tiroy
+				if(gradeBola[0][i].cor==gJPGSurface){
+					gradeBola[0][i].cor = NULL;
+					gJPGSurface = NULL;
+				}
+				if((((int)tiro.x)+npc.x/2)%npc.x>=npc.x/2){
+					tiro.x=gradeBola[0][i].x+npc.x/2;
+				}
+				else {
+					tiro.x=gradeBola[0][i].x-npc.x/2;
+				}
+				break;
+			}
+		}
+		//compbolas.x quantbolas.x compbolas.y quantbolas.y
+		
+		//
+		//
+		//
+		//
+		//
+		//
+		//^
+		//
+		//
+		//
+		//
+		//
+		//
+		//
+		//
+		//for()
+		
 		srcRect.x = 0; srcRect.y = 0;
 		srcRect.w = npc.x;
 		srcRect.h = npc.y;
 		dstRect.x = tiro.x;
 		dstRect.y = tiro.y;
 		
-		if( SDL_BlitSurface( gJPGSurface, &srcRect, 
-									 gScreenSurface, &dstRect ) < 0 ) {
-			printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
-			quit = true;
+		
+		//Fill the surface white
+		SDL_FillRect( gScreenSurface, NULL, 
+							  SDL_MapRGB( gScreenSurface->format, 
+							  fundo.R, fundo.G, fundo.B ));
+		
+		for(i=0;i<colunas;i++){
+			//gradeBola[0][i].cor=NULL;
+			if(gradeBola[0][i].cor)//{
+				//printf("%d",(int)gradeBola[0][i].cor);
+				printaBola(&gradeBola[0][i]);
+			//}
 		}
+		
+		if(gJPGSurface)
+			if( SDL_BlitSurface( gJPGSurface, &srcRect, 
+										 gScreenSurface, &dstRect ) < 0 ) {
+				printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+				quit = true;
+			}
 	
 		//printf("%f, %f\n",tiro.x,tiro.y);
 		
@@ -186,5 +294,15 @@ void createNPC( int x, int y, int velx, int vely) {
 	tiro.x = x;
 	tiro.y = y;
 	tiro.vel.x = velx;
-	tiro.vel.y = vely;	
+	tiro.vel.y = vely;
+}
+
+void createBola(int lin, int col, int x, int y) {
+	
+	gradeBola[lin][col].cor=gcolorSurface[rand() % ncores];
+	gradeBola[lin][col].x=x;
+	gradeBola[lin][col].y=y;
+	gradeBola[lin][col].morreu=false;
+	
+		
 }

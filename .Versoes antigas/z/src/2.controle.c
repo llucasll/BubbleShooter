@@ -35,7 +35,7 @@ void erro(){//erro de execução durante o jogo
 */
 
 void preparar(void){
-
+	time_t t;
 	//#include "../lib-headers/iu.c"
 	println("iniciei");
 	
@@ -52,6 +52,9 @@ void preparar(void){
 		printf( "Failed to load media!\n" );
 		exit(2);
 	}
+	
+	// Intializes random number generator
+	srand((unsigned) time(&t));//////aqui
 }
 
 int init() {
@@ -97,8 +100,15 @@ int loadMedia() {
 	/*uint32_t colorKey;*/
 	
 	//Load PNG surface
-	gJPGSurface = loadSurface( "./circle.jpeg" );
-	if( gJPGSurface == NULL ) {
+	gcolorSurface[0] = loadSurface( "./blue.png" );
+	gcolorSurface[1] = loadSurface( "./red.png" );
+	gcolorSurface[2] = loadSurface( "./cian.png" );
+	gcolorSurface[3] = loadSurface( "./green.png" );
+	gcolorSurface[4] = loadSurface( "./pink.png" );
+	gcolorSurface[5] = loadSurface( "./yellow.png" );
+	gJPGSurface = gcolorSurface[rand() % ncores];
+	
+	if( gJPGSurface  == NULL ) {
 		printf( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 	} 
@@ -134,7 +144,10 @@ SDL_Surface* loadSurface( char *path ) {
 		if( optimizedSurface == NULL ) {
 			printf( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
 		}
-
+		else{
+			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0, 0, 0, 0xFF);
+			SDL_SetColorKey( optimizedSurface,1, colorkey);
+		}
 		//Get rid of old loaded surface
 		SDL_FreeSurface( loadedSurface );
 	}

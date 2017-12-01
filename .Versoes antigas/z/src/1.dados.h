@@ -10,8 +10,6 @@
 	#define DADOS
 //#ifndef TIPOS //evitar inclusões cíclicas ("guarda de cabeçalho")
 //	#define TIPOS
-
-	#include "1.dados.h"
 	
 	/* TIPOS */
 	typedef struct{
@@ -19,7 +17,7 @@
 	} Coordenadas;
 
 	typedef struct _Bola{
-		char cor;
+		SDL_Surface* cor;
 		struct _Bola *vizinhos[6];
 		int x,y;
 		bool morreu;
@@ -42,7 +40,7 @@
 	
 	bool iniciarJogo(void);//iniciar globais; preparar jogo
 
-	bool insere(Bola b, Coordenadas pos);
+	bool insere(char cor, Coordenadas pos);
 	bool remover(Bola b, Coordenadas pos);
 
 	int getLinha(Bola b);

@@ -91,6 +91,7 @@ TALVEZ VALESSE MAIS USAR APENAS PROTÓTIPOS, PARA EVITAR "JÁ DEFINIDO"
 		#include <string.h>
 		#include <time.h>
 		#include <math.h>
+		#include <stdlib.h>
 		
 		/* MINHAS LIBS */
 		#include "../lib-headers/lib.h"
@@ -102,8 +103,9 @@ TALVEZ VALESSE MAIS USAR APENAS PROTÓTIPOS, PARA EVITAR "JÁ DEFINIDO"
 	//	#define MACROS
 
 		/* CONSTANTES */
-		#define linhas 10
-		#define colunas 30
+		#define linhas 6
+		#define colunas 17
+		#define ncores 6 //azul,vermelho,ciano,verde,rosa,amarelo
 	//#endif
 
 	#include "1.dados.h" //cabeçalho da camada de dados
@@ -114,14 +116,17 @@ TALVEZ VALESSE MAIS USAR APENAS PROTÓTIPOS, PARA EVITAR "JÁ DEFINIDO"
 		/* GLOBAIS */
 		extern const Coordenadas campo, npc, tela;//tamanhos
 		extern Coordenadas velocidade;
-		extern Bola *matriz[linhas][colunas];
+		extern Bola gradeBola[linhas][colunas];
 		extern Tiro tiro;
+		extern SDL_Surface* gcolorSurface[ncores];
+		
 		
 		/* Global Variables */
 		extern SDL_Window* gWindow; //The window we'll be rendering to
 		//SDL_Surface* imagem; //The imagem character
 		extern SDL_Surface* gScreenSurface; //The surface contained by the window
 		extern SDL_Surface* gJPGSurface; //Current displayed PNG image
+		
 
 		extern bool quit; //Main loop flag
 

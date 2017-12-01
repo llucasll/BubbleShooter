@@ -1,10 +1,11 @@
 #include "1.dados.h"
 
 /* GLOBAIS */
-const Coordenadas campo = {colunas, linhas}, npc = {61, 61}, tela = {640, 480};//tamanhos
+const Coordenadas campo = {colunas, linhas}, npc = {37, 37}, tela = {/*629*/647, 480};//tamanhos
 Coordenadas velocidade;
-Bola *matriz[linhas][colunas];
+Bola gradeBola[linhas][colunas];
 Tiro tiro;
+SDL_Surface* gcolorSurface[6];
 
 /* Global Variables */
 SDL_Window* gWindow = NULL; //The window we'll be rendering to
