@@ -30,15 +30,6 @@ repetir:
 	@$(comp) -o repetir repetir.c
 	@./repetir
 
-%:	
-	@echo
-	$(comp) -o $@ lib/terminal.c $@.c
-	@echo
-	./$@
-	@echo
-	rm -rf $@
-	@echo
-
 exec: compilar
 	./$(bin)
 	@echo
