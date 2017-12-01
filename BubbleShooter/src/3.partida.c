@@ -2,22 +2,6 @@
 
 #include "3.partida.h"
 
-/* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
-bool carregarMidia(void){//iu
-}
-bool iniciarSDL(void){//iu
-}
-void iniciarInterface(void){//iu
-}
-
-/* ETAPA DE MECÂNICA */
-void moverSeta(){
-}
-//void atualizar(){
-//}
-
-/* ETAPA DE FINALIZAÇÃO */
-
 void partidaView(){
 	SDL_Rect srcRect, dstRect;
 	
@@ -42,3 +26,17 @@ void partidaView(){
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
 }
+
+/* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
+bool carregarMidia(void){//iu
+}
+bool iniciarSDL(void){//iu
+}
+void iniciarInterface(void){//iu
+}
+
+/* ETAPA DE MECÂNICA */
+void moverSeta(){
+}
+
+/* ETAPA DE FINALIZAÇÃO */
