@@ -27,6 +27,23 @@ Thread executar(void *func (void)){
 }
 
 /*
+bool semaforo = true;
+
+void *th(void){
+	int i=0;
+	printnl();
+	while(semaforo){
+		i++;
+		printf("Ola numero %d\n",i);
+		sleep(1);
+	}
+	printf("Encerrando...\n");
+	//pthread_exit(NULL);
+	printnl();
+}
+*/
+
+/*
 
 //const unsigned char false = 0;
 //const unsigned char true = 1;

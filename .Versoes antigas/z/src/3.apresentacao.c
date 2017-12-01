@@ -18,19 +18,13 @@ void moverSeta(){
 
 void atualiza(){
 	SDL_Rect srcRect, dstRect;
-	//Fill the surface white
 	
-	//printf("%s",gScreenSurface);
-	//oi();
-	/*SDL_MapRGB( gScreenSurface->format, 
-						  0xFF, 0xFF, 0xFF );
-						  oi();
-						  */
-						  
+	//Fill the surface white			  
 	SDL_FillRect( gScreenSurface, NULL, 
 						  SDL_MapRGB( gScreenSurface->format, 
 						  0xFF, 0xFF, 0xFF ) );
 
+	
 	srcRect.x = 0; srcRect.y = 0;
 	srcRect.w = npc.x;
 	srcRect.h = npc.y;
@@ -42,8 +36,6 @@ void atualiza(){
 		printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
 		quit = true;
 	}
-
-	//printf("%f, %f\n",tiro.x,tiro.y);
 	
 	//Update the surface
 	SDL_UpdateWindowSurface( gWindow );
@@ -55,9 +47,6 @@ void *atualizador(void){
 	while(!quit){
 		if(atualizarTela)
 			atualizarTela();
-		//else
-		//	println("nao");
-		//printoi();
 		//usleep(1000000/24);
 	}
 }

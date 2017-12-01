@@ -11,16 +11,9 @@ typedef unsigned char bool;
 #include <unistd.h>
 #define Thread pthread_t
 Thread executar(void *func(void));
-//void esperar(Thread *t);
-#define esperar(t) pthread_join(t, NULL)
+#define esperar(t) pthread_join(t, NULL) //void esperar(Thread *t);
 #define parar(t) pthread_cancel(t)
 
-/*
-//#include "../src/0.bool.h"
-
-#ifndef LIB
-#define LIB
-const unsigned char false = 0;
-const unsigned char true = 1;
-#endif
-*/
+#define ascii_num 0x30 + //numeros
+#define ascii_min 96 + //minusculas
+#define ascii_mai 64 + //maiusculas

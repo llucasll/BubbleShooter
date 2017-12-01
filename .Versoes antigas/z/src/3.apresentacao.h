@@ -13,7 +13,5 @@ void moverSeta();
 
 
 void atualiza();
-
 void (*atualizarTela)(void);
-
 void *atualizador(void);

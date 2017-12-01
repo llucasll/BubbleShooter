@@ -22,6 +22,10 @@ void printls(int n){//print LineS
 		printnl();
 }
 
+void printint(int n){
+	printf("%d\n",n);
+}
+
 void limpa(){
 	system ("clear");
 	system ("clear");

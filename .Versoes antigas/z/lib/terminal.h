@@ -10,6 +10,8 @@ void printnl(void);//print new line
 
 void printls(int n);//print LineS
 
+void printint(int n);
+
 void limpa();
 
 void oi();
