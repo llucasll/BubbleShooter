@@ -8,7 +8,7 @@ outros= -D_GNU_SOURCE=1 -D_REENTRANT -lm
 head = lib-headers/*.h 
 lib = lib/*.c
 srcDir = src
-source = $(srcDir)/main.c
+source = $(srcDir)/*.c
 bin = exe
 
 comandos = $(comp) -o $(bin) $(lib) $(source) $(flags) $(sdl)
@@ -41,6 +41,6 @@ limpar: clean
 	
 %:
 	@echo
-	@echo sua mensagem foi:
+	@echo sua mensagem foiii:
 	@echo $@
 	@echo

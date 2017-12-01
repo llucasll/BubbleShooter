@@ -1,6 +1,6 @@
-//#include "../lib-headers/iu.h"
-#include "iu.h"
-
+#include "../lib-headers/iu.h"
+//#include "iu.h"
+/*
 iuf.mouse.clicou =
 ({
 	int __fn__ (int n) {
@@ -15,4 +15,4 @@ iuf.mouse.moveu = lambda(
 			return 1;
 		//else
 	}
-);
+);*/

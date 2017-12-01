@@ -1,1 +1,0 @@
-Esse programa (./exe) não encerra (deveria encerrar com o ESC ou clicando no X). Ao invés disso ele reinicia. Acontece que, se vc tentar fehcar ele pelo Monitor do Sistema, acontece o mesmo! Você precisa escolher, especificamente, a opção "matar", ou, pelo terminal, `killall -e -1 ./ex`.
