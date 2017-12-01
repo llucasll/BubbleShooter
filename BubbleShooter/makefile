@@ -1,4 +1,4 @@
-comp= gcc#compilador
+comp= gcc #compilador
 flags = -lm -lpthread
 sdl = -lSDL2 -lSDL2_image
 
@@ -12,16 +12,6 @@ source = $(srcDir)/*.c
 bin = exe
 
 comandos = $(comp) -o $(bin) $(lib) $(source) $(flags) $(sdl)
-#rm -rf *.o *.exe *.bak *.c~ core a.out $(bin)
-#echo `find . -name "*.o"` `find . -name "$(bin)"`
-#find . -iname ".svn" -exec rm -rf {} ; *.o *.exe *.bak *.c~ core a.out $(bin)
-
-	#@echo
-	#@echo LEIA-ME
-	#@echo O programa irá se repetir indefinidamente.
-	#@echo Use CRTL+C ou ESC para encerrar o jogo, e CRTL+C novamente para encerrar o loop;
-	#@echo Use CRTL+C ou ESC para encerrar o jogo, e em seguida ENTER para iniciar novamente.
-	#@echo
 
 testar: cleanSimples repetir
 	@echo
@@ -43,7 +33,6 @@ exec: compilar
 	./$(bin)
 	@echo
 
-#$(srcDir)/main.c
 compilar:
 	@echo
 	$(comandos)

@@ -20,10 +20,6 @@
 	extern Janela janela; //The window we'll be rendering to
 	extern Surface screenSurface; //The surface contained by the window
 	extern Surface gJPGSurface; //Current displayed PNG image
-
-	typedef struct{
-		int x,y;
-	} Coordenadas;
 	
 	extern const Coordenadas campo;//tamanhos
 	
