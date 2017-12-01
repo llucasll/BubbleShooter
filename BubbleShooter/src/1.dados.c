@@ -1,10 +1,16 @@
 #include "1.dados.h"
 
 /* GLOBAIS */
-const Coordenadas campo = {colunas, linhas}, npc = {61, 61}, tela = {640, 480};//tamanhos
+const Coordenadas campo = {30, 10}, npc = {61, 61}, tela = {640, 480};//tamanhos
 Coordenadas velocidade;
-Bola *matriz[linhas][colunas];
+//Bola *matriz[tam.matriz.x][tam.matriz.y];
+Bola ***matriz;
 Tiro tiro;
+//int ***teste;
+	/*
+		teste = malloc(sizeof(int)*10);
+		println("%d",teste[4]);
+	*/
 
 /* Global Variables */
 Janela janela = NULL; //The window we'll be rendering to
@@ -15,6 +21,7 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 }
 
 bool insere(byte b, int x, int y){
+	
 }
 bool remover(int x, int y){
 }
@@ -29,7 +36,7 @@ int getColuna(Bola b, int linha){
 
 struct _medidas tam = {//TODO
 	{640, 480},//tela
-	{},//campo
+	{30, 10},//campo
 	{61, 61}//bola
 };
 

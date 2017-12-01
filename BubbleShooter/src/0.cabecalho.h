@@ -11,10 +11,7 @@
 	#include "../lib/lib.h"
 	#include "../lib/terminal.h"
 	#include "../lib/iu.h"
-	
-	/* CONSTANTES */
-	#define linhas 10
-	#define colunas 30
+	#include "../lib/debug.h"
 	
 	/* Global Variables */
 	extern Janela janela; //The window we'll be rendering to

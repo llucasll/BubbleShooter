@@ -67,7 +67,7 @@ void init(void){
 
 	//println("iniciei");
 
-	controle.executar = execucao;
+	controle.principal = bubbleShooter;
 	controle.close = closing;
 	
 	printnl();
@@ -77,7 +77,7 @@ void init(void){
 	//init2();
 }
 
-void execucao (void){
+void bubbleShooter (void){
 	menu();
 	partida();
 	fim();

@@ -1,4 +1,5 @@
 #include "lib.h"
+#include "debug.h"
 
 /* COMPORTAMENTO DE BIBLIOTECA */
 #ifndef IUlib
@@ -17,31 +18,30 @@
 
 /* COMPORTAMENTO DE FRAMEWORK */
 
-// ESTRUTURAS
+// Função inicial (substitui a main)
+voidvoid init;
+	// Ela não pode ficar em uma struct pq é um protótipo,
+	// o programa espera que haja um init assim como espera um main.
+
+// Aqui se define o restante do ciclo de vida do programa
+struct{
+	voidvoid *principal; // Função principal
+	voidvoid *monitor; // Gerencia os eventos
+	voidvoid *close; // Finaliza a execução
+}controle;
+
+// Threads
 struct{	
-	Thread principal;
-	Thread monitor;//gerencia os eventos
-	Thread atualizador;
+	Thread principal; // Esse é o programa em si
+	Thread monitor; // Gerencia os eventos
+	Thread atualizador; // Thread responsável pela apresentação
 }threads;
 
 struct{
-	/* Principais */
-	voidvoid *screenRefresh;//comportamento
-	
-	/* Finalizar */
-	voidvoid *quit;//listener(espera o evento)
-	
-	/* Eventos */
-	voidvoid *mouseClick;//listener(espera o evento)
+	voidvoid *screenRefresh; // Executado periodicamente pelo atualizador
+	voidvoid *quit; // Função chamada quando é momento de fechar
+	voidvoid *click; // Comportamento de resposta ao Evento
 }on;
-
-// FUNÇÃO PRINCIPAL (SUBSTITUI A MAIN)
-voidvoid init;// Função inicial (substitui a main)
-struct{
-	voidvoid *executar;//Função principal
-	voidvoid *monitor;//gerencia os eventos
-	voidvoid *close;//comportamento
-}controle;
 
 // VARIÁVEIS COMPARTILHADAS
 extern bool quit; // Semáforo global que controla o término de todo o programa

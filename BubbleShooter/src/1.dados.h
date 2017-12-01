@@ -38,14 +38,15 @@
 	
 	/* GLOBAIS */
 	
-	extern Coordenadas velocidade;
-	extern Bola *matriz[linhas][colunas];
-	extern Tiro tiro;
-	
 	struct _medidas{
 		Coordenadas tela;
-		Coordenadas campo;//ainda não em uso
+		Coordenadas matriz;//ainda não em uso
 		Coordenadas bola;
 	}extern tam;
+	
+	extern Coordenadas velocidade;
+	extern Bola ***matriz;
+	//extern int ***teste;
+	extern Tiro tiro;
 	
 #endif

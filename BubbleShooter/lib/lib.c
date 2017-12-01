@@ -1,6 +1,6 @@
 #include "lib.h"
 
-void *_executar(void *func){
+static void *_executar(void *func){
 	((voidvoid*)func)();
 }
 

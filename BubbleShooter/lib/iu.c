@@ -27,13 +27,14 @@ void monitorDefault(void){
 					break;
 				case SDL_MOUSEBUTTONDOWN:
 					if(e.button.button == SDL_BUTTON_LEFT){
-						if(on.mouseClick)
-							on.mouseClick();
+						if(on.click)
+							on.click();
 					}
 					break;
-				case SDL_KEYDOWN://modularizar tbm
+				case SDL_KEYDOWN:
 					if (e.key.keysym.sym == SDLK_ESCAPE) {
-						quit = true;
+						if(on.quit) on.quit();
+						else quitDefault();
 					}
 					break;
 			}
@@ -114,8 +115,8 @@ int main( int argc, char* args[] ) {
 	//TODO
 	
 	// Roda as threads
-	if(controle.executar)
-		threads.principal = executar(controle.executar);
+	if(controle.principal)
+		threads.principal = executar(controle.principal);
 	//threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);

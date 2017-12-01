@@ -61,7 +61,7 @@ void move(void){
 void partida(void){
 	
 	on.screenRefresh = partidaView;
-	on.mouseClick = partidaOnClick;
+	on.click = partidaOnClick;
 	
 	//Create NPC
 	createNPC(

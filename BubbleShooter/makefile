@@ -10,27 +10,28 @@ lib = lib/*.c
 srcDir = src
 source = $(srcDir)/*.c
 bin = exe
+executavel = .out
 
-comandos = $(comp) -o $(bin) $(lib) $(source) $(flags) $(sdl)
+comandos = $(comp) -o $(bin)$(executavel) $(lib) $(source) $(flags) $(sdl)
 
 testar: cleanSimples repetir
 	@echo
 
 repetir:
-	@$(comp) -o repetir repetir.c
-	@./repetir
+	@$(comp) -o repetir$(executavel) repetir.c
+	@./repetir$(executavel)
 
-%:	
-	@echo
-	$(comp) -o $@ lib/terminal.c $@.c
-	@echo
-	./$@
+%:
 	@echo
 	rm -rf $@
 	@echo
+	$(comp) -o $@$(executavel) lib/terminal.c $@.c
+	@echo
+	./$@$(executavel)
+	@echo
 
 exec: compilar
-	./$(bin)
+	./$(bin)$(executavel)
 	@echo
 
 compilar:
@@ -43,7 +44,7 @@ chato:
 
 cleanSimples:
 	@echo
-	rm -rf `find -name '*.o'; find -name '$(bin)'; find -name 'repetir'`
+	rm -rf `find -name '*.o'; find -name '$(bin)'; find -name '*$(executavel)'`
 
 clean: cleanSimples
 	rm -rf `find  -name '*~'; find -name 'core'; find -name 'a.out'`
