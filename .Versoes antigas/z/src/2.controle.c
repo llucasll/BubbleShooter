@@ -11,17 +11,54 @@
 
 #include "2.controle.h"
 
+/*
+bool iniciarSDL(void);//iu
+bool carregarMidia(void);//iu
+bool iniciarJogo(void);//dados
+void finalizarInterface(void);//iu
+*/
+
+/*
+
+bool iniciar(void){
+	if(!carregarMidia()){
+		//erro
+	}
+	else if(!iniciarSDL()){
+		//erro
+	}
+	else{
+		bool ok = iniciarJogo();
+		iniciarInterface();
+		return ok;
+	}
+	return false;
+}
+
+void encerrar(void){//finalizar o jogo, com a IU inclusive
+}
+
+void erro(){//erro de execução durante o jogo
+	println("Desculpe, um erro grave interrompeu a execução do jogo.");
+	exit(1);
+}
+
+*/
+
 void init(void){
 
+	//#include "../lib-headers/iu.c"
+	//println("iniciei");
+	
 	controle.executar = execucao;
 	controle.close = closing;
 	
 	printnl();
 	println("\t* Carregando... *");
 	printnl();
-
-	//Start up SDL and create window	
+	
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
+	//Start up SDL and create window
 	if( !janela ) {// TODO modularizar tratamentos de erro
 		logger( "Failed to initialize!\n" );
 		exit(1);
@@ -46,6 +83,7 @@ void execucao (void){
 int loadMedia() {
 
 	int success = true; //Loading success flag
+	/*uint32_t colorKey;*/
 	
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
@@ -58,6 +96,7 @@ int loadMedia() {
 
 void closing() {
 	println("\t* Encerrando... *");
+	//printnl();
 	
 	//Free loaded image
 	SDL_FreeSurface( gJPGSurface );
