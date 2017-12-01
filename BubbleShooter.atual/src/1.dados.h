@@ -20,6 +20,17 @@
 		}vel;
 	} Tiro;
 	
+	/*
+	typedef struct{
+		int nada;
+	}_globais;
+	
+	_globais o;
+	
+	#undef _globais
+	int _globais;
+	*/
+	
 	/* PROTÓTIPOS */
 	
 	bool iniciarJogo(void);//iniciar globais; preparar jogo
@@ -37,7 +48,6 @@
 	int getColuna(Bola b, int linha);
 	
 	/* GLOBAIS */
-	
 	extern Coordenadas velocidade;
 	extern Bola *matriz[linhas][colunas];
 	extern Tiro tiro;
@@ -49,3 +59,4 @@
 	}extern tam;
 	
 #endif
+//#endif
