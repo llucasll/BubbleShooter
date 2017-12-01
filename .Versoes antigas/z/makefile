@@ -1,30 +1,19 @@
-comp= gcc#compilador
-flags = -lm
-sdl = -lSDL2 -lSDL2_image
+CC=gcc
 
-source = main.c
-bin = out
+CFLAGS=-g -Wall -D_GNU_SOURCE=1 -D_REENTRANT -lm -pedantic
+#CFLAGS=-g -Wall -D_REENTRANT
+IMAGE_FLAGS=-lSDL2_image
+SFLAGS=-lSDL2
+SOURCES=06_moving_images.c
+BINARIES=06_moving_images
 
-comandos = $(comp) -o $(bin) $(source) $(flags) $(sdl)
+#all: ex0 ex1 ex2 ex3 ex4 ex5 ex6 ex7 grafico texto
+all: $(BINARIES)
 
-testar: exec clean
-
-exec: compilar
-	./$(bin)
+06_moving_images: 06_moving_images.c
+	$(CC) -o 06_moving_images 06_moving_images.c $(CFLAGS) $(SFLAGS) $(IMAGE_FLAGS) 
+	./$(BINARIES)
 	@echo
 
-compilar: $(source)
-	@echo
-	$(comandos)
-	@echo
-	
 clean:
-	@echo
-	rm -rf `find -name '*.o' -o -name '*.exe' -o -name '*.bak' -o -name '*.c~' -o -name 'core' -o -name 'a.out' -o -name '$(bin)'`
-	@echo
-	
-limpa: clean
-	@
-
-limpar: clean
-	@
+	rm -rf *.o *.exe *.bak *.c~ $(BINARIES) core a.out
