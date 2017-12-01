@@ -45,18 +45,7 @@ void erro(){//erro de execução durante o jogo
 
 */
 
-void init(void){
-
-	//#include "../lib-headers/iu.c"
-	//println("iniciei");
-	
-	controle.executar = execucao;
-	controle.close = closing;
-	
-	printnl();
-	println("\t* Carregando... *");
-	printnl();
-	
+void init2(void){
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 	//Start up SDL and create window
 	if( !janela ) {// TODO modularizar tratamentos de erro
@@ -72,6 +61,21 @@ void init(void){
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
+}
+
+void init(void){
+
+	//#include "../lib-headers/iu.c"
+	//println("iniciei");
+	
+	controle.executar = execucao;
+	controle.close = closing;
+	
+	printnl();
+	println("\t* Carregando... *");
+	printnl();
+	
+	//init2();
 }
 
 void execucao (void){
