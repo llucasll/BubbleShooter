@@ -37,10 +37,12 @@ void erro(){//erro de execução durante o jogo
 void preparar(void){
 
 	//#include "../lib-headers/iu.c"
-	println("iniciei");
+	//println("iniciei");
 	
-	//printnl();
+	printnl();
 	println("Carregando...");
+	printnl();
+	
 	//Start up SDL and create window
 	if( !init() ) {
 		printf( "Failed to initialize!\n" );
@@ -97,7 +99,7 @@ int loadMedia() {
 	/*uint32_t colorKey;*/
 	
 	//Load PNG surface
-	gJPGSurface = loadSurface( "./circle.jpeg" );
+	gJPGSurface = loadSurface( "./media/circle.jpeg" );
 	if( gJPGSurface == NULL ) {
 		printf( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;

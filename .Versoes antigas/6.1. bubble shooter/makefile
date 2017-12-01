@@ -1,5 +1,5 @@
 comp= gcc#compilador
-flags = -lm -lpthread
+flags = -lm
 sdl = -lSDL2 -lSDL2_image
 
 chatoFlags= -Wall  -pedantic #prof

@@ -1,4 +1,4 @@
-#include "2.mecanica.h"
+#include "2.jogo.h"
 
 /*
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
@@ -53,9 +53,36 @@ void move(void){
 }
 
 */
+/*
+void atualiza(){
+	SDL_Rect srcRect, dstRect;
+	//Fill the surface white
+	SDL_FillRect( gScreenSurface, NULL, 
+						  SDL_MapRGB( gScreenSurface->format, 
+						  0xFF, 0xFF, 0xFF ) );
+
+	moveNPC();
+
+	srcRect.x = 0; srcRect.y = 0;
+	srcRect.w = npc.x;
+	srcRect.h = npc.y;
+	dstRect.x = tiro.x;
+	dstRect.y = tiro.y;
+	
+	if( SDL_BlitSurface( gJPGSurface, &srcRect, 
+								 gScreenSurface, &dstRect ) < 0 ) {
+		printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+		quit = true;
+	}
+
+	//printf("%f, %f\n",tiro.x,tiro.y);
+	
+	//Update the surface
+	SDL_UpdateWindowSurface( gWindow );
+}
+*/
 
 void execucao(void){
-	SDL_Rect srcRect, dstRect;
 	SDL_Event e; // Event handler
 
 	bool pri = true; /* SÓ O PRIMEIRO CLIQUE TEM VALIDADE */
@@ -124,29 +151,9 @@ void execucao(void){
 			}
 		}
 		
-		//Fill the surface white
-		SDL_FillRect( gScreenSurface, NULL, 
-							  SDL_MapRGB( gScreenSurface->format, 
-							  0xFF, 0xFF, 0xFF ) );
-
+		
 		moveNPC();
-
-		srcRect.x = 0; srcRect.y = 0;
-		srcRect.w = npc.x;
-		srcRect.h = npc.y;
-		dstRect.x = tiro.x;
-		dstRect.y = tiro.y;
-		
-		if( SDL_BlitSurface( gJPGSurface, &srcRect, 
-									 gScreenSurface, &dstRect ) < 0 ) {
-			printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
-			quit = true;
-		}
-	
-		//printf("%f, %f\n",tiro.x,tiro.y);
-		
-		//Update the surface
-		SDL_UpdateWindowSurface( gWindow );
+		//atualiza();
 			
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);

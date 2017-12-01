@@ -93,8 +93,8 @@ TALVEZ VALESSE MAIS USAR APENAS PROTÓTIPOS, PARA EVITAR "JÁ DEFINIDO"
 		#include <math.h>
 		
 		/* MINHAS LIBS */
-		#include "../lib-headers/lib.h"
-		#include "../lib-headers/terminal.h"
+		#include "../lib/lib.h"
+		#include "../lib/terminal.h"
 		
 	//#endif
 
@@ -106,24 +106,24 @@ TALVEZ VALESSE MAIS USAR APENAS PROTÓTIPOS, PARA EVITAR "JÁ DEFINIDO"
 		#define colunas 30
 	//#endif
 
-	#include "1.dados.h" //cabeçalho da camada de dados
+	//#include "1.dados.h" //cabeçalho da camada de dados
 
 	//#ifndef GLOBAIS
 	//	#define GLOBAIS
 	
-		/* GLOBAIS */
+		/* GLOBAIS * /
 		extern const Coordenadas campo, npc, tela;//tamanhos
 		extern Coordenadas velocidade;
 		extern Bola *matriz[linhas][colunas];
 		extern Tiro tiro;
 		
-		/* Global Variables */
+		/* Global Variables * /
 		extern SDL_Window* gWindow; //The window we'll be rendering to
 		//SDL_Surface* imagem; //The imagem character
 		extern SDL_Surface* gScreenSurface; //The surface contained by the window
 		extern SDL_Surface* gJPGSurface; //Current displayed PNG image
 
 		extern bool quit; //Main loop flag
-
+	*/
 	//#endif
 #endif

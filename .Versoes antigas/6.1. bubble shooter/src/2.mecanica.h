@@ -1,4 +1,10 @@
-#include "1.dados.h"
+#include "0.cabecalho.h"
+
+void execucao(void);
+
+void moveNPC();
+
+void createNPC();
 
 bool habitavel(int x, int y);
 byte contar(int x, int y);
