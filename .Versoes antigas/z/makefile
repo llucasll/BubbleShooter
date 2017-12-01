@@ -1,19 +1,46 @@
-CC=gcc
+comp= gcc#compilador
+flags = -lm
+sdl = -lSDL2 -lSDL2_image
 
-CFLAGS=-g -Wall -D_GNU_SOURCE=1 -D_REENTRANT -lm -pedantic
-#CFLAGS=-g -Wall -D_REENTRANT
-IMAGE_FLAGS=-lSDL2_image
-SFLAGS=-lSDL2
-SOURCES=06_moving_images.c
-BINARIES=06_moving_images
+chatoFlags= -Wall  -pedantic #prof
+outros= -D_GNU_SOURCE=1 -D_REENTRANT -lm
 
-#all: ex0 ex1 ex2 ex3 ex4 ex5 ex6 ex7 grafico texto
-all: $(BINARIES)
+head = lib-headers/*.h 
+lib = lib/*.c
+srcDir = src
+source = $(srcDir)/main.c
+bin = exe
 
-06_moving_images: 06_moving_images.c
-	$(CC) -o 06_moving_images 06_moving_images.c $(CFLAGS) $(SFLAGS) $(IMAGE_FLAGS) 
-	./$(BINARIES)
+comandos = $(comp) -o $(bin) $(lib) $(source) $(flags) $(sdl)
+#rm -rf *.o *.exe *.bak *.c~ core a.out $(bin)
+#echo `find . -name "*.o"` `find . -name "$(bin)"`
+#find . -iname ".svn" -exec rm -rf {} ; *.o *.exe *.bak *.c~ core a.out $(bin)
+
+exec: compilar
+	./$(bin)
 	@echo
 
+compilar: $(srcDir)/main.c
+	@echo
+	$(comandos)
+	@echo
+	
+chato:
+	$(comandos) $(chatoFlags)
+
 clean:
-	rm -rf *.o *.exe *.bak *.c~ $(BINARIES) core a.out
+	@echo
+	rm -rf `find -name '*.o' -o -name '*.exe' -o -name '*.bak' -o -name '*.c~' -o -name 'core' -o -name 'a.out' -o -name '$(bin)'`
+	@echo
+	
+limpa: clean
+	@
+
+limpar: clean
+	@
+	
+%:
+	@echo
+	@echo sua mensagem foi:
+	@echo $@
+	@echo
