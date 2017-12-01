@@ -1,7 +1,7 @@
 #include "1.dados.h"
-#include "1.mecanica.h"
+#include "2.mecanica.h"
 
-#include "2.partida.h"
+#include "2.jogo.h"
 
 /*
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
