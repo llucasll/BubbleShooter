@@ -9,6 +9,6 @@ void logger(const char *format, ...){
 	va_list arg;
 
 	va_start (arg, format);
-	printf (format, arg);
+	vfprintf (format, arg);
 	va_end (arg);
 }
