@@ -41,6 +41,8 @@ typedef struct _NPC  {
  * Global Variables
  */
 
+int pri=1; /* PRIMEIRO MOVIMENTO */
+
 /*The window we'll be rendering to*/
 SDL_Window* gWindow = NULL;
 
@@ -110,8 +112,8 @@ int main( int argc, char* args[] ) {
 					quit = true;
 					break;
 				case SDL_MOUSEBUTTONDOWN:
-					ball.stepX = rand() % 2 ? -1: 1;
-					ball.stepY = rand() % 2 ? -1: 1;
+					ball.stepX = rand() % 2 ? -pri: pri;
+					ball.stepY = rand() % 2 ? -pri: pri;
 					break;
 				case SDL_KEYDOWN:
 					if (e.key.keysym.sym == SDLK_ESCAPE) {
@@ -170,6 +172,7 @@ void moveNPC(NPC *p) {
 	if (p->posY < 0) {
 		p->stepX = 0;
 		p->stepY = 0;
+		pri = 0;
 		/*main(0, NULL);*/
 	}
 }
