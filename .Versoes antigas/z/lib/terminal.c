@@ -1,5 +1,6 @@
-#include "../lib-headers/lib.h"
-#include "../lib-headers/terminal.h"
+//#include "../lib-headers/lib.h"
+//#include "../lib-headers/terminal.h"
+#include "terminal.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,4 +25,8 @@ void printls(int n){//print LineS
 void limpa(){
 	system ("clear");
 	system ("clear");
+}
+
+void oi(){
+	println("oi");
 }

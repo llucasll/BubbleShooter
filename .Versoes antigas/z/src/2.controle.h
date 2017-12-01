@@ -1,7 +1,5 @@
-#include "0.cabecalho.h"
-
 #include "3.apresentacao.h"
-#include "2.mecanica.h"
+#include "2.jogo.h"
 
 void preparar(void);
 
