@@ -12,6 +12,14 @@ void *_executar(void *func){
 	((voidvoid*)func)();
 }
 	
+/*(const char *format, ...){
+	va_list arg;
+
+	va_start (arg, format);
+	printf (format, arg);
+	va_end (arg);
+}*/
+
 Thread executar(voidvoid *executavel){
 	//int n = 5;
 	/*
