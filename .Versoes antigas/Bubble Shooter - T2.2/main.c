@@ -1,19 +1,9 @@
 /*
- * T2.2 - Comp I - 2017.2
- * 2017/11/01
- *
- * Alunos:
- * Lucas Camilo da Cunha		DRE: 117212300
- * Rafael de Aguiar Ferreira	DRE: 117196643
- * Ryan Oliveira Braz			DRE: 117205468
- * 
- * main.c
- *
- * Este programa exibe uma imagem no centro inferior da tela.
- * Ela se move com âgulo de 45º ou 135º, decidido aleatoriamente,
- * assim que é detectado o clique esquerdo do mouse.
- * Ao colidir com uma parede, a imagem irá ser refletida, até
- * chegar ao teto, e parar.
+ * 06_moving_images.c
+ * Este programa move uma imagem pela tela. Ao colidir com uma
+ * parede a imagem irá ser refletida.
+ * 2016/01/26
+ * @adriano cruz
  */
  
 /*Using SDL, SDL_image, standard IO, and strings*/
