@@ -22,9 +22,6 @@ iuf.mouse.moveu = lambda(
 
 bool quit = false; //Main loop flag
 
-voidvoid preparar;
-voidvoid *_execucao;
-
 void atualizador(void){
 	while(!quit){
 		if(on.screenRefresh)
@@ -70,6 +67,64 @@ void changeMonitor(voidvoid novo){
 	controle.monitor = novo;
 	// TODO TERMINAR A THREAD threads.monitor
 	executar(controle.monitor);
+}
+
+Janela newJanela(int x, int y, char nome[]) {
+	Janela janela;
+
+	//int success = true;	//Initialization flag
+
+	//srand(time(NULL));
+
+	//Initialize SDL
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
+		logger( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
+		//success = false;
+	}
+	else {
+		//Create window
+		janela = SDL_CreateWindow( nome, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, SDL_WINDOW_SHOWN );
+		if( janela == NULL ) {
+			logger( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
+			//success = false;
+		}
+		else {
+			//Initialize JPG and PNG loading
+			int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
+			if( !( IMG_Init( imgFlags ) & imgFlags ) ) {
+				logger( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+				//success = false;
+			}
+		}
+	}
+
+   
+
+	//return success;
+	return janela;
+}
+
+Surface loadImage( char *path, Surface base ) {
+	//The final optimized image
+	Surface optimizedSurface = NULL;
+
+	//Load image at specified path
+	Surface loadedSurface = IMG_Load( path );
+	if( loadedSurface == NULL ) {
+		logger( "Unable to load image %s! SDL_image Error: %s\n", path, IMG_GetError() );
+	}
+	else {
+		//Convert surface to screen format
+		optimizedSurface = SDL_ConvertSurface( loadedSurface, base->format, 0 );
+		if( optimizedSurface == NULL ) {
+			logger( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
+		}
+
+		//Get rid of old loaded surface
+		SDL_FreeSurface( loadedSurface );
+	}
+
+	return optimizedSurface;
 }
 
 int main( int argc, char* args[] ) {
