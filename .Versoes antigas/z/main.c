@@ -1,9 +1,19 @@
 /*
- * 06_moving_images.c
- * Este programa move uma imagem pela tela. Ao colidir com uma
- * parede a imagem irá ser refletida.
- * 2016/01/26
- * @adriano cruz
+ * T2.2 - Comp I - 2017.2
+ * 2017/11/01
+ *
+ * Alunos:
+ * Lucas Camilo da Cunha		DRE: 117212300
+ * Rafael de Aguiar Ferreira	DRE: 117196643
+ * Ryan Oliveira Braz			DRE: 117205468
+ * 
+ * main.c
+ *
+ * Este programa exibe uma imagem no centro inferior da tela.
+ * Ela se move com âgulo de 45º ou 135º, decidido aleatoriamente,
+ * assim que é detectado o clique esquerdo do mouse.
+ * Ao colidir com uma parede, a imagem irá ser refletida, até
+ * chegar ao teto, e parar.
  */
  
 /*Using SDL, SDL_image, standard IO, and strings*/
@@ -12,7 +22,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include <math.h>
 
 /*
  * Constants
@@ -29,10 +38,10 @@ const int IMAGE_WIDTH = 61;
 const int IMAGE_HEIGHT = 61;
 
 typedef struct _NPC  {
-	float posX;
-	float posY;
-	float stepX;
-	float stepY;
+	int posX;
+	int posY;
+	int stepX;
+	int stepY;
 	SDL_Surface* image;
 	int imgW;
 	int imgH;
@@ -113,23 +122,12 @@ int main( int argc, char* args[] ) {
 					quit = true;
 					break;
 				case SDL_MOUSEBUTTONDOWN:
-					if(e.button.button == SDL_BUTTON_LEFT){
+					if(e.button.button == SDL_BUTTON_LEFT)
 						if(pri){
-							int x = e.motion.x, y = e.motion.y;
-							x -= SCREEN_WIDTH/2;
-							y -= SCREEN_HEIGHT-(IMAGE_HEIGHT/2);
-							double d = sqrt( pow(x,2) + pow(y,2) );
-							//printf("\n%d\n",d);
-							
-							ball.stepX = x/d;
-							ball.stepY = y/d;
+							ball.stepX = rand() % 2 ? -1: 1;
+							ball.stepY = rand() % 2 ? -1: 1;
 							pri = 0;
-							//printf("%f,%f\n",ball.stepX,ball.stepY);
 						}
-						//printf("\n%d, %d\n\n",e.motion.x,e.motion.y);
-						//printf("oi\n");
-						//printf("\nstepX: %lf\nstepY: %lf\nposX: %lf\nposY: %lf\n",ball.stepX,ball.stepY,ball.posX,ball.posY);
-					}
 					break;
 				case SDL_KEYDOWN:
 					if (e.key.keysym.sym == SDLK_ESCAPE) {
