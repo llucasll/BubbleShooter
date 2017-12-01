@@ -20,7 +20,7 @@
 	
 	/* Global Variables */
 	extern Janela janela; //The window we'll be rendering to
-	extern Surface screenSurface; //The surface contained by the window
+	extern Surface gScreenSurface; //The surface contained by the window
 	extern Surface gJPGSurface; //Current displayed PNG image
 
 	//extern bool quit; //Main loop flag

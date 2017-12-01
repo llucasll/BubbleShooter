@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void println(const char *format, ...);
+void println(char s[]);
 
 voidvoid printnl;//print new line
 
