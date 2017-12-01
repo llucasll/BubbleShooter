@@ -41,8 +41,6 @@ typedef struct _NPC  {
  * Global Variables
  */
 
-int pri=1; /* PRIMEIRO MOVIMENTO */
-
 /*The window we'll be rendering to*/
 SDL_Window* gWindow = NULL;
 
@@ -83,6 +81,8 @@ int main( int argc, char* args[] ) {
 	SDL_Event e;/*Event handler*/
 	int quit = false;/*Main loop flag*/
 
+	int pri=1; /* SÓ O PRIMEIRO CLIQUE TEM VALIDADE */
+
 	/*Start up SDL and create window*/
 	if( !init() ) {
 		printf( "Failed to initialize!\n" );
@@ -112,8 +112,12 @@ int main( int argc, char* args[] ) {
 					quit = true;
 					break;
 				case SDL_MOUSEBUTTONDOWN:
-					ball.stepX = rand() % 2 ? -pri: pri;
-					ball.stepY = rand() % 2 ? -pri: pri;
+					if(e.button.button == SDL_BUTTON_LEFT)
+						if(pri){
+							ball.stepX = rand() % 2 ? -1: 1;
+							ball.stepY = rand() % 2 ? -1: 1;
+							pri = 0;
+						}
 					break;
 				case SDL_KEYDOWN:
 					if (e.key.keysym.sym == SDLK_ESCAPE) {
@@ -172,7 +176,6 @@ void moveNPC(NPC *p) {
 	if (p->posY < 0) {
 		p->stepX = 0;
 		p->stepY = 0;
-		pri = 0;
 		/*main(0, NULL);*/
 	}
 }
