@@ -11,7 +11,7 @@ void println(const char *format, ...){
 
 	va_start (arg, format);
 	//done = printf (format, arg);
-	printf (format, arg);
+	vfprintf (stdout, format, arg);
 	va_end (arg);
 
 	//return done;
