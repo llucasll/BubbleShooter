@@ -1,6 +1,13 @@
 #include "1.dados.h"//apenas pelas inicializações no init
+
+#include "2.menu.h"
+#include "3.menu.h"
+
 #include "2.partida.h"
 #include "3.partida.h"
+
+#include "2.fim.h"
+#include "3.fim.h"
 
 #include "2.controle.h"
 
@@ -44,8 +51,6 @@ void init(void){
 	//println("iniciei");
 	
 	controle.executar = execucao;
-	on.screenRefresh = partidaView;
-	on.mouseClick = jogoOnClick;
 	controle.close = closing;
 	
 	printnl();
@@ -55,7 +60,7 @@ void init(void){
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 	//Start up SDL and create window
 	if( !janela ) {// TODO modularizar tratamentos de erro
-		printf( "Failed to initialize!\n" );
+		logger( "Failed to initialize!\n" );
 		exit(1);
 	}
 	else {
@@ -64,9 +69,15 @@ void init(void){
 	
 	//Load media
 	if( !loadMedia() ) {
-		printf( "Failed to load media!\n" );
+		logger( "Failed to load media!\n" );
 		exit(2);
 	}
+}
+
+void execucao (void){
+	menu();
+	partida();
+	fim();
 }
 
 int loadMedia() {
@@ -77,7 +88,7 @@ int loadMedia() {
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
 	if( gJPGSurface == NULL ) {
-		printf( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
+		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 	} 
 	return success;

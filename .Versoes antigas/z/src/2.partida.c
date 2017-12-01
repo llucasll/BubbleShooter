@@ -2,6 +2,7 @@
 #include "1.mecanica.h"
 
 #include "2.partida.h"
+#include "3.partida.h"
 
 /*
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
@@ -85,7 +86,7 @@ void atualiza(){
 }
 */
 
-void jogoOnClick(){
+void partidaOnClick(){
 	bool pri = true; /* SÓ O PRIMEIRO CLIQUE TEM VALIDADE */
 	if(pri){
 		//println("Clicou!");
@@ -112,7 +113,10 @@ void jogoOnClick(){
 	//printf("\nvel.x: %lf\nvel.y: %lf\nx: %lf\ny: %lf\n",tiro.vel.x,tiro.vel.y,tiro.x,tiro.y);
 }
 
-void execucao(void){
+void partida(void){
+	
+	on.screenRefresh = partidaView;
+	on.mouseClick = partidaOnClick;
 	
 	//Create NPC
 	createNPC(

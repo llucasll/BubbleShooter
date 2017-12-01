@@ -35,7 +35,7 @@ void partidaView(){
 	
 	if( SDL_BlitSurface( gJPGSurface, &srcRect, 
 								 screenSurface, &dstRect ) < 0 ) {
-		printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
 		quit = true;
 	}
 	
