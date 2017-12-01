@@ -7,6 +7,8 @@ bin = out
 
 comandos = $(comp) -o $(bin) $(source) $(flags) $(sdl)
 
+testar: exec clean
+
 exec: compilar
 	./$(bin)
 	@echo
