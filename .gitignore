@@ -1,3 +1,7 @@
+# Meus ignore's
+exe
+*~
+
 # Prerequisites
 *.d
 
