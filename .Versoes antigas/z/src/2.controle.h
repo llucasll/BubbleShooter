@@ -8,7 +8,5 @@ int loadMedia(void);
 
 voidvoid closing;
 
-SDL_Surface* loadSurface( char *path );
-
 //ESSE VEM DO 2.jogo.h
 voidvoid execucao;
