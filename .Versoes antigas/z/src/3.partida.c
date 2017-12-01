@@ -1,6 +1,6 @@
 #include "1.dados.h"
 
-#include "3.apresentacao.h"
+#include "3.partida.h"
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
 bool carregarMidia(void){//iu
@@ -22,8 +22,8 @@ void partidaView(){
 	SDL_Rect srcRect, dstRect;
 	
 	//Fill the surface white			  
-	SDL_FillRect( gScreenSurface, NULL, 
-						  SDL_MapRGB( gScreenSurface->format, 
+	SDL_FillRect( screenSurface, NULL, 
+						  SDL_MapRGB( screenSurface->format, 
 						  0xFF, 0xFF, 0xFF ) );
 
 	
@@ -34,8 +34,8 @@ void partidaView(){
 	dstRect.y = tiro.y;
 	
 	if( SDL_BlitSurface( gJPGSurface, &srcRect, 
-								 gScreenSurface, &dstRect ) < 0 ) {
-		printf( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+								 screenSurface, &dstRect ) < 0 ) {
+		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
 		quit = true;
 	}
 	
