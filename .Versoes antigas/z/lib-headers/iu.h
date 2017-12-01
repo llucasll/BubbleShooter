@@ -1,3 +1,5 @@
+/*#include "lib.h"
+
 #define lambda(return_type, body_and_args) \
     ({                                     \
         return_type __fn__ body_and_args   \
@@ -7,7 +9,7 @@
 // Constantes para Interface do Usuário
 struct{
 	struct{
-		Uint8 clicado;
+		bool clicado;
 	}mouse;
 }iuc;
 
@@ -29,4 +31,5 @@ struct{
 		int (*moveu)(int);
 		int (*clicou)(int);
 	}mouse;
-}iuf;
+}iuf;*/
+

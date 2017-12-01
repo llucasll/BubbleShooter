@@ -1,5 +1,5 @@
 debug.c
 	printf -> println
 makefile
-	flags -> libs
+	flags -> stdlibs
 	criar na subpasta tbm
