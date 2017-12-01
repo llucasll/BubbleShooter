@@ -116,7 +116,7 @@ int main( int argc, char* args[] ) {
 	// Roda as threads
 	if(controle.executar)
 		threads.principal = executar(controle.executar);
-	threads.atualizador = executar(atualizador);
+	//threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
 	
