@@ -45,18 +45,7 @@ void erro(){//erro de execução durante o jogo
 
 */
 
-void init(void){
-
-	//#include "../lib-headers/iu.c"
-	//println("iniciei");
-	
-	controle.executar = execucao;
-	controle.close = closing;
-	
-	printnl();
-	println("\t* Carregando... *");
-	printnl();
-	
+void init2(void){
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 	//Start up SDL and create window
 	if( !janela ) {// TODO modularizar tratamentos de erro
@@ -74,6 +63,21 @@ void init(void){
 	}
 }
 
+void init(void){
+
+	//#include "../lib-headers/iu.c"
+	//println("iniciei");
+	
+	controle.executar = execucao;
+	controle.close = closing;
+	
+	printnl();
+	println("\t* Carregando... *");
+	printnl();
+	
+	//init2();
+}
+
 void execucao (void){
 	menu();
 	partida();
@@ -84,24 +88,6 @@ int loadMedia() {
 
 	int success = true; //Loading success flag
 	/*uint32_t colorKey;*/
-
-	///int quantasImgs;
-	
-	///FILE *pse = popen("find | grep \"png\" | wc -l","w");
-	
-	//fscanf(pse, "%d", &quantasImgs);
-	//println("%d",quantasImgs);
-	
-	//char mmm[900];
-	//fscanf(pse, "%s", mmm); //fgets(mmm,900,pse);
-	
-	char sai[900] = "merda";
-	//sprintf(sai,"lucas\noi\nlucas");
-	println("%soi",sai);
-	
-	///Surface imagens[quantasImgs];
-	
-	// find | grep \"png\" | wc -l
 	
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);

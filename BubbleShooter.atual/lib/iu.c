@@ -23,6 +23,8 @@ iuf.mouse.moveu = lambda(
 bool quit = false; //Main loop flag
 
 void atualizador(void){
+	void init2(void);
+	init2();
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
@@ -152,11 +154,19 @@ int main( int argc, char* args[] ) {
 	//chama o "main"
 	init();
 	
+	extern Janela janela;
+	
+	threads.atualizador = executar(atualizador);
+	
+	//printf("%d\n",janela);
+	while(!janela);
+	
 	if(controle.executar)
 		threads.principal = executar(controle.executar);
-	threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
+	
+	//atualizador();
 	
 	while(!quit);
 	
