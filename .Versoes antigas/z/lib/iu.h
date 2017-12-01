@@ -9,10 +9,6 @@
 	
 	typedef SDL_Window* Janela;
 	typedef SDL_Surface* Surface;
-	
-	typedef struct{
-		int x,y;
-	} Coordenadas;
 #endif
 
 /* COMPORTAMENTO DE FRAMEWORK */

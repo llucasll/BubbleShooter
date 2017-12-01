@@ -1,9 +1,9 @@
-comp= gcc #compilador
+comp= gcc#compilador
 flags = -lm -lpthread
 sdl = -lSDL2 -lSDL2_image
 
-chatoFlags= -Wall -pedantic -ansi #prof
-outros= -D_GNU_SOURCE=1 -D_REENTRANT
+chatoFlags= -Wall  -pedantic #prof
+outros= -D_GNU_SOURCE=1 -D_REENTRANT -lm
 
 head = lib-headers/*.h 
 lib = lib/*.c
@@ -12,6 +12,16 @@ source = $(srcDir)/*.c
 bin = exe
 
 comandos = $(comp) -o $(bin) $(lib) $(source) $(flags) $(sdl)
+#rm -rf *.o *.exe *.bak *.c~ core a.out $(bin)
+#echo `find . -name "*.o"` `find . -name "$(bin)"`
+#find . -iname ".svn" -exec rm -rf {} ; *.o *.exe *.bak *.c~ core a.out $(bin)
+
+	#@echo
+	#@echo LEIA-ME
+	#@echo O programa irá se repetir indefinidamente.
+	#@echo Use CRTL+C ou ESC para encerrar o jogo, e CRTL+C novamente para encerrar o loop;
+	#@echo Use CRTL+C ou ESC para encerrar o jogo, e em seguida ENTER para iniciar novamente.
+	#@echo
 
 testar: cleanSimples repetir
 	@echo
@@ -20,19 +30,11 @@ repetir:
 	@$(comp) -o repetir repetir.c
 	@./repetir
 
-%:	
-	@echo
-	$(comp) -o $@ lib/terminal.c $@.c
-	@echo
-	./$@
-	@echo
-	rm -rf $@
-	@echo
-
 exec: compilar
 	./$(bin)
 	@echo
 
+#$(srcDir)/main.c
 compilar:
 	@echo
 	$(comandos)
