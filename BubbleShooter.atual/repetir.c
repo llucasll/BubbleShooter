@@ -11,6 +11,7 @@ int main(void){
 		system("/bin/stty raw");
 
 		char c = fgetc(stdin);
+		//printf("\n\n\%d\n\n",fgetc(stdin));
 		if(/*c==13||*/c==27) break;
 		system("/bin/stty cooked");
 		printf("\r        \n");

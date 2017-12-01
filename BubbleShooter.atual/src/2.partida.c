@@ -4,6 +4,60 @@
 #include "2.partida.h"
 #include "3.partida.h"
 
+/*
+Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
+*/
+
+/*
+
+void jogo(void){
+	bool acabou = false;
+	while(!acabou){
+		while(!iuf.mouse.clicou()){
+			while(!iuf.mouse.moveu());
+			moverSeta();
+		}
+		Coordenadas pos = atirar();//"atirar()" retorna as Coordenadas da Bola que foi lançada
+		if(match(pos)){//verifica, recursivamente, se há mais de 2 bolas da mesma cor que "pos"
+			verifica(pos);//marca, recursivamente, como "morreu" todas as bolas
+			explodir(pos);//explode todas as bolas marcadas, e filhas órfãs
+		}
+	}
+}
+
+Coordenadas atirar(){
+	bool desalojada=true;
+	Coordenadas dest;//destino
+	
+	while(desalojada){
+		move();
+		dest.x = getColuna(tiro, dest.y = getLinha(tiro));
+		
+		if(habitavel(dest)){//verifica se, para essa casa, há um pai (acima) na estrutura)
+			while(tiro.y > npc.y){
+				move(); pausa();
+			}
+			insere(tiro, dest);
+			desalojada = false;
+		}
+		else pausa();
+	}
+	return dest;
+}
+
+bool habitavel(Coordenadas pos){
+	if(l) //verifica se há pais disponíveis
+	else //guardar na primeira linha msm
+}
+
+bool match(Coordenadas bola){
+}
+
+void move(void){
+}
+
+*/
+
 void partida(void){
 	
 	on.screenRefresh = partidaView;
@@ -29,9 +83,11 @@ void partida(void){
 void partidaOnClick(){
 	bool pri = true; /* SÓ O PRIMEIRO CLIQUE TEM VALIDADE */
 	if(pri){
+		//println("Clicou!");
 		int x, y;
 		SDL_GetMouseState(&x,&y);
-
+		//printf("\n%d,%d\n",x,y);
+		
 		x -= (tam.tela.x)/2;
 		y -= (tam.tela.y)-((tam.bola.y)/2);
 	
@@ -45,6 +101,8 @@ void partidaOnClick(){
 }
 
 void moveNPC() {
+	
+	//printf("%d, %d\n",tiro.vel.x,tiro.vel.y);
 	
 	tiro.x += tiro.vel.x;
 	tiro.y += tiro.vel.y;
@@ -60,6 +118,9 @@ void moveNPC() {
 	}
 	
 	if (tiro.y < 0) {
+		/*tiro.vel.x = 0;
+		tiro.vel.y = 0;*/
+		//main(0, NULL);
 		quit = true;
 	}
 }

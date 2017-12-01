@@ -11,7 +11,43 @@
 
 #include "2.controle.h"
 
+/*
+bool iniciarSDL(void);//iu
+bool carregarMidia(void);//iu
+bool iniciarJogo(void);//dados
+void finalizarInterface(void);//iu
+*/
+
+/*
+
+bool iniciar(void){
+	if(!carregarMidia()){
+		//erro
+	}
+	else if(!iniciarSDL()){
+		//erro
+	}
+	else{
+		bool ok = iniciarJogo();
+		iniciarInterface();
+		return ok;
+	}
+	return false;
+}
+
+void encerrar(void){//finalizar o jogo, com a IU inclusive
+}
+
+void erro(){//erro de execução durante o jogo
+	println("Desculpe, um erro grave interrompeu a execução do jogo.");
+	exit(1);
+}
+
+*/
+
 void init(void){
+
+	//println("iniciei");
 
 	controle.executar = execucao;
 	controle.close = closing;
@@ -47,6 +83,30 @@ int loadMedia() {
 
 	int success = true; //Loading success flag
 	
+	/*uint32_t colorKey;*/
+
+	/*
+	
+	///int quantasImgs;
+	
+	///FILE *pse = popen("find | grep \"png\" | wc -l","w");
+	
+	//fscanf(pse, "%d", &quantasImgs);
+	//println("%d",quantasImgs);
+	
+	//char mmm[900];
+	//fscanf(pse, "%s", mmm); //fgets(mmm,900,pse);
+	
+	char sai[900] = "merda";
+	//sprintf(sai,"lucas\noi\nlucas");
+	println("%soi",sai);
+	
+	///Surface imagens[quantasImgs];
+	
+	// find | grep \"png\" | wc -l
+
+	*/	
+
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
 	if( gJPGSurface == NULL ) {

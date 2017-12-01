@@ -14,6 +14,7 @@ void println(const char *format, ...){
 }
 
 void printnl(void){//print new line
+	//printf("\n);
 	println("");
 }
 
