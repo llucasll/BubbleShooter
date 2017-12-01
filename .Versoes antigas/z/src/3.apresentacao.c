@@ -1,3 +1,5 @@
+#include "1.dados.h"
+
 #include "3.apresentacao.h"
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
@@ -16,7 +18,7 @@ void moverSeta(){
 
 /* ETAPA DE FINALIZAÇÃO */
 
-void atualiza(){
+void partidaView(){
 	SDL_Rect srcRect, dstRect;
 	
 	//Fill the surface white			  
@@ -26,8 +28,8 @@ void atualiza(){
 
 	
 	srcRect.x = 0; srcRect.y = 0;
-	srcRect.w = npc.x;
-	srcRect.h = npc.y;
+	srcRect.w = tam.bola.x;
+	srcRect.h = tam.bola.y;
 	dstRect.x = tiro.x;
 	dstRect.y = tiro.y;
 	
@@ -38,15 +40,5 @@ void atualiza(){
 	}
 	
 	//Update the surface
-	SDL_UpdateWindowSurface( gWindow );
-}
-
-void (*atualizarTela)(void);
-
-void *atualizador(void){
-	while(!quit){
-		if(atualizarTela)
-			atualizarTela();
-		//usleep(1000000/24);
-	}
+	SDL_UpdateWindowSurface( janela );
 }

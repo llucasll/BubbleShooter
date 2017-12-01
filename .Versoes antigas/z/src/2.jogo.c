@@ -1,3 +1,6 @@
+#include "1.dados.h"
+#include "2.mecanica.h"
+
 #include "2.jogo.h"
 
 /*
@@ -82,16 +85,39 @@ void atualiza(){
 }
 */
 
-void execucao(void){
-	SDL_Event e; // Event handler
-
+void jogoOnClick(){
 	bool pri = true; /* SÓ O PRIMEIRO CLIQUE TEM VALIDADE */
-	quit = false;
+	if(pri){
+		//println("Clicou!");
+		int x, y;
+		SDL_GetMouseState(&x,&y);
+		//printf("\n%d,%d\n",x,y);
+		x -= (tam.tela.x)/2;
+		y -= (tam.tela.y)-((tam.bola.y)/2);
+	
+		//printf("\n%d%d\n",x,y);
+	
+		//printf("\n%d,%d,%d\n",tela.x,tela.y,npc.y);
+		//printf("\n%d,%d\n",x,y);
+	
+		double d = sqrt( pow(x,2) + pow(y,2) );
+	
+		tiro.vel.x = x/d;
+		tiro.vel.y = y/d;
+		//printf("%f,%f\n",tiro.vel.x,tiro.vel.y);
+		pri = false;
+	}
+	//printf("\n%d, %d\n\n",e.motion.x,e.motion.y);
+	//printf("oi\n");
+	//printf("\nvel.x: %lf\nvel.y: %lf\nx: %lf\ny: %lf\n",tiro.vel.x,tiro.vel.y,tiro.x,tiro.y);
+}
+
+void execucao(void){
 	
 	//Create NPC
 	createNPC(
-		(tela.x - npc.x)/2, 
-		(tela.y - npc.y), 
+		(tam.tela.x - tam.bola.x)/2, 
+		(tam.tela.y - tam.bola.y), 
 		0, 
 		0
 	);
@@ -112,46 +138,6 @@ void execucao(void){
 	
 	//While application is running
 	while( !quit ) {
-		while( SDL_PollEvent( &e ) != 0 ) {
-			switch (e.type) {
-				case SDL_QUIT:
-					quit = true;
-					break;
-				case SDL_MOUSEBUTTONDOWN:
-					if(e.button.button == SDL_BUTTON_LEFT){
-						if(pri){
-							//println("Clicou!");
-							int x = e.motion.x, y = e.motion.y;
-							//printf("\n%d,%d\n",x,y);
-							x -= (tela.x)/2;
-							y -= (tela.y)-((npc.y)/2);
-						
-							//printf("\n%d%d\n",x,y);
-						
-							//printf("\n%d,%d,%d\n",tela.x,tela.y,npc.y);
-							//printf("\n%d,%d\n",x,y);
-						
-							double d = sqrt( pow(x,2) + pow(y,2) );
-						
-							tiro.vel.x = x/d;
-							tiro.vel.y = y/d;
-							//printf("%f,%f\n",tiro.vel.x,tiro.vel.y);
-							pri = false;
-						}
-						//printf("\n%d, %d\n\n",e.motion.x,e.motion.y);
-						//printf("oi\n");
-						//printf("\nvel.x: %lf\nvel.y: %lf\nx: %lf\ny: %lf\n",tiro.vel.x,tiro.vel.y,tiro.x,tiro.y);
-					}
-					break;
-				case SDL_KEYDOWN:
-					if (e.key.keysym.sym == SDLK_ESCAPE) {
-						quit = true;
-					}
-					break;
-			}
-		}
-		
-		
 		moveNPC();
 		//atualiza();
 			
@@ -169,12 +155,12 @@ void moveNPC() {
 	tiro.x += tiro.vel.x;
 	tiro.y += tiro.vel.y;
 	
-	if ( (tiro.x + npc.x > tela.x) ||
+	if ( (tiro.x + tam.bola.x > tam.tela.x) ||
 		 (tiro.x < 0) ) {
 		tiro.vel.x = -tiro.vel.x;
 		tiro.x += tiro.vel.x; 
 	}
-	if (tiro.y + npc.y > tela.y) {
+	if (tiro.y + tam.bola.y > tam.tela.y) {
 		tiro.vel.y = -tiro.vel.y;
 		tiro.y += tiro.vel.y;
 	}

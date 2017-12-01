@@ -1,12 +1,14 @@
-#include "3.apresentacao.h"
-#include "2.jogo.h"
+#include "0.cabecalho.h"
 
-void preparar(void);
+voidvoid init;
 
-int init();
+int preparar(void);
 
-int loadMedia();
+int loadMedia(void);
 
-void closing();
+voidvoid closing;
 
 SDL_Surface* loadSurface( char *path );
+
+//ESSE VEM DO 2.jogo.h
+voidvoid execucao;

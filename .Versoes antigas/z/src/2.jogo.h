@@ -1,7 +1,7 @@
-#include "2.mecanica.h"
+#include "0.cabecalho.h"
 
-void execucao(void);
+voidvoid execucao;
+voidvoid moveNPC;
+void createNPC(int x, int y, int velx, int vely);
 
-void moveNPC();
-
-void createNPC();
+voidvoid jogoOnClick;

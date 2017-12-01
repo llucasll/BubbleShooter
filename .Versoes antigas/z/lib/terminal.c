@@ -30,7 +30,3 @@ void limpa(){
 	system ("clear");
 	system ("clear");
 }
-
-void oi(){
-	println("oi");
-}

@@ -7,11 +7,11 @@ Bola *matriz[linhas][colunas];
 Tiro tiro;
 
 /* Global Variables */
-SDL_Window* gWindow = NULL; //The window we'll be rendering to
-SDL_Surface* gScreenSurface = NULL; //The surface contained by the window
-SDL_Surface* gJPGSurface = NULL; //Current displayed PNG image
+Janela janela = NULL; //The window we'll be rendering to
+Surface gScreenSurface = NULL; //The surface contained by the window
+Surface gJPGSurface = NULL; //Current displayed PNG image
 
-bool quit = false; //Main loop flag
+//bool quit = false; //Main loop flag
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
 }
@@ -32,3 +32,10 @@ int getColuna(Bola b, int linha){
 struct{
 	int nada;
 }nada;
+
+struct _medidas tam = {
+	{640, 480},//tela
+	{},//campo
+	{61, 61}//bola
+};
+

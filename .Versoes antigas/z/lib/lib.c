@@ -9,10 +9,10 @@ void *_executar(void *func){
 	//x();
 	//x();
 	
-	((void (*)(void))func)();
+	((voidvoid*)func)();
 }
 	
-Thread executar(void *func (void)){
+Thread executar(voidvoid *executavel){
 	//int n = 5;
 	/*
 	void *tete(void *NADA){
@@ -22,7 +22,7 @@ Thread executar(void *func (void)){
 	//printnl();
 	
 	Thread t;
-	pthread_create(&t, NULL, _executar, func);
+	pthread_create(&t, NULL, _executar, (void*)executavel);
 	return t;
 }
 

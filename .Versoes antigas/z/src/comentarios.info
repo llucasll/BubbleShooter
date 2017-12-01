@@ -164,11 +164,6 @@ char[][] imagens = {
 	""
 }
 
-struct{
-	coordenadas tela;
-	coordenadas bola;
-}tam
-
 /* TIPOS * /
 
 

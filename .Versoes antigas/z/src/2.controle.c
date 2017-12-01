@@ -1,3 +1,7 @@
+#include "1.dados.h"//apenas pelas inicializações no init
+#include "2.jogo.h"
+#include "3.apresentacao.h"
+
 #include "2.controle.h"
 
 /*
@@ -34,17 +38,22 @@ void erro(){//erro de execução durante o jogo
 
 */
 
-void preparar(void){
+void init(void){
 
 	//#include "../lib-headers/iu.c"
 	//println("iniciei");
 	
+	controle.executar = execucao;
+	on.screenRefresh = partidaView;
+	on.mouseClick = jogoOnClick;
+	controle.close = closing;
+	
 	printnl();
-	println("Carregando...");
+	println("\t* Carregando... *");
 	printnl();
 	
 	//Start up SDL and create window
-	if( !init() ) {
+	if( !preparar() ) {// TODO modularizar tratamentos de erro
 		printf( "Failed to initialize!\n" );
 		exit(1);
 	}
@@ -56,7 +65,7 @@ void preparar(void){
 	}
 }
 
-int init() {
+int preparar() {
 
 	int success = true;	//Initialization flag
 
@@ -69,8 +78,8 @@ int init() {
 	}
 	else {
 		//Create window
-		gWindow = SDL_CreateWindow( "Bubble Shooter 0.1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, tela.x, tela.y, SDL_WINDOW_SHOWN );
-		if( gWindow == NULL ) {
+		janela = SDL_CreateWindow( "Bubble Shooter 0.1", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, tam.tela.x, tam.tela.y, SDL_WINDOW_SHOWN );
+		if( janela == NULL ) {
 			printf( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
 			success = false;
 		}
@@ -83,7 +92,7 @@ int init() {
 			}
 			else {
 
-				gScreenSurface = SDL_GetWindowSurface( gWindow ); //Get window surface
+				gScreenSurface = SDL_GetWindowSurface( janela ); //Get window surface
 			}
 		}
 	}
@@ -108,13 +117,16 @@ int loadMedia() {
 }
 
 void closing() {
+	println("\t* Encerrando... *");
+	//printnl();
+	
 	//Free loaded image
 	SDL_FreeSurface( gJPGSurface );
 	gJPGSurface = NULL;
 
 	//Destroy window
-	SDL_DestroyWindow( gWindow );
-	gWindow = NULL;
+	SDL_DestroyWindow( janela );
+	janela = NULL;
 
 	//Quit SDL subsystems
 	IMG_Quit();

@@ -29,10 +29,6 @@ int getColuna(Bola b, int linha){
 	return (int) (linha%2 ? b.y-npc.y/2 : b.y)/npc.y;
 }
 
-struct{
-	int nada;
-}nada;
-
 struct _medidas tam = {
 	{640, 480},//tela
 	{},//campo

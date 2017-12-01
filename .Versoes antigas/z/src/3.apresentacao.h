@@ -1,17 +1,13 @@
-#include "1.dados.h"
+#include "0.cabecalho.h"
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
 bool carregarMidia(void);
 bool iniciarSDL(void);
-void iniciarInterface(void);
+voidvoid iniciarInterface;
 
 /* ETAPA DE MECÂNICA */
-void moverSeta();
+voidvoid moverSeta;
+voidvoid partidaView;
 //void atualizar();
 
 /* ETAPA DE FINALIZAÇÃO */
-
-
-void atualiza();
-void (*atualizarTela)(void);
-void *atualizador(void);
