@@ -17,6 +17,4 @@ int main(){
 	println("%soi",sai);
 	
 	//Surface imagens[quantasImgs];
-	
-	// find | grep \"png\" | wc -l 
 }

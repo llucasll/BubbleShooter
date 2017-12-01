@@ -8,5 +8,6 @@ voidvoid iniciarInterface;
 /* ETAPA DE MECÂNICA */
 voidvoid moverSeta;
 voidvoid partidaView;
+//void atualizar();
 
 /* ETAPA DE FINALIZAÇÃO */
