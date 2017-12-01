@@ -1,28 +1,10 @@
-//#include "../lib-headers/iu.h"
 #include "iu.h"
-//#include "iu.h"
-/*
-iuf.mouse.clicou =
-({
-	int __fn__ (int n) {
-		return n*n;
-	}
-	&__fn__;
-});
 
-iuf.mouse.moveu = lambda(
-	int, (int n) {
-		if(n==3)
-			return 1;
-		//else
-	}
-);*/
-
-//#include "../src/3.apresentacao.h"
-
-bool quit = false; //Main loop flag
+bool quit = false; // Semáforo global que controla o término de todo o programa
 
 void atualizador(void){
+	void init2(void);//TODO
+	init2();//TODO
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
@@ -65,42 +47,29 @@ void quitDefault(void){
 
 void changeMonitor(voidvoid novo){
 	controle.monitor = novo;
-	// TODO TERMINAR A THREAD threads.monitor
+	// TODO ENCERRAR A THREAD threads.monitor
 	executar(controle.monitor);
 }
 
 Janela newJanela(int x, int y, char nome[]) {
 	Janela janela;
 
-	//int success = true;	//Initialization flag
-
-	//srand(time(NULL));
-
 	//Initialize SDL
-	if( SDL_Init( SDL_INIT_VIDEO ) < 0 ) {
+	if( SDL_Init( SDL_INIT_VIDEO ) < 0 )
 		logger( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
-		//success = false;
-	}
 	else {
 		//Create window
 		janela = SDL_CreateWindow( nome, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, SDL_WINDOW_SHOWN );
-		if( janela == NULL ) {
+		if( janela == NULL )
 			logger( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
-			//success = false;
-		}
 		else {
 			//Initialize JPG and PNG loading
 			int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
-			if( !( IMG_Init( imgFlags ) & imgFlags ) ) {
+			if( !( IMG_Init( imgFlags ) & imgFlags ) )
 				logger( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
-				//success = false;
-			}
 		}
 	}
 
-   
-
-	//return success;
 	return janela;
 }
 
@@ -128,39 +97,36 @@ Surface loadImage( char *path, Surface base ) {
 }
 
 int main( int argc, char* args[] ) {
-
-	//iniciar();//controle
-	//jogo();//mecanica
-	//encerrar();//controle
-	
-	/*Coordenadas c = {3,4};
-	insere(2,c);
-	
-	struct{
-		int (*teste)(void){
-			return 26;
-		}
-	}teste;
-		
-	printint(teste.teste());
-	*/
-	
-	// inicializa a própria biblioteca com os padrões
+	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
 	controle.monitor = monitorDefault;
 	
-	//chama o "main"
+	// Chama o "main"
 	init();
 	
+	//TODO
+	extern Janela janela;
+	
+	threads.atualizador = executar(atualizador);
+	
+	//printf("%d\n",janela);
+	while(!janela);
+	//TODO
+	
+	// Roda as threads
 	if(controle.executar)
 		threads.principal = executar(controle.executar);
-	threads.atualizador = executar(atualizador);
+	//threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
 	
-	while(!quit);
+	//atualizador();
 	
+	// Aguarda o fim do programa
+	while(!quit);
 	esperar(threads.atualizador);
+	
+	// Chama a função de finalização
 	if(controle.close) controle.close();//Free resources and closing SDL
 
 	return 0;

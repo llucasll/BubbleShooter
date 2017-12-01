@@ -45,20 +45,9 @@ void erro(){//erro de execução durante o jogo
 
 */
 
-void init(void){
-
-	//#include "../lib-headers/iu.c"
-	//println("iniciei");
-	
-	controle.executar = execucao;
-	controle.close = closing;
-	
-	printnl();
-	println("\t* Carregando... *");
-	printnl();
-	
-	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
+void init2(void){
 	//Start up SDL and create window
+	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 	if( !janela ) {// TODO modularizar tratamentos de erro
 		logger( "Failed to initialize!\n" );
 		exit(1);
@@ -74,6 +63,20 @@ void init(void){
 	}
 }
 
+void init(void){
+
+	//println("iniciei");
+
+	controle.executar = execucao;
+	controle.close = closing;
+	
+	printnl();
+	println("\t* Carregando... *");
+	printnl();
+
+	//init2();
+}
+
 void execucao (void){
 	menu();
 	partida();
@@ -83,8 +86,11 @@ void execucao (void){
 int loadMedia() {
 
 	int success = true; //Loading success flag
+	
 	/*uint32_t colorKey;*/
 
+	/*
+	
 	///int quantasImgs;
 	
 	///FILE *pse = popen("find | grep \"png\" | wc -l","w");
@@ -102,7 +108,9 @@ int loadMedia() {
 	///Surface imagens[quantasImgs];
 	
 	// find | grep \"png\" | wc -l
-	
+
+	*/	
+
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
 	if( gJPGSurface == NULL ) {
@@ -114,7 +122,6 @@ int loadMedia() {
 
 void closing() {
 	println("\t* Encerrando... *");
-	//printnl();
 	
 	//Free loaded image
 	SDL_FreeSurface( gJPGSurface );
