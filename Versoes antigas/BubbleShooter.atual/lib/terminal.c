@@ -5,22 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void println(const char *format, ...){
-	va_list arg;
-	//int done;
-
-	va_start (arg, format);
-	//done = printf (format, arg);
-	vfprintf (stdout, format, arg);
-	va_end (arg);
-
-	//return done;
-
-/*(char s[]){
+void println(char s[]){
 	printf("%s%c",s,'\n');
-	//printf(s); printnl();*/
-	
-	printf("\n");
+	//printf(s); printnl();
 }
 
 void printnl(void){//print new line

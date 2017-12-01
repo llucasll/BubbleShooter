@@ -8,7 +8,7 @@ Tiro tiro;
 
 /* Global Variables */
 Janela janela = NULL; //The window we'll be rendering to
-Surface screenSurface = NULL; //The surface contained by the window
+Surface gScreenSurface = NULL; //The surface contained by the window
 Surface gJPGSurface = NULL; //Current displayed PNG image
 
 //bool quit = false; //Main loop flag
