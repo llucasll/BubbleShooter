@@ -122,11 +122,12 @@ void moveNPC() {
 }
 
 /* Create NPC */
-void createNPC( int x, int y, int velx, int vely) {
+void createNPC( int x, int y, int velx, int vely, byte cor) {
 	tiro.x = x;
 	tiro.y = y;
 	tiro.vel.x = velx;
 	tiro.vel.y = vely;
+	tiro.cor = cor;
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
@@ -147,6 +148,7 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 			(tam.tela.x - tam.bola.x)/2,
 			(tam.tela.y - tam.bola.y),
 			0,
-			0
+			0,
+			sortear()
 		);
 }

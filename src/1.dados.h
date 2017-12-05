@@ -14,7 +14,7 @@
 	} Bola;
 
 	typedef struct{
-		char cor;
+		byte cor;
 		float x,y;
 		struct{
 			float x,y;
@@ -43,7 +43,8 @@
 		Coordenadas bola;
 		byte cores;
 	}extern tam;
-
+	
+	extern Surface sprites[ncores]; //Vetor de imagens :^)
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
 	extern Bola matriz[linhas][colunas];

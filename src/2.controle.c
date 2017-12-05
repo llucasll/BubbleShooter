@@ -128,17 +128,18 @@ int loadMedia() {
 	*/
 
 	//Load PNG surface
-	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
+	//TODO fazer a verificação.
+	/*gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
 	if( gJPGSurface == NULL ) {
 		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
-	}
-	gcolorSurface[0] = loadImage( "./media/blue.png", screenSurface );
-	gcolorSurface[1] = loadImage( "./media/red.png", screenSurface );
-	gcolorSurface[2] = loadImage( "./media/cian.png", screenSurface );
-	gcolorSurface[3] = loadImage( "./media/green.png", screenSurface );
-	gcolorSurface[4] = loadImage( "./media/pink.png", screenSurface );
-	gcolorSurface[5] = loadImage( "./media/yellow.png", screenSurface );
+	}*/
+	sprites[0] = loadImage( "./media/blue.png", screenSurface );
+	sprites[1] = loadImage( "./media/red.png", screenSurface );
+	sprites[2] = loadImage( "./media/cian.png", screenSurface );
+	sprites[3] = loadImage( "./media/green.png", screenSurface );
+	sprites[4] = loadImage( "./media/pink.png", screenSurface );
+	sprites[5] = loadImage( "./media/yellow.png", screenSurface );
 	return success;
 }
 
@@ -146,8 +147,9 @@ void closing() {
 	println("\t* Encerrando... *");
 
 	//Free loaded image
-	SDL_FreeSurface( gJPGSurface );
-	gJPGSurface = NULL;
+	/*SDL_FreeSurface( gJPGSurface );
+	gJPGSurface = NULL;*/
+	//TODO
 
 	//Destroy window
 	SDL_DestroyWindow( janela );

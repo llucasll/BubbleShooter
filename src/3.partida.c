@@ -31,7 +31,7 @@ void partidaView(){
 			if(matriz[i][j].existe)
 				printBola(&matriz[i][j]);
 
-	if( SDL_BlitSurface( gJPGSurface, &srcRect,
+	if( SDL_BlitSurface( sprites[tiro.cor], &srcRect,
 								 screenSurface, &dstRect ) < 0 ) {
 		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
 		quit = true;
@@ -51,7 +51,7 @@ void printBola(Bola *p){
 	srciRect.h = tam.bola.y;
 	dstiRect.x = p->x;
 	dstiRect.y = p->y;
-	gprintSurface=gcolorSurface[p->cor];
+	gprintSurface=sprites[p->cor];
 
 	if( SDL_BlitSurface( gprintSurface, &srciRect,
 						 screenSurface, &dstiRect ) < 0 ) {

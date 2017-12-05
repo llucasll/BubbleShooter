@@ -9,8 +9,7 @@ Tiro tiro;
 /* Global Variables */
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
-Surface gJPGSurface = NULL; //Current displayed PNG image
-Surface gcolorSurface[ncores]; //Vetor de imagens :^)
+Surface sprites[ncores]; //Vetor de imagens :^)
 
 byte sortear(void){
 	return rand() % tam.cores;
