@@ -10,12 +10,7 @@ Tiro tiro;
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
 Surface gJPGSurface = NULL; //Current displayed PNG image
-
-bool iniciarJogo(void){//iniciar globais; preparar jogo
-	for(int i=0;i<linhas;i++)
-		for(int j=0;<colunas;j++)
-			matriz[i][j].cor = sortear();
-}
+Surface gcolorSurface[ncores]; //Vetor de imagens :^)
 
 byte sortear(void){
 	return rand() % tam.cores;
@@ -24,7 +19,7 @@ byte sortear(void){
 }
 
 bool insere(byte b, int x, int y){
-	
+
 }
 bool remover(int x, int y){
 }
@@ -43,4 +38,3 @@ struct _medidas tam = {//TODO
 	{61, 61},//bola
 	6
 };
-

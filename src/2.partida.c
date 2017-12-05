@@ -28,11 +28,11 @@ void jogo(void){
 Coordenadas atirar(){
 	bool desalojada=true;
 	Coordenadas dest;//destino
-	
+
 	while(desalojada){
 		move();
 		dest.x = getColuna(tiro, dest.y = getLinha(tiro));
-		
+
 		if(habitavel(dest)){//verifica se, para essa casa, há um pai (acima) na estrutura)
 			while(tiro.y > npc.y){
 				move(); pausa();
@@ -59,24 +59,18 @@ void move(void){
 */
 
 void partida(void){
-	
+
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
-	
+
 	//println("%d",sortear());
-	
-	//Create NPC
-	createNPC(
-		(tam.tela.x - tam.bola.x)/2, 
-		(tam.tela.y - tam.bola.y), 
-		0, 
-		0
-	);		
-	
+
+	iniciarJogo();
+
 	//While application is running
 	while( !quit ) {
 		moveNPC();
-			
+
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);
 	}
@@ -89,12 +83,12 @@ void partidaOnClick(){
 		int x, y;
 		SDL_GetMouseState(&x,&y);
 		//printf("\n%d,%d\n",x,y);
-		
+
 		x -= (tam.tela.x)/2;
 		y -= (tam.tela.y)-((tam.bola.y)/2);
-	
+
 		double d = sqrt( pow(x,2) + pow(y,2) );
-	
+
 		tiro.vel.x = x/d;
 		tiro.vel.y = y/d;
 
@@ -103,22 +97,22 @@ void partidaOnClick(){
 }
 
 void moveNPC() {
-	
+
 	//printf("%d, %d\n",tiro.vel.x,tiro.vel.y);
-	
+
 	tiro.x += tiro.vel.x;
 	tiro.y += tiro.vel.y;
-	
+
 	if ( (tiro.x + tam.bola.x > tam.tela.x) ||
 		 (tiro.x < 0) ) {
 		tiro.vel.x = -tiro.vel.x;
-		tiro.x += tiro.vel.x; 
+		tiro.x += tiro.vel.x;
 	}
 	if (tiro.y + tam.bola.y > tam.tela.y) {
 		tiro.vel.y = -tiro.vel.y;
 		tiro.y += tiro.vel.y;
 	}
-	
+
 	if (tiro.y < 0) {
 		/*tiro.vel.x = 0;
 		tiro.vel.y = 0;*/
@@ -132,5 +126,21 @@ void createNPC( int x, int y, int velx, int vely) {
 	tiro.x = x;
 	tiro.y = y;
 	tiro.vel.x = velx;
-	tiro.vel.y = vely;	
+	tiro.vel.y = vely;
+}
+
+bool iniciarJogo(void){//iniciar globais; preparar jogo
+	for(int i=0;i<linhas;i++)
+		for(int j=0;j<colunas;j++){
+			matriz[i][j].cor = sortear();
+			matriz[i][j].existe = true;
+		}
+
+		//Create NPC
+		createNPC(
+			(tam.tela.x - tam.bola.x)/2,
+			(tam.tela.y - tam.bola.y),
+			0,
+			0
+		);
 }

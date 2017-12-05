@@ -58,7 +58,7 @@ void init2(void){
 	else {
 		screenSurface = surfaceFrom ( janela ); //Get window surface
 	}
-	
+
 	//Load media
 	if( !loadMedia() ) {
 		logger( "Failed to load media!\n" );
@@ -72,15 +72,15 @@ void init(void){
 
 	controle.principal = bubbleShooter;
 	controle.close = closing;
-	
+
 	time_t t;
 	// Intializes random number generator
 	srand((unsigned) time(&t));//////aqui
-	
+
 	printnl();
 	println("\t* Carregando... *");
 	printnl();
-	
+
 	preparaJanela(&janela, &screenSurface, tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 
 	//init2();
@@ -102,43 +102,49 @@ void bubbleShooter (void){
 int loadMedia() {
 
 	int success = true; //Loading success flag
-	
+
 	/*uint32_t colorKey;*/
 
 	/*
-	
+
 	///int quantasImgs;
-	
+
 	///FILE *pse = popen("find | grep \"png\" | wc -l","w");
-	
+
 	//fscanf(pse, "%d", &quantasImgs);
 	//println("%d",quantasImgs);
-	
+
 	//char mmm[900];
 	//fscanf(pse, "%s", mmm); //fgets(mmm,900,pse);
-	
+
 	char sai[900] = "merda";
 	//sprintf(sai,"lucas\noi\nlucas");
 	println("%soi",sai);
-	
+
 	///Surface imagens[quantasImgs];
-	
+
 	// find | grep \"png\" | wc -l
 
-	*/	
+	*/
 
 	//Load PNG surface
 	gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
 	if( gJPGSurface == NULL ) {
 		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
-	} 
+	}
+	gcolorSurface[0] = loadImage( "./media/blue.png", screenSurface );
+	gcolorSurface[1] = loadImage( "./media/red.png", screenSurface );
+	gcolorSurface[2] = loadImage( "./media/cian.png", screenSurface );
+	gcolorSurface[3] = loadImage( "./media/green.png", screenSurface );
+	gcolorSurface[4] = loadImage( "./media/pink.png", screenSurface );
+	gcolorSurface[5] = loadImage( "./media/yellow.png", screenSurface );
 	return success;
 }
 
 void closing() {
 	println("\t* Encerrando... *");
-	
+
 	//Free loaded image
 	SDL_FreeSurface( gJPGSurface );
 	gJPGSurface = NULL;

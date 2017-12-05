@@ -2,7 +2,7 @@
 
 #ifndef DADOS //evitar inclusões cíclicas ("guarda de cabeçalho")
 	#define DADOS
-	
+
 	/* TIPOS */
 
 	typedef struct _Bola{
@@ -20,15 +20,13 @@
 			float x,y;
 		}vel;
 	} Tiro;
-	
+
 	/* PROTÓTIPOS */
-	
-	bool iniciarJogo(void);//iniciar globais; preparar jogo
 
 	bool insere(byte b, int x, int y);
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
-	
+
 	byte sortear(void);
 	bool preencher(void);//retorna se houve sucesso
 	void percorrer(void *func(Bola *b));
@@ -36,20 +34,20 @@
 
 	int getLinha(Bola b);
 	int getColuna(Bola b, int linha);
-	
+
 	/* GLOBAIS */
-	
+
 	struct _medidas{
 		Coordenadas tela;
 		//Coordenadas matriz;//ainda não em uso
 		Coordenadas bola;
 		byte cores;
 	}extern tam;
-	
+
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
 	extern Bola matriz[linhas][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
-	
+
 #endif
