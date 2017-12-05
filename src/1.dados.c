@@ -12,6 +12,9 @@ Surface screenSurface = NULL; //The surface contained by the window
 Surface gJPGSurface = NULL; //Current displayed PNG image
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
+	for(int i=0;i<linhas;i++)
+		for(int j=0;<colunas;j++)
+			matriz[i][j].cor = sortear();
 }
 
 byte sortear(void){
