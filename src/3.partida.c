@@ -50,7 +50,7 @@ void printBola(Bola *p){
 	srciRect.w = tam.bola.x;
 	srciRect.h = tam.bola.y;
 	dstiRect.x = p->x;
-	dstiRect.y = p->y;
+	dstiRect.y = p->y;//
 	gprintSurface=gcolorSurface[p->cor];
 
 	if( SDL_BlitSurface( gprintSurface, &srciRect,
