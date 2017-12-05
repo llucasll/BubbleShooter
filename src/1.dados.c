@@ -1,7 +1,6 @@
 #include "1.dados.h"
 
 /* GLOBAIS */
-const Coordenadas campo = {30, 10}, npc = {61, 61}, tela = {640, 480};//tamanhos
 Coordenadas velocidade;
 Bola matriz[linhas][colunas];//Bola **matriz;
 Tiro tiro;
@@ -13,8 +12,6 @@ Surface sprites[ncores]; //Vetor de imagens :^)
 
 byte sortear(void){
 	return rand() % tam.cores;
-	//return 0;
-	//return rand() % tam.cores;
 }
 
 bool insere(byte b, int x, int y){
@@ -24,11 +21,25 @@ bool remover(int x, int y){
 }
 
 int getLinha(Bola b){
-	return (int) b.x/npc.x;
+	return (int) b.x/tam.bola.x;
+}
+
+int arredonda(int dividendo, int divisor){
+	int resultado = divisor?dividendo/divisor:0;
+	return (int) divisor*resultado < dividendo? resultado+1 : resultado;
 }
 
 int getColuna(Bola b, int linha){
-	return (int) (linha%2 ? b.y-npc.y/2 : b.y)/npc.y;
+	/*int tmp = linha%2 ? b.y-(tam.bola.y*0.9)/2 : b.y;
+	if(tmp / tam.bola.y){
+		tmp /= (tam.bola.y*0.9);
+		tmp +=1;
+	}
+	else
+		tmp /= tam.bola.y;
+	//printf("%d\t%d", tmp,linha);
+	return (int) tmp;*/
+	return (int) arredonda((linha%2 ? b.y-(tam.bola.y/**0.9*/)/2 : b.y), (tam.bola.y/**0.9*/));
 }
 
 struct _medidas tam = {//TODO

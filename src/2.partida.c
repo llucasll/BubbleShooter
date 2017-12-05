@@ -4,6 +4,8 @@
 #include "2.partida.h"
 #include "3.partida.h"
 
+#include "3.debug.h"
+
 /*
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
 */
@@ -66,6 +68,8 @@ void partida(void){
 	//println("%d",sortear());
 
 	iniciarJogo();
+	
+	//exibeMatriz();
 
 	//While application is running
 	while( !quit ) {
@@ -131,24 +135,37 @@ void createNPC( int x, int y, int velx, int vely, byte cor) {
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
-	for(int i=0;i<linhas;i++)
-		for(int j=0;j<colunas;j++){
-			matriz[i][j].cor = sortear();
-			matriz[i][j].existe = true;
-			matriz[i][j].morreu = false;
+	for(int y=0;y<linhas;y++){
+		for(int x=0;x<colunas;x++){
+			matriz[y][x].cor = sortear();
+			matriz[y][x].existe = true;
+			matriz[y][x].morreu = false;
 			
-			//printint(tam.bola.x * j + (i%2?tam.bola.x/2:0));
+			//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
 			
-			matriz[i][j].x = tam.bola.x * j + (i%2?tam.bola.x/2:0);
-			matriz[i][j].y = tam.bola.y * i * 0.9;
+			matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
+			matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
+			
+			//printf("%d,%d\t",getColuna(matriz[y][x],getLinha(matriz[y][x])),getLinha(matriz[y][x]));
+			
+			//println("%d\t%d\n%d\t%d\n", matriz[y][x].x, getLinha(matriz[y][x]), matriz[y][x].y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+			///println("%d\t%d\n%d\t%d\n", x, getLinha(matriz[y][x]), y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+			//getColuna(matriz[y][x],getLinha(matriz[y][x]));
+			
+			//println("%d dividido por %d = %d",x,y,arredonda(x,y));
+			
+			///printnl();
+			//println("%d",matriz[y][x].x/tam.bola.x);
 		}
+		//printnl();
+	}
 
-		//Create NPC
-		createNPC(
-			(tam.tela.x - tam.bola.x)/2,
-			(tam.tela.y - tam.bola.y),
-			0,
-			0,
-			sortear()
-		);
+	//Create NPC
+	createNPC(
+		(tam.tela.x - tam.bola.x)/2,
+		(tam.tela.y - tam.bola.y),
+		0,
+		0,
+		sortear()
+	);
 }

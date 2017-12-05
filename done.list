@@ -3,4 +3,4 @@ debug.c
 
 makefile
 	flags -> stdlibs
-	criar na subpasta tbm//
+	criar na subpasta tbm
