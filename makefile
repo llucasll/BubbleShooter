@@ -1,5 +1,5 @@
 comp= gcc #compilador
-flags = -lm -lpthread
+stdlibs = -lm -lpthread
 sdl = -lSDL2 -lSDL2_image
 
 chatoFlags= -Wall -pedantic -ansi #prof
@@ -13,7 +13,7 @@ bin = exe
 executavel = .out
 testes = testes
 
-comandos = $(comp) -o $(bin)$(executavel) $(lib) $(source) $(flags) $(sdl)
+comandos = $(comp) -o $(bin)$(executavel) $(lib) $(source) $(stdlibs) $(sdl)
 
 testar: cleanSimples repetir
 	@echo
