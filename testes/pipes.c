@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "lib/terminal.h"
+#include "../lib/terminal.h"
 
 int main(){
 	///int quantasImgs;

@@ -11,6 +11,7 @@ srcDir = src
 source = $(srcDir)/*.c
 bin = exe
 executavel = .out
+testes = testes
 
 comandos = $(comp) -o $(bin)$(executavel) $(lib) $(source) $(flags) $(sdl)
 
@@ -26,9 +27,9 @@ repetir:
 	@echo
 	rm -rf $@
 	@echo
-	$(comp) -o $@$(executavel) lib/terminal.c $@.c
+	$(comp) -o $(testes)/$@$(executavel) lib/terminal.c $(testes)/$@.c
 	@echo
-	./$@$(executavel)
+	./$(testes)/$@$(executavel)
 	@echo
 
 exec: compilar

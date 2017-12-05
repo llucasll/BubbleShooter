@@ -7,6 +7,3 @@ int preparar(void);
 int loadMedia(void);
 
 voidvoid closing;
-
-//ESSE VEM DO 2.jogo.h
-voidvoid bubbleShooter;

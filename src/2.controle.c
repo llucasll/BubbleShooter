@@ -63,6 +63,8 @@ void init2(void){
 	}
 }
 
+voidvoid bubbleShooter;
+
 void init(void){
 
 	//println("iniciei");
