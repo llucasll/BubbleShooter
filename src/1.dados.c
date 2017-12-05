@@ -33,7 +33,7 @@ int getColuna(Bola b, int linha){
 }
 
 struct _medidas tam = {//TODO
-	{640, 480},//tela
+	{648, 480},//tela
 	//{30, 10},//campo
 	{37, 37},//bola
 	6
