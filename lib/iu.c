@@ -19,37 +19,37 @@ int main( int argc, char* args[] ) {
 	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
 	controle.monitor = monitorDefault;
-	
+
 	//println("%u", primeiraJanela.janela);
 	primeiraJanela.janela = NULL;
 	//println("%u", primeiraJanela.janela);
-	
+
 	// Chama o "main"
 	init();
-	
+
 	threads.visualizador = executar(visualizador);
-	
+
 	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
-	
+
 	//printf("%d\n",janela);
 	while(!*primeiraJanela.surface);
 	//TODO
-	
+
 	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
-	
+
 	// Roda as threads
 	if(controle.principal)
 		threads.principal = executar(controle.principal);
 	//threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
-	
+
 	//atualizador();
-	
+
 	// Aguarda o fim do programa
 	while(!quit);
 	esperar(threads.visualizador);
-	
+
 	// Chama a função de finalização
 	if(controle.close) controle.close();//Free resources and closing SDL
 
@@ -123,6 +123,10 @@ Surface loadImage( char *path, Surface base ) {
 		if( optimizedSurface == NULL ) {
 			logger( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
 		}
+		else{
+			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0, 0, 0, 0xFF);
+			SDL_SetColorKey( optimizedSurface,1, colorkey);
+		}
 
 		//Get rid of old loaded surface
 		SDL_FreeSurface( loadedSurface );
@@ -134,9 +138,9 @@ Surface loadImage( char *path, Surface base ) {
 
 void monitorDefault(void){
 	SDL_Event e; // Event handler
-	
+
 	//podia fornecer, também, uma lista de eventos (a ser manuseada), num par ["bool teste(void)", "voidvoid comportamento"]
-	
+
 	//While application is running
 	while( !quit ) {
 		while( SDL_PollEvent( &e ) != 0 ) {
