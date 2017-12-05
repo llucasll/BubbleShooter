@@ -37,4 +37,4 @@ struct _medidas tam = {//TODO
 	//{30, 10},//campo
 	{37, 37},//bola
 	6
-};//
+};
