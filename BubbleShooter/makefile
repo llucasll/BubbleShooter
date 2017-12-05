@@ -20,6 +20,7 @@ testar: cleanSimples repetir
 repetir:
 	@$(comp) -o repetir$(executavel) repetir.c
 	@./repetir$(executavel)
+	@make cleanSimples --no-print-directory
 
 %:
 	@echo
