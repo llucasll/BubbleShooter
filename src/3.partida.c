@@ -50,8 +50,13 @@ void printBola(Bola *p){
 	srciRect.w = tam.bola.x;
 	srciRect.h = tam.bola.y;
 	dstiRect.x = p->x;
+<<<<<<< HEAD
 	dstiRect.y = p->y;
 	gprintSurface=sprites[p->cor];
+=======
+	dstiRect.y = p->y;//
+	gprintSurface=gcolorSurface[p->cor];
+>>>>>>> cd8dd6082475671beab357f6ba6c58fa9d507e48
 
 	if( SDL_BlitSurface( gprintSurface, &srciRect,
 						 screenSurface, &dstiRect ) < 0 ) {
