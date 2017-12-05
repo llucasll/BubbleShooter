@@ -1,6 +1,3 @@
-makefile
-	flags -> stdlibs
-	criar na subpasta tbm
 3.apresentacao.c
 	SDL_MapRGB: criar var
 
