@@ -136,11 +136,10 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 			matriz[i][j].existe = true;
 			matriz[i][j].morreu = false;
 			
-			printint(tam.bola.x * j + (i%2?tam.bola.x/2:0));
+			//printint(tam.bola.x * j + (i%2?tam.bola.x/2:0));
 			
 			matriz[i][j].x = tam.bola.x * j + (i%2?tam.bola.x/2:0);
-			// = tam.bola.x * j;// + i%2?tam.bola.x/2:0;
-			matriz[i][j].y = tam.bola.y * i;
+			matriz[i][j].y = tam.bola.y * i * 0.9;
 		}
 
 		//Create NPC
