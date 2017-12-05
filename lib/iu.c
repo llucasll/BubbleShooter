@@ -2,8 +2,61 @@
 
 bool quit = false; // Semáforo global que controla o término de todo o programa
 
-void atualizador(void){
-	void init2(void);//TODO
+/* PROTÓTIPOS */
+voidvoid visualizador;
+voidvoid init2;//TODO
+
+struct{
+	int x;
+	int y;
+	Janela* janela;
+	Surface* surface;
+	char* nome;
+}primeiraJanela;
+
+int main( int argc, char* args[] ) {
+
+	// Inicializa a própria biblioteca com os padrões
+	on.quit = quitDefault;
+	controle.monitor = monitorDefault;
+	
+	//println("%u", primeiraJanela.janela);
+	primeiraJanela.janela = NULL;
+	//println("%u", primeiraJanela.janela);
+	
+	// Chama o "main"
+	init();
+	
+	threads.visualizador = executar(visualizador);
+	
+	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
+	
+	//printf("%d\n",janela);
+	while(!*primeiraJanela.surface);
+	//TODO
+	
+	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
+	
+	// Roda as threads
+	if(controle.principal)
+		threads.principal = executar(controle.principal);
+	//threads.atualizador = executar(atualizador);
+	if(controle.monitor)
+		threads.monitor = executar(controle.monitor);
+	
+	//atualizador();
+	
+	// Aguarda o fim do programa
+	while(!quit);
+	esperar(threads.visualizador);
+	
+	// Chama a função de finalização
+	if(controle.close) controle.close();//Free resources and closing SDL
+
+	return 0;
+}
+
+void visualizador(void){
 	init2();//TODO
 	while(!quit){
 		if(on.screenRefresh)
@@ -12,44 +65,25 @@ void atualizador(void){
 	}
 }
 
-void monitorDefault(void){
-	SDL_Event e; // Event handler
-	
-	//podia fornecer, também, uma lista de eventos (a ser manuseada), num par ["bool teste(void)", "voidvoid comportamento"]
-	
-	//While application is running
-	while( !quit ) {
-		while( SDL_PollEvent( &e ) != 0 ) {
-			switch (e.type) {
-				case SDL_QUIT:
-					if(on.quit) on.quit();
-					else quitDefault();
-					break;
-				case SDL_MOUSEBUTTONDOWN:
-					if(e.button.button == SDL_BUTTON_LEFT){
-						if(on.click)
-							on.click();
-					}
-					break;
-				case SDL_KEYDOWN:
-					if (e.key.keysym.sym == SDLK_ESCAPE) {
-						if(on.quit) on.quit();
-						else quitDefault();
-					}
-					break;
-			}
-		}
+void preparaJanela(Janela* janela, Surface* surface, int x, int y, char nome[]){
+	primeiraJanela.janela = janela;
+	primeiraJanela.surface = surface;
+	primeiraJanela.x = x;
+	primeiraJanela.y = y;
+	primeiraJanela.nome = nome;
+}
+
+void init2(void){
+	//Start up SDL and create window
+	*primeiraJanela.janela = newJanela(primeiraJanela.x, primeiraJanela.y, primeiraJanela.nome);
+	if( !*primeiraJanela.janela ) {// TODO modularizar tratamentos de erro
+		logger( "Failed to initialize!\n" );
+		exit(1);
 	}
-}
-
-void quitDefault(void){
-	quit = true;
-}
-
-void changeMonitor(voidvoid novo){
-	controle.monitor = novo;
-	// TODO ENCERRAR A THREAD threads.monitor
-	executar(controle.monitor);
+	else {
+		*primeiraJanela.surface = surfaceFrom ( *primeiraJanela.janela ); //Get window surface
+		//println("%d", primeiraJanela.surface, *primeiraJanela.surface);
+	}
 }
 
 Janela newJanela(int x, int y, char nome[]) {
@@ -97,38 +131,43 @@ Surface loadImage( char *path, Surface base ) {
 	return optimizedSurface;
 }
 
-int main( int argc, char* args[] ) {
-	// Inicializa a própria biblioteca com os padrões
-	on.quit = quitDefault;
-	controle.monitor = monitorDefault;
-	
-	// Chama o "main"
-	init();
-	
-	//TODO
-	extern Janela janela;
-	
-	threads.atualizador = executar(atualizador);
-	
-	//printf("%d\n",janela);
-	while(!janela);
-	//TODO
-	
-	// Roda as threads
-	if(controle.principal)
-		threads.principal = executar(controle.principal);
-	//threads.atualizador = executar(atualizador);
-	if(controle.monitor)
-		threads.monitor = executar(controle.monitor);
-	
-	//atualizador();
-	
-	// Aguarda o fim do programa
-	while(!quit);
-	esperar(threads.atualizador);
-	
-	// Chama a função de finalização
-	if(controle.close) controle.close();//Free resources and closing SDL
 
-	return 0;
+void monitorDefault(void){
+	SDL_Event e; // Event handler
+	
+	//podia fornecer, também, uma lista de eventos (a ser manuseada), num par ["bool teste(void)", "voidvoid comportamento"]
+	
+	//While application is running
+	while( !quit ) {
+		while( SDL_PollEvent( &e ) != 0 ) {
+			switch (e.type) {
+				case SDL_QUIT:
+					if(on.quit) on.quit();
+					else quitDefault();
+					break;
+				case SDL_MOUSEBUTTONDOWN:
+					if(e.button.button == SDL_BUTTON_LEFT){
+						if(on.click)
+							on.click();
+					}
+					break;
+				case SDL_KEYDOWN:
+					if (e.key.keysym.sym == SDLK_ESCAPE) {
+						if(on.quit) on.quit();
+						else quitDefault();
+					}
+					break;
+			}
+		}
+	}
+}
+
+void quitDefault(void){
+	quit = true;
+}
+
+void changeMonitor(voidvoid novo){
+	controle.monitor = novo;
+	// TODO ENCERRAR A THREAD threads.monitor
+	executar(controle.monitor);
 }

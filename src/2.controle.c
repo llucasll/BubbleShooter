@@ -45,6 +45,9 @@ void erro(){//erro de execução durante o jogo
 
 */
 
+voidvoid bubbleShooter;
+
+/*
 void init2(void){
 	//Start up SDL and create window
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
@@ -61,9 +64,7 @@ void init2(void){
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
-}
-
-voidvoid bubbleShooter;
+}*/
 
 void init(void){
 
@@ -75,11 +76,20 @@ void init(void){
 	printnl();
 	println("\t* Carregando... *");
 	printnl();
+	
+	preparaJanela(&janela, &screenSurface, tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 
 	//init2();
 }
 
 void bubbleShooter (void){
+
+	//Load media
+	if( !loadMedia() ) {
+		logger( "Failed to load media!\n" );
+		exit(2);
+	}
+
 	menu();
 	partida();
 	fim();

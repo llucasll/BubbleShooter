@@ -34,7 +34,7 @@ struct{
 struct{	
 	Thread principal; // Esse é o programa em si
 	Thread monitor; // Gerencia os eventos
-	Thread atualizador; // Thread responsável pela apresentação
+	Thread visualizador; // Thread responsável pela apresentação
 }threads;
 
 struct{
@@ -55,3 +55,4 @@ Janela newJanela(int x, int y, char nome[]);
 #define surfaceFrom SDL_GetWindowSurface
 Surface loadImage( char *path, Surface base );
 void changeMonitor(voidvoid novo);
+void preparaJanela(Janela* janela, Surface* surface, int x, int y, char nome[]);
