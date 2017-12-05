@@ -134,6 +134,10 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 		for(int j=0;j<colunas;j++){
 			matriz[i][j].cor = sortear();
 			matriz[i][j].existe = true;
+			matriz[i][j].morreu = false;
+			
+			matriz[i][j].x = tam.bola.x * j;// + i%2?tam.bola.x/2:0;
+			matriz[i][j].y = tam.bola.y * i;
 		}
 
 		//Create NPC

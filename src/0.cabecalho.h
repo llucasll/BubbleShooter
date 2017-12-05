@@ -14,8 +14,8 @@
 	#include "../lib/debug.h"
 
 	/* CONSTANTES */
-	#define linhas 15
-	#define colunas 30
+	#define linhas 9
+	#define colunas 17
 	#define ncores 6
 
 	/* Global Variables */
