@@ -73,6 +73,10 @@ void init(void){
 	controle.principal = bubbleShooter;
 	controle.close = closing;
 	
+	time_t t;
+	// Intializes random number generator
+	srand((unsigned) time(&t));//////aqui
+	
 	printnl();
 	println("\t* Carregando... *");
 	printnl();

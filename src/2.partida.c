@@ -63,6 +63,8 @@ void partida(void){
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
 	
+	//println("%d",sortear());
+	
 	//Create NPC
 	createNPC(
 		(tam.tela.x - tam.bola.x)/2, 

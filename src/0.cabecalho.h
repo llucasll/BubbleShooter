@@ -20,6 +20,10 @@
 	
 	extern const Coordenadas campo;//tamanhos
 	
+	/* CONSTANTES */
+	#define linhas 15
+	#define colunas 30
+	
 	/* ERROS */
 	//#define 
 #endif

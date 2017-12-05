@@ -3,14 +3,8 @@
 /* GLOBAIS */
 const Coordenadas campo = {30, 10}, npc = {61, 61}, tela = {640, 480};//tamanhos
 Coordenadas velocidade;
-//Bola *matriz[tam.matriz.x][tam.matriz.y];
-Bola ***matriz;
+Bola matriz[linhas][colunas];//Bola **matriz;
 Tiro tiro;
-//int ***teste;
-	/*
-		teste = malloc(sizeof(int)*10);
-		println("%d",teste[4]);
-	*/
 
 /* Global Variables */
 Janela janela = NULL; //The window we'll be rendering to
@@ -18,6 +12,12 @@ Surface screenSurface = NULL; //The surface contained by the window
 Surface gJPGSurface = NULL; //Current displayed PNG image
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
+}
+
+byte sortear(void){
+	return rand() % tam.cores;
+	//return 0;
+	//return rand() % tam.cores;
 }
 
 bool insere(byte b, int x, int y){
@@ -36,7 +36,8 @@ int getColuna(Bola b, int linha){
 
 struct _medidas tam = {//TODO
 	{640, 480},//tela
-	{30, 10},//campo
-	{61, 61}//bola
+	//{30, 10},//campo
+	{61, 61},//bola
+	6
 };
 

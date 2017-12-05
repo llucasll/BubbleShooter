@@ -10,6 +10,7 @@
 		struct _Bola *vizinhos[6];
 		int x,y;
 		bool morreu;
+		bool existe;
 	} Bola;
 
 	typedef struct{
@@ -28,8 +29,8 @@
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
 	
-	byte sortear();
-	bool preencher();//retorna se houve sucesso
+	byte sortear(void);
+	bool preencher(void);//retorna se houve sucesso
 	void percorrer(void *func(Bola *b));
 	voidvoid liberar_tudo;
 
@@ -40,13 +41,15 @@
 	
 	struct _medidas{
 		Coordenadas tela;
-		Coordenadas matriz;//ainda não em uso
+		//Coordenadas matriz;//ainda não em uso
 		Coordenadas bola;
+		byte cores;
 	}extern tam;
 	
 	extern Coordenadas velocidade;
-	extern Bola ***matriz;
-	//extern int ***teste;
+	//extern Bola ***matriz;
+	extern Bola matriz[linhas][colunas];
+	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
 	
 #endif
