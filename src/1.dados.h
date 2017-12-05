@@ -5,9 +5,9 @@
 
 	/* TIPOS */
 
-	typedef struct _Bola{
+	typedef struct /*_Bola*/{
 		byte cor;
-		struct _Bola *vizinhos[6];
+		//struct _Bola *vizinhos[6];
 		int x,y;
 		bool morreu;
 		bool existe;
