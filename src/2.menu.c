@@ -4,4 +4,6 @@
 void menu(void){
 	println("tô aqui");
 	//controle.principal = partida;
+	quit=true;
+	return;
 }
