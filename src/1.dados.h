@@ -39,7 +39,7 @@
 
 	struct _medidas{
 		Coordenadas tela;
-		//Coordenadas matriz;//ainda não em uso
+		//Coordenadas matriz;//TODO ainda não em uso
 		Coordenadas bola;
 		byte cores;
 	}extern tam;
