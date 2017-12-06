@@ -20,8 +20,8 @@ bool insere(byte b, int x, int y){
 bool remover(int x, int y){
 }
 
-int getLinha(Bola b){
-	return (int) b.x/tam.bola.x;
+int getLinha(int posY){
+	return (int) posY/tam.bola.y;
 }
 
 int arredonda(int dividendo, int divisor){
@@ -29,7 +29,7 @@ int arredonda(int dividendo, int divisor){
 	return (int) divisor*resultado < dividendo? resultado+1 : resultado;
 }
 
-int getColuna(Bola b, int linha){
+int getColuna(int posX, int posY){
 	/*int tmp = linha%2 ? b.y-(tam.bola.y*0.9)/2 : b.y;
 	if(tmp / tam.bola.y){
 		tmp /= (tam.bola.y*0.9);
@@ -39,7 +39,8 @@ int getColuna(Bola b, int linha){
 		tmp /= tam.bola.y;
 	//printf("%d\t%d", tmp,linha);
 	return (int) tmp;*/
-	return (int) arredonda((linha%2 ? b.y-(tam.bola.y/**0.9*/)/2 : b.y), (tam.bola.y/**0.9*/));
+	int linha = getLinha(posY);
+	return (int) arredonda((linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX), (tam.bola.x/**0.9*/));
 }
 
 struct _medidas tam = {//TODO

@@ -32,8 +32,8 @@
 	void percorrer(void *func(Bola *b));
 	voidvoid liberar_tudo;
 
-	int getLinha(Bola b);
-	int getColuna(Bola b, int linha);
+	int getLinha(int posY);
+	int getColuna(int posX, int posY);
 
 	/* GLOBAIS */
 

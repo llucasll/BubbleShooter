@@ -69,7 +69,7 @@ void partida(void){
 
 	iniciarJogo();
 	
-	//exibeMatriz();
+	exibeMatriz();
 
 	//While application is running
 	while( !quit ) {
