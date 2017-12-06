@@ -50,5 +50,6 @@
 	extern Bola matriz[linhastotal][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
+	extern Surface menuFundo;
 
 #endif
