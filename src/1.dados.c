@@ -49,7 +49,7 @@ bool remover(int x, int y){
 
 Bola *obter(int x, int y){
 	if(x>=0 && y>=0 && x<colunas && y<linhas)
-		return &matriz[x][y];
+		return &matriz[y][x];
 	else
 		return NULL;
 }

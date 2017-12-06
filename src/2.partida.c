@@ -77,13 +77,16 @@ void partida(void){
 				saida = malloc(sizeof(char)*10);
 				
 				/* COORDENADAS NA TELA */
-				//sprintf(saida,"%d,%d",b.x,b.y);
+				sprintf(saida,"%d,%d",b.x,b.y);
 				
 				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
-				sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+				//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
 				
 				/* COR */
 				//sprintf(saida,"%d",b.cor);
+				
+				/* EXISTE */
+				//sprintf(saida,"%d",b.existe);
 			
 				return saida;
 			}
@@ -115,13 +118,24 @@ void partida(void){
 		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
 			x = getColuna(tiro.x,tiro.y);
 			y = getLinha(tiro.y);
-			println("%d,%d",x,y);Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+			
+			printnl();
+			println("%d,%d",x,y);
+			
+			//println("a");
+			
+			Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+			//println("b");
 			if(b){
-				printint(b->cor);
+				//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
+				if(b->existe){
+					//println("c");
+					println("Cor: %d",b->cor);
+					sleep(1);
+					//println("d");
+				}
 			}
 		}
-		
-		
 		
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);
