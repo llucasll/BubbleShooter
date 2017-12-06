@@ -115,13 +115,13 @@ void partida(void){
 		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
 			x = getColuna(tiro.x,tiro.y);
 			y = getLinha(tiro.y);
-			println("%d,%d",x,y);
+			println("%d,%d",x,y);Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+			if(b){
+				printint(b->cor);
+			}
 		}
 		
-		Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
-		if(b){
-			printint(b->cor);
-		}
+		
 		
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);
