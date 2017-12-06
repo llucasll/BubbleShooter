@@ -95,6 +95,10 @@ void partida(void){
 	printnl();
 	println("%d,%d",x,y);
 	printnl();
+
+	//printint((int)obter(16,8));
+	//printnl();
+	
 	
 	/*
 	while(true){
@@ -113,7 +117,13 @@ void partida(void){
 			y = getLinha(tiro.y);
 			println("%d,%d",x,y);
 		}
-
+		
+		Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+		if(b){
+			printint((int)obter(16,8)->cor);
+			printnl();
+		}
+		
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);
 	}

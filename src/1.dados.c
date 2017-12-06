@@ -44,6 +44,14 @@ bool insere(int x, int y, byte b){
 	//println("%d",matriz[y][x].x/tam.bola.x);
 }
 bool remover(int x, int y){
+	matriz[y][x].existe = false;
+}
+
+Bola *obter(int x, int y){
+	if(x>=0 && y>=0 && x<colunas && y<linhas)
+		return &matriz[x][y];
+	else
+		return NULL;
 }
 
 int getLinha(int posY){
