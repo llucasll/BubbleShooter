@@ -5,8 +5,6 @@
 void printBola(byte cor, int x, int y);
 
 void partidaView(){
-	SDL_Rect srcRect, dstRect;
-
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,
@@ -25,7 +23,7 @@ void partidaView(){
 				printBola(matriz[i][j].cor, matriz[i][j].x, matriz[i][j].y);
 	
 	printBola(tiro.cor, tiro.x, tiro.y);
-
+	
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
 }
