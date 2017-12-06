@@ -130,8 +130,34 @@ void partida(void){
 				//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
 				if(b->existe){
 					//println("c");
-					println("Cor: %d",b->cor);
-					sleep(1);
+					//println("Cor: %d",b->cor);
+					
+					char cor[10];
+					
+					switch (b->cor){
+						case 0:
+							sprintf(cor,"%s","blue");
+							break;
+						case 1:
+							sprintf(cor,"%s","red");
+							break;
+						case 2:
+							sprintf(cor,"%s","cian");
+							break;
+						case 3:
+							sprintf(cor,"%s","green");
+							break;
+						case 4:
+							sprintf(cor,"%s","pink");
+							break;
+						case 5:
+							sprintf(cor,"%s","yellow");
+							break;
+					}
+					
+					println("Cor: %s",cor);
+					
+					sleep(3);
 					//println("d");
 				}
 			}
