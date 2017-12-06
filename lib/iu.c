@@ -4,6 +4,7 @@ bool quit = false; // Semáforo global que controla o término de todo o program
 
 /* PROTÓTIPOS */
 static voidvoid visualizador;
+static voidvoid executor;
 static Janela _newJanela(int x, int y, char nome[]);
 
 int main( int argc, char* args[] ) {
@@ -18,8 +19,8 @@ int main( int argc, char* args[] ) {
 	init();
 
 	// Roda as threads
-	if(controle.principal)
-		threads.principal = executar(controle.principal);
+	
+	threads.principal = executar(executor);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
 
@@ -59,6 +60,12 @@ Janela newJanela(int x, int y, char nome[]) {
 	while(!_novaJanela.janela);
 	
 	return _novaJanela.janela;
+}
+
+static void executor(void){
+	while(!quit)
+		if(controle.principal)
+			controle.principal();
 }
 
 static void visualizador(void){

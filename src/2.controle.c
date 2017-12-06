@@ -70,7 +70,7 @@ void init(void){
 
 	//println("iniciei");
 
-	controle.principal = bubbleShooter;
+	controle.principal = menu;
 	controle.close = closing;
 
 	// Intializes random number generator
@@ -85,21 +85,23 @@ void init(void){
 
 	screenSurface = surfaceFrom ( janela ); //Get window surface
 	
-	//init2();
-}
-
-void bubbleShooter (void){
-
 	//Load media
 	if( !loadMedia() ) {
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
+	
+	//init2();
+}
+
+/*
+void bubbleShooter (void){
 
 	menu();
 	partida();
 	fim();
 }
+*/
 
 int loadMedia() {
 
