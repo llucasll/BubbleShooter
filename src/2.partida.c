@@ -120,7 +120,7 @@ void partida(void){
 		
 		Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 		if(b){
-			printint((int)obter(16,8)->cor);
+			printint(b->cor);
 			printnl();
 		}
 		
