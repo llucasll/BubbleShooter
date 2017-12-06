@@ -84,13 +84,13 @@ void init(void){
 	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 
 	screenSurface = surfaceFrom ( janela ); //Get window surface
-	
+
 	//Load media
 	if( !loadMedia() ) {
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
-	
+
 	//init2();
 }
 
@@ -144,6 +144,7 @@ int loadMedia() {
 	sprites[3] = loadImage( "./media/green.png", screenSurface );
 	sprites[4] = loadImage( "./media/pink.png", screenSurface );
 	sprites[5] = loadImage( "./media/yellow.png", screenSurface );
+	menuFundo = loadImage( "./media/BG.png", screenSurface );
 	return success;
 }
 

@@ -9,6 +9,7 @@ Tiro tiro;
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
 Surface sprites[ncores]; //Vetor de imagens :^)
+Surface menuFundo; //Fundo do menu
 
 byte sortear(void){
 	return rand() % tam.cores;
@@ -26,20 +27,20 @@ bool insere(int x, int y, byte b){
 	matriz[y][x].cor = b;
 	matriz[y][x].existe = true;
 	matriz[y][x].morreu = false;
-	
+
 	//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
-	
+
 	matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
 	matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
-	
+
 	//printf("%d,%d\t",getColuna(matriz[y][x],getLinha(matriz[y][x])),getLinha(matriz[y][x]));
-	
+
 	//println("%d\t%d\n%d\t%d\n", matriz[y][x].x, getLinha(matriz[y][x]), matriz[y][x].y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
 	///println("%d\t%d\n%d\t%d\n", x, getLinha(matriz[y][x]), y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
 	//getColuna(matriz[y][x],getLinha(matriz[y][x]));
-	
+
 	//println("%d dividido por %d = %d",x,y,arredonda(x,y));
-	
+
 	///printnl();
 	//println("%d",matriz[y][x].x/tam.bola.x);
 }

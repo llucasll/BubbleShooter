@@ -21,9 +21,9 @@ void partidaView(){
 		for(int j=0;j<colunas;j++)
 			if(matriz[i][j].existe)
 				printBola(matriz[i][j].cor, matriz[i][j].x, matriz[i][j].y);
-	
+
 	printBola(tiro.cor, tiro.x, tiro.y);
-	
+
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
 }
