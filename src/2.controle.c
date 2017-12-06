@@ -73,16 +73,18 @@ void init(void){
 	controle.principal = bubbleShooter;
 	controle.close = closing;
 
-	time_t t;
 	// Intializes random number generator
-	srand((unsigned) time(&t));//////aqui
+	time_t t;
+	srand((unsigned) time(&t));
 
 	printnl();
 	println("\t* Carregando... *");
 	printnl();
 
-	preparaJanela(&janela, &screenSurface, tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
+	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
 
+	screenSurface = surfaceFrom ( janela ); //Get window surface
+	
 	//init2();
 }
 

@@ -3,48 +3,25 @@
 bool quit = false; // Semáforo global que controla o término de todo o programa
 
 /* PROTÓTIPOS */
-voidvoid visualizador;
-voidvoid init2;//TODO
-
-struct{
-	int x;
-	int y;
-	Janela* janela;
-	Surface* surface;
-	char* nome;
-}primeiraJanela;
+static voidvoid visualizador;
+static Janela _newJanela(int x, int y, char nome[]);
 
 int main( int argc, char* args[] ) {
 
 	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
 	controle.monitor = monitorDefault;
-
-	//println("%u", primeiraJanela.janela);
-	primeiraJanela.janela = NULL;
-	//println("%u", primeiraJanela.janela);
+	
+	//
 
 	// Chama o "main"
 	init();
 
-	threads.visualizador = executar(visualizador);
-
-	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
-
-	//printf("%d\n",janela);
-	while(!*primeiraJanela.surface);
-	//TODO
-
-	//println("%u %u", primeiraJanela.janela, *primeiraJanela.janela);
-
 	// Roda as threads
 	if(controle.principal)
 		threads.principal = executar(controle.principal);
-	//threads.atualizador = executar(atualizador);
 	if(controle.monitor)
 		threads.monitor = executar(controle.monitor);
-
-	//atualizador();
 
 	// Aguarda o fim do programa
 	while(!quit);
@@ -56,8 +33,45 @@ int main( int argc, char* args[] ) {
 	return 0;
 }
 
-void visualizador(void){
-	init2();//TODO
+struct{
+	Janela janela;
+	int x;
+	int y;
+	char* nome;
+	Thread thread;//TODO
+}_novaJanela;
+
+Janela newJanela(int x, int y, char nome[]) {
+
+	// A janela não existe
+	_novaJanela.janela = NULL;
+	//_novaJanela.thread = NULL; //TODO aqui deveria ser guardada a thread da janela, se já houver a anterior (threads.visualizador guarda só a primeira)
+	
+	// Setar os valores sobre a Janela
+	_novaJanela.x = x;
+	_novaJanela.y = y;
+	_novaJanela.nome = nome;
+	
+	if(!threads.visualizador) // Se não houver janela ainda
+		threads.visualizador = executar(visualizador); // Guardar a thread
+	else executar(visualizador); // Senão, apenas inicia
+	
+	while(!_novaJanela.janela);
+	
+	return _novaJanela.janela;
+}
+
+static void visualizador(void){
+
+	//Start up SDL and create window
+	_novaJanela.janela = _newJanela (_novaJanela.x, _novaJanela.y, _novaJanela.nome);
+	
+	if( !_novaJanela.janela ) {
+		logger( "Failed to initialize the Window!\n" );
+		exit(1);
+	}
+	
+	
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
@@ -65,28 +79,7 @@ void visualizador(void){
 	}
 }
 
-void preparaJanela(Janela* janela, Surface* surface, int x, int y, char nome[]){
-	primeiraJanela.janela = janela;
-	primeiraJanela.surface = surface;
-	primeiraJanela.x = x;
-	primeiraJanela.y = y;
-	primeiraJanela.nome = nome;
-}
-
-void init2(void){
-	//Start up SDL and create window
-	*primeiraJanela.janela = newJanela(primeiraJanela.x, primeiraJanela.y, primeiraJanela.nome);
-	if( !*primeiraJanela.janela ) {// TODO modularizar tratamentos de erro
-		logger( "Failed to initialize!\n" );
-		exit(1);
-	}
-	else {
-		*primeiraJanela.surface = surfaceFrom ( *primeiraJanela.janela ); //Get window surface
-		//println("%d", primeiraJanela.surface, *primeiraJanela.surface);
-	}
-}
-
-Janela newJanela(int x, int y, char nome[]) {
+static Janela _newJanela(int x, int y, char nome[]) {
 	Janela janela;
 
 	//Initialize SDL
