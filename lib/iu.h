@@ -26,15 +26,15 @@ voidvoid init;
 // Aqui se define o restante do ciclo de vida do programa
 struct{
 	voidvoid *principal; // Função principal
-	voidvoid *monitor; // Gerencia os eventos
+	voidvoid *eventos; // Gerencia os eventos
 	voidvoid *close; // Finaliza a execução
 }controle;
 
 // Threads
 struct{	
 	Thread principal; // Esse é o programa em si
-	Thread monitor; // Gerencia os eventos
-	Thread visualizador; // Thread responsável pela apresentação
+	Thread eventos; // Gerencia os eventos
+	Thread visualizacao; // Thread responsável pela apresentação
 }threads;
 
 struct{
@@ -48,7 +48,7 @@ extern bool quit; // Semáforo global que controla o término de todo o programa
 
 // FUNÇÕES-PADÃO
 voidvoid quitDefault;
-voidvoid monitorDefault;
+voidvoid eventosDefault;
 
 // FUNÇÕES
 Janela newJanela(int x, int y, char nome[]);

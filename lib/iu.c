@@ -3,7 +3,7 @@
 bool quit = false; // Semáforo global que controla o término de todo o programa
 
 /* PROTÓTIPOS */
-static voidvoid visualizador;
+static voidvoid visualizacao;
 static voidvoid executor;
 static Janela _newJanela(int x, int y, char nome[]);
 
@@ -11,7 +11,7 @@ int main( int argc, char* args[] ) {
 
 	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
-	controle.monitor = monitorDefault;
+	controle.eventos = eventosDefault;
 	
 	//
 
@@ -21,12 +21,12 @@ int main( int argc, char* args[] ) {
 	// Roda as threads
 	
 	threads.principal = executar(executor);
-	if(controle.monitor)
-		threads.monitor = executar(controle.monitor);
+	if(controle.eventos)
+		threads.eventos = executar(controle.eventos);
 
 	// Aguarda o fim do programa
 	while(!quit);
-	esperar(threads.visualizador);
+	esperar(threads.visualizacao);
 
 	// Chama a função de finalização
 	if(controle.close) controle.close();//Free resources and closing SDL
@@ -46,16 +46,16 @@ Janela newJanela(int x, int y, char nome[]) {
 
 	// A janela não existe
 	_novaJanela.janela = NULL;
-	//_novaJanela.thread = NULL; //TODO aqui deveria ser guardada a thread da janela, se já houver a anterior (threads.visualizador guarda só a primeira)
+	//_novaJanela.thread = NULL; //TODO aqui deveria ser guardada a thread da janela, se já houver a anterior (threads.visualizacao guarda só a primeira)
 	
 	// Setar os valores sobre a Janela
 	_novaJanela.x = x;
 	_novaJanela.y = y;
 	_novaJanela.nome = nome;
 	
-	if(!threads.visualizador) // Se não houver janela ainda
-		threads.visualizador = executar(visualizador); // Guardar a thread
-	else executar(visualizador); // Senão, apenas inicia
+	if(!threads.visualizacao) // Se não houver janela ainda
+		threads.visualizacao = executar(visualizacao); // Guardar a thread
+	else executar(visualizacao); // Senão, apenas inicia
 	
 	while(!_novaJanela.janela);
 	
@@ -68,7 +68,7 @@ static void executor(void){
 			controle.principal();
 }
 
-static void visualizador(void){
+static void visualizacao(void){
 
 	//Start up SDL and create window
 	_novaJanela.janela = _newJanela (_novaJanela.x, _novaJanela.y, _novaJanela.nome);
@@ -136,7 +136,7 @@ Surface loadImage( char *path, Surface base ) {
 }
 
 
-void monitorDefault(void){
+void eventosDefault(void){
 	SDL_Event e; // Event handler
 
 	//podia fornecer, também, uma lista de eventos (a ser manuseada), num par ["bool teste(void)", "voidvoid comportamento"]
@@ -171,7 +171,7 @@ void quitDefault(void){
 }
 
 void changeMonitor(voidvoid novo){
-	controle.monitor = novo;
-	// TODO ENCERRAR A THREAD threads.monitor
-	executar(controle.monitor);
+	controle.eventos = novo;
+	// TODO ENCERRAR A THREAD threads.eventos
+	executar(controle.eventos);
 }
