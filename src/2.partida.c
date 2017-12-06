@@ -77,10 +77,10 @@ void partida(void){
 				saida = malloc(sizeof(char)*10);
 				
 				/* COORDENADAS NA TELA */
-				sprintf(saida,"%d,%d",b.x,b.y);
+				//sprintf(saida,"%d,%d",b.x,b.y);
 				
 				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
-				//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+				sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
 				
 				/* COR */
 				//sprintf(saida,"%d",b.cor);
@@ -157,7 +157,9 @@ void partida(void){
 					
 					println("Cor: %s",cor);
 					
-					sleep(3);
+					//sleep(3);
+					char c;
+					scanf("%c",&c);
 					//println("d");
 				}
 			}

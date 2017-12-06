@@ -74,7 +74,7 @@ int getColuna(int posX, int posY){
 	//printf("%d\t%d", tmp,linha);
 	return (int) tmp;*/
 	int linha = getLinha(posY);
-	return (int) arredonda((linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX), (tam.bola.x/**0.9*/));
+	return (int) (linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX)/(tam.bola.x/**0.9*/);
 }
 
 struct _medidas tam = {//TODO

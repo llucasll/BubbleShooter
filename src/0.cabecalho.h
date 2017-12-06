@@ -6,6 +6,7 @@
 	#include <string.h>
 	#include <time.h>
 	#include <math.h>
+	#include <unistd.h>//sleep
 
 	/* LIBS PERSONALIZADAS */
 	#include "../lib/lib.h"
