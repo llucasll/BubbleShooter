@@ -2,7 +2,7 @@
 
 /* GLOBAIS */
 Coordenadas velocidade;
-Bola matriz[linhas][colunas];//Bola **matriz;
+Bola matriz[linhastotal][colunas];//Bola **matriz;
 Tiro tiro;
 
 /* Global Variables */
@@ -14,8 +14,34 @@ byte sortear(void){
 	return rand() % tam.cores;
 }
 
-bool insere(byte b, int x, int y){
+void preencher(void){
+	for(int y=0;y<linhas;y++){
+		for(int x=0;x<colunas;x++)
+			insere(x,y,sortear());
+		//printnl();
+	}
+}
 
+bool insere(int x, int y, byte b){
+	matriz[y][x].cor = b;
+	matriz[y][x].existe = true;
+	matriz[y][x].morreu = false;
+	
+	//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
+	
+	matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
+	matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
+	
+	//printf("%d,%d\t",getColuna(matriz[y][x],getLinha(matriz[y][x])),getLinha(matriz[y][x]));
+	
+	//println("%d\t%d\n%d\t%d\n", matriz[y][x].x, getLinha(matriz[y][x]), matriz[y][x].y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+	///println("%d\t%d\n%d\t%d\n", x, getLinha(matriz[y][x]), y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+	//getColuna(matriz[y][x],getLinha(matriz[y][x]));
+	
+	//println("%d dividido por %d = %d",x,y,arredonda(x,y));
+	
+	///printnl();
+	//println("%d",matriz[y][x].x/tam.bola.x);
 }
 bool remover(int x, int y){
 }

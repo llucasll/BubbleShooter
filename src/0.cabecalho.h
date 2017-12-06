@@ -16,6 +16,7 @@
 	/* CONSTANTES */
 	#define linhas 9
 	#define colunas 17
+	#define linhastotal 12
 	#define ncores 6
 
 	/* Global Variables */

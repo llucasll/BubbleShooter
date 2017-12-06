@@ -23,12 +23,12 @@
 
 	/* PROTÓTIPOS */
 
-	bool insere(byte b, int x, int y);
+	bool insere(int x, int y, byte b);
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
 
 	byte sortear(void);
-	bool preencher(void);//retorna se houve sucesso
+	voidvoid preencher;//retornaria se houve sucesso
 	void percorrer(void *func(Bola *b));
 	voidvoid liberar_tudo;
 
@@ -47,7 +47,7 @@
 	extern Surface sprites[ncores]; //Vetor de imagens :^)
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
-	extern Bola matriz[linhas][colunas];
+	extern Bola matriz[linhastotal][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
 
