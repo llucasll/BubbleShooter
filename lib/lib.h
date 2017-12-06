@@ -22,4 +22,22 @@
 	#define ascii_min 96 + //minusculas
 	#define ascii_mai 64 + //maiusculas
 	
+	#define lambda(return_type, body_and_args) \
+    ({                                     \
+        return_type __fn__ body_and_args   \
+            &__fn__;                       \
+    })
+    
+    /*
+    
+    lambda(
+		int, (int n) {
+			if(n==3)
+				return 1;
+			//else
+		}
+	);
+	
+    */
+	
 #endif

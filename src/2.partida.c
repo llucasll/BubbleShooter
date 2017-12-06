@@ -69,11 +69,50 @@ void partida(void){
 
 	iniciarJogo();
 	
-	exibeMatriz();
-
+	
+	exibeMatriz(
+		lambda(
+			char*, (Bola b) {
+				char* saida;
+				saida = malloc(sizeof(char)*10);
+				
+				/* COORDENADAS NA TELA */
+				//sprintf(saida,"%d,%d",b.x,b.y);
+				
+				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+				sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+				
+				/* COR */
+				//sprintf(saida,"%d",b.cor);
+			
+				return saida;
+			}
+		)
+	);
+	
+	//TODO debug
+	int x = getColuna(tiro.x,tiro.y), y = getLinha(tiro.y);
+	printnl();
+	println("%d,%d",x,y);
+	printnl();
+	
+	/*
+	while(true){
+		println("%d,%d",x,y);
+		while(x == getColuna(tiro.x,tiro.y) && y == getLinha(tiro.y));
+	}
+	*/
+	
 	//While application is running
 	while( !quit ) {
 		moveNPC();
+	
+		//TODO debug
+		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
+			println("%d,%d",x,y);
+			x = getColuna(tiro.x,tiro.y);
+			y = getLinha(tiro.y);
+		}
 
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);

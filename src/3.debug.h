@@ -1,3 +1,5 @@
 #include "1.dados.h"
 
-voidvoid exibeMatriz;
+typedef char* (*bolaToInt)(Bola b);
+
+void exibeMatriz(bolaToInt func);
