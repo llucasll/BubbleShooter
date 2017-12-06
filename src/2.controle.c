@@ -45,7 +45,7 @@ void erro(){//erro de execução durante o jogo
 
 */
 
-voidvoid bubbleShooter;
+//voidvoid bubbleShooter;
 
 /*
 void init2(void){

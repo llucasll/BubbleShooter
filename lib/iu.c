@@ -12,8 +12,6 @@ int main( int argc, char* args[] ) {
 	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
 	controle.eventos = eventosDefault;
-	
-	//
 
 	// Chama o "main"
 	init();
