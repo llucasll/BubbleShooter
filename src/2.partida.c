@@ -121,7 +121,6 @@ void partida(void){
 		Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 		if(b){
 			printint(b->cor);
-			printnl();
 		}
 		
 		//Not so good solution, depends on your computer
