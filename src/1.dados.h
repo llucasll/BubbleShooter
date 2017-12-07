@@ -44,13 +44,26 @@
 		Coordenadas bola;
 		byte cores;
 	}extern tam;
-	
+
 	extern Surface sprites[ncores]; //Vetor de imagens :^)
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
 	extern Bola matriz[linhastotal][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
-	extern Surface menuFundo;
+	extern Surface menuOverNot;
+	extern Surface menuOverExit;
+	extern Surface menuOverPlay;
+	extern Surface partidaExit0;
+	extern Surface partidaExit1;
+	extern Surface partidaBg[5];
+	extern Surface partidaHud;
+	extern Surface partidaMenu0;
+	extern Surface partidaMenu1;
+	extern Surface blackRect;
+	extern bool partidaMenuStatus;
+	extern bool partidaExitStatus;
+	extern byte bgIndex;
+
 
 #endif

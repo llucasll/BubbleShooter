@@ -1,5 +1,6 @@
 #include "1.dados.h"
 
+#include "2.menu.h"
 #include "3.menu.h"
 
 void printSurface(Surface surface, int x, int y, int tamx, int tamy);
@@ -8,9 +9,18 @@ void menuView(){
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,
-						  0xFF, 0xFF, 0xFF ) );
-
-	printSurface(menuFundo,0,0,tam.tela.x,tam.tela.y);
+						  0x00, 0x00, 0x00 ) );
+	switch (menuGetStatus()) {
+		case 0:
+			printSurface(menuOverNot,0,0,tam.tela.x,tam.tela.y);
+			break;
+		case 1:
+			printSurface(menuOverPlay,0,0,tam.tela.x,tam.tela.y);
+			break;
+		case 2:
+			printSurface(menuOverExit,0,0,tam.tela.x,tam.tela.y);
+			break;
+	}
 	//80,210,170,60
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );

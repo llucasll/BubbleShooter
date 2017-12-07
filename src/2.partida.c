@@ -4,6 +4,7 @@
 #include "2.partida.h"
 #include "3.partida.h"
 
+#include "2.menu.h"
 #include "3.debug.h"
 
 /*
@@ -68,31 +69,31 @@ void partida(void){
 	//println("%d",sortear());
 
 	iniciarJogo();
-	
-	
+
+
 	exibeMatriz(
 		lambda(
 			char*, (Bola b) {
 				char* saida;
 				saida = malloc(sizeof(char)*10);
-				
+
 				/* COORDENADAS NA TELA */
 				//sprintf(saida,"%d,%d",b.x,b.y);
-				
+
 				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
 				sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
-				
+
 				/* COR */
 				//sprintf(saida,"%d",b.cor);
-				
+
 				/* EXISTE */
 				//sprintf(saida,"%d",b.existe);
-			
+
 				return saida;
 			}
 		)
 	);
-	
+
 	//TODO debug
 	int x = getColuna(tiro.x,tiro.y), y = getLinha(tiro.y);
 	printnl();
@@ -101,29 +102,32 @@ void partida(void){
 
 	//printint((int)obter(16,8));
 	//printnl();
-	
-	
+
+
 	/*
 	while(true){
 		println("%d,%d",x,y);
 		while(x == getColuna(tiro.x,tiro.y) && y == getLinha(tiro.y));
 	}
 	*/
-	
+
 	//While application is running
-	
+
 	Coordenadas destino = {-1,-1};
 	while( !quit ) {
+		if(controle.principal == menu){
+			return;
+		}
 		moveNPC();
-	
+		partidaGetStatus();
 		//TODO debug
 		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
 			x = getColuna(tiro.x,tiro.y);
 			y = getLinha(tiro.y);
-			
+
 			printnl();
 			println("%d,%d",x,y);
-			
+
 			//println("a");
 			
 			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
@@ -132,7 +136,7 @@ void partida(void){
 			
 			if(destino.x != -1 && existe(x,y)){//se finalmente tem abrigo, mas já saiu dele
 				insere(destino.x,destino.y,tiro.cor);
-				
+
 				/*
 				Bola* k = obter(destino.x,destino.y);
 				if(k){
@@ -142,27 +146,27 @@ void partida(void){
 				}
 				println("parecer do existe(): %s",existe(x,y)?"sim":"não");
 				*/
-				
+
 				destino.x = -1;
 				destino.y = -1;
 				iniciarTiro();
 				on.click = partidaOnClick;
-				
+
 				exibeMatriz(
 					lambda(
 						char*, (Bola b) {
 							char* saida;
 							saida = malloc(sizeof(char)*10);
-	
+
 							/* COORDENADAS NA TELA */
 							//sprintf(saida,"%d,%d",b.x,b.y);
-	
+
 							/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
 							//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
-	
+
 							/* COR */
 							//sprintf(saida,"%d",b.cor);
-	
+
 							/* EXISTE */
 							sprintf(saida,"%d",b.existe);
 
@@ -171,12 +175,12 @@ void partida(void){
 					)
 				);
 			}
-			
-			
+
+
 			else if(habitavel(x,y)){
 				//println("habitável");
 				
-				//if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
+				//if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabaram!
 					destino.x = x;
 					destino.y = y;
 				//}
@@ -186,13 +190,13 @@ void partida(void){
 				oi();
 				distancia(n,tiro);
 				*/
-				
+
 				/*
 				if(colidiu(1,y) || colidiu(x-1,y) || colidiu(x,y+1) || colidiu(x,y-1)){
 					insere(x,y,tiro.cor);
 					//oi();
 				}
-						
+
 				if(x%2){
 					if(colidiu(x+1,y+1) || colidiu(x,y-1)){
 						insere(x,y,tiro.cor);
@@ -204,9 +208,9 @@ void partida(void){
 						insere(x,y,tiro.cor);
 						//oi();
 					}
-					
+
 				*/
-				
+
 				/*||existe(x-1,y))
 					return true;
 				if(existe(x,y+1)||existe(x,y-1))
@@ -219,20 +223,20 @@ void partida(void){
 					if(existe(x-1,y+1)||existe(x,y-1))
 						return true;
 				}*/
-				
+
 				//sleep(3);
 			}
 			else
 				println("não-habitável");
-			
-			/*	
+
+			/*
 			if(existe(b)){
-				
+
 				//println("c");
 				//println("Cor: %d",b->cor);
-				
+
 				char cor[10];
-				
+
 				switch (b->cor){
 					case 0:
 						sprintf(cor,"%s","blue");
@@ -253,9 +257,9 @@ void partida(void){
 						sprintf(cor,"%s","yellow");
 						break;
 				}
-				
+
 				println("Cor: %s",cor);
-				
+
 				//sleep(3);
 				char c;
 				scanf("%c",&c);
@@ -263,7 +267,7 @@ void partida(void){
 			}
 			*/
 		}
-		
+
 		//Not so good solution, depends on your computer
 		SDL_Delay(5);
 	}
@@ -274,7 +278,14 @@ void partidaOnClick(){
 	int x, y;
 	SDL_GetMouseState(&x,&y);
 	//printf("\n%d,%d\n",x,y);
-
+	if(x>=594 && x<=648 && y>=426 && y<=480){
+		quit=true;
+	}
+	else if(x>=535 && x<=589 && y>=426 && y<=450){
+		controle.principal = menu;
+		return;
+	}
+	if(y>419)y=419;
 	x -= (tam.tela.x)/2;
 	y -= (tam.tela.y)-((tam.bola.y)/2);
 
@@ -318,6 +329,26 @@ void iniciarTiro(void){
 	tiro.vel.x = 0;
 	tiro.vel.y = 0;
 	tiro.cor = sortear();
+}
+
+void partidaGetStatus(void){
+	int x, y;
+	SDL_GetMouseState(&x,&y);
+
+	//135,85 257,200
+	//54,54 594,426
+
+	if(x>=594 && x<=648 && y>=426 && y<=480){
+		partidaExitStatus=1;
+	}
+	else if(x>=535 && x<=589 && y>=426 && y<=450){
+		partidaMenuStatus=1;
+	}
+	else{
+		partidaMenuStatus=0;
+		partidaExitStatus=0;
+	}
+	return;
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo

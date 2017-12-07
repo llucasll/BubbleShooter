@@ -1,14 +1,39 @@
 #include "1.dados.h"
 
+#include "2.partida.h"
 #include "3.partida.h"
+#include "3.menu.h"
 
 void printBola(byte cor, int x, int y);
+// Tamanho Hud: (648,75)
+//Tamanho Menu: (x é 5 de distancia do exit [checar propriedades])
+//Tamanho Exit: (54 por 54)
+//Tamanho VidaCover (91,19) (inicia em: 193,422)
 
 void partidaView(){
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,
 						  0xFF, 0xFF, 0xFF ) );
+
+	printSurface(partidaBg[bgIndex], 0, 0, 648, 480);
+
+	printSurface(partidaHud, 0, 405, 648, 75);
+
+
+	if(partidaExitStatus==1){
+		printSurface(partidaExit1, 594, 426, 54, 54);
+	}
+	else if(partidaExitStatus==0){
+		printSurface(partidaExit0, 594, 426, 54, 54);
+	}
+
+	if(partidaMenuStatus==1){
+		printSurface(partidaMenu1, 535, 426, 50, 24);
+	}
+	else if(partidaMenuStatus==0){
+		printSurface(partidaMenu0, 535, 426, 50, 24);
+	}
 
 /*
 	//Fill the surface white
@@ -45,6 +70,8 @@ void printBola(byte cor, int x, int y){
 		quit = true;
 	}
 }
+
+
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
 bool carregarMidia(void){//iu
