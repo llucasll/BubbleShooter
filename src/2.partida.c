@@ -129,53 +129,56 @@ void partida(void){
 			Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 			//println("b");
 			
-			if(habitavel(x,y)){
+			
+			if(destino.x != -1){//se finalmente tem abrigo, mas já saiu dele
+				insere(destino.x,destino.y,tiro.cor);
+				
+				/*
+				Bola* k = obter(destino.x,destino.y);
+				if(k){
+					println("dentro da matriz");
+					if(k->existe)
+						println("existe");
+				}
+				println("parecer do existe(): %s",existe(x,y)?"sim":"não");
+				*/
+				
+				destino.x = -1;
+				destino.y = -1;
+				iniciarTiro();
+				on.click = partidaOnClick;
+				
+				exibeMatriz(
+					lambda(
+						char*, (Bola b) {
+							char* saida;
+							saida = malloc(sizeof(char)*10);
+	
+							/* COORDENADAS NA TELA */
+							//sprintf(saida,"%d,%d",b.x,b.y);
+	
+							/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+							//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+	
+							/* COR */
+							//sprintf(saida,"%d",b.cor);
+	
+							/* EXISTE */
+							sprintf(saida,"%d",b.existe);
+
+							return saida;
+						}
+					)
+				);
+			}
+			
+			
+			else if(habitavel(x,y)){
 				//println("habitável");
 				
 				if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
 					destino.x = x;
 					destino.y = y;
-				}
-				else{
-					insere(destino.x,destino.y,tiro.cor);
-					
-					/*
-					Bola* k = obter(destino.x,destino.y);
-					if(k){
-						println("dentro da matriz");
-						if(k->existe)
-							println("existe");
-					}
-					println("parecer do existe(): %s",existe(x,y)?"sim":"não");
-					*/
-					
-					destino.x = -1;
-					destino.y = -1;
-					iniciarTiro();
-					on.click = partidaOnClick;
-					
-					exibeMatriz(
-						lambda(
-							char*, (Bola b) {
-								char* saida;
-								saida = malloc(sizeof(char)*10);
-		
-								/* COORDENADAS NA TELA */
-								//sprintf(saida,"%d,%d",b.x,b.y);
-		
-								/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
-								//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
-		
-								/* COR */
-								//sprintf(saida,"%d",b.cor);
-		
-								/* EXISTE */
-								sprintf(saida,"%d",b.existe);
-	
-								return saida;
-							}
-						)
-					);
 				}
 				
 				/*oi();
