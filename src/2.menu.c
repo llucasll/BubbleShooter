@@ -22,16 +22,14 @@ void menu(void){
 
 void menuOnClick(void){
 	//println("Clicou!");
-	int x, y;
+	Coordenadas c = mousePos();
 
-	SDL_GetMouseState(&x,&y);
-
-	if(x>=257 && x<=392 &&
-		 y>=300 && y<=385){
+	if(c.x>=257 && c.x<=392 &&
+		 c.y>=300 && c.y<=385){
 			controle.principal = partida;
 	}
-	if(x>=594 && x<=648 &&
-		 y>=426 && y<=480){
+	if(c.x>=594 && c.x<=648 &&
+		 c.y>=426 && c.y<=480){
 			 quit=true;
 	}
 	//printf("\n%d,%d\n",x,y);
@@ -47,23 +45,4 @@ void menuOnClick(void){
 
 	on.click = NULL;//TODO experimenta tirar essa linha
 	*/
-}
-
-int menuGetStatus(void){
-	int x, y;
-	SDL_GetMouseState(&x,&y);
-
-	//135,85 257,200
-	//54,54 594,426
-
-	if(x>=257 && x<=392 && y>=300 && y<=385){
-		return 1;
-	}
-	else if(x>=594 && x<=648 && y>=426 && y<=480){
-		return 2;
-	}
-	else{
-		return 0;
-	}
-	return 0;
 }

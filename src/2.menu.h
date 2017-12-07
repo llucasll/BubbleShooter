@@ -2,4 +2,3 @@
 
 voidvoid menu;
 voidvoid menuOnClick;
-int menuGetStatus(void);

@@ -54,5 +54,7 @@ voidvoid eventosDefault;
 Janela newJanela(int x, int y, char nome[]);
 #define surfaceFrom SDL_GetWindowSurface
 Surface loadImage( char *path, Surface base );
+void printSurface(Janela janela, Surface surface, int x, int y, int tamx, int tamy);
 void changeMonitor(voidvoid novo);
-void preparaJanela(Janela* janela, Surface* surface, int x, int y, char nome[]);
+
+Coordenadas mousePos(void);

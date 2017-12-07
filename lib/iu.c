@@ -164,8 +164,32 @@ void eventosDefault(void){
 	}
 }
 
+void printSurface(Janela janela, Surface surfacetemp, int posx, int posy, int tamx, int tamy){
+	SDL_Rect srciRect, dstiRect;
+	Surface gprintSurface;
+
+	srciRect.x = 0; srciRect.y = 0;
+	srciRect.w = tamx;
+	srciRect.h = tamy;
+	dstiRect.x = posx;
+	dstiRect.y = posy;
+	gprintSurface = surfacetemp;
+
+	if( SDL_BlitSurface( gprintSurface, &srciRect,
+						 surfaceFrom(janela), &dstiRect ) < 0 ) {
+		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
+		quit = true;
+	}
+}
+
 void quitDefault(void){
 	quit = true;
+}
+
+Coordenadas mousePos(void){
+	Coordenadas out;
+	SDL_GetMouseState(&out.x,&out.y);
+	return out;
 }
 
 void changeMonitor(voidvoid novo){
