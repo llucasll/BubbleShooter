@@ -68,14 +68,30 @@ Bola *obter(int x, int y){
 		return NULL;
 }
 
-int getLinha(int posY){
-	return (int) posY/tam.bola.y;
-}
-
+/*
 int arredonda(int dividendo, int divisor){
 	int resultado = divisor?dividendo/divisor:0;
 	return (int) divisor*resultado < dividendo? resultado+1 : resultado;
 }
+*/
+
+#define sinal(x) (x<0 ? -1 : 1)
+
+int arredonda(int dividendo, int divisor){
+	int inteiro = dividendo/divisor;
+	float decimal = (float)dividendo/(float)divisor-inteiro;
+	if(decimal>0.5)
+		return inteiro + sinal(decimal);
+	else
+		return inteiro;
+}
+
+int getLinha(int posY){
+	//return (int) posY/tam.bola.y;
+	arredonda(posY,tam.bola.y);
+}
+
+
 
 int getColuna(int posX, int posY){
 	/*int tmp = linha%2 ? b.y-(tam.bola.y*0.9)/2 : b.y;
@@ -87,8 +103,16 @@ int getColuna(int posX, int posY){
 		tmp /= tam.bola.y;
 	//printf("%d\t%d", tmp,linha);
 	return (int) tmp;*/
+	
+	
 	int linha = getLinha(posY);
-	return (int) (linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX)/(tam.bola.x/**0.9*/);
+	/*
+	int candidato = (int) (linha%2 ? posX-(tam.bola.x/**0.9* /)/2 : posX)/(tam.bola.x/**0.9* /);
+	int ajuste = posX - candidato*tam.bola.x;
+	float tolerancia = tam.bola.x/2;
+	return abs(ajuste) < tolerancia ? candidato : candidato + (sinal(ajuste));
+	*/
+	return arredonda((linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX),(tam.bola.x/**0.9*/));
 }
 
 struct _medidas tam = {//TODO

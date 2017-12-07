@@ -126,11 +126,11 @@ void partida(void){
 			
 			//println("a");
 			
-			Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 			//println("b");
 			
 			
-			if(destino.x != -1){//se finalmente tem abrigo, mas já saiu dele
+			if(destino.x != -1 && existe(x,y)){//se finalmente tem abrigo, mas já saiu dele
 				insere(destino.x,destino.y,tiro.cor);
 				
 				/*
@@ -176,10 +176,10 @@ void partida(void){
 			else if(habitavel(x,y)){
 				//println("habitável");
 				
-				if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
+				//if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
 					destino.x = x;
 					destino.y = y;
-				}
+				//}
 				
 				/*oi();
 				Bola n = *b;
