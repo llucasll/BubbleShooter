@@ -12,6 +12,17 @@ Surface sprites[ncores]; //Vetor de imagens :^)
 Surface menuOverNot; //Fundo do menu
 Surface menuOverPlay; //Fundo do menu
 Surface menuOverExit; //Fundo do menu
+Surface partidaExit0;
+Surface partidaExit1;
+Surface partidaBg[5];
+Surface partidaHud;
+Surface partidaMenu0;
+Surface partidaMenu1;
+Surface blackRect;
+byte bgIndex;
+bool partidaExitStatus;
+bool partidaMenuStatus;
+
 
 byte sortear(void){
 	return rand() % tam.cores;

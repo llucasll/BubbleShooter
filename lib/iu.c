@@ -122,7 +122,7 @@ Surface loadImage( char *path, Surface base ) {
 			logger( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
 		}
 		else{
-			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0, 0, 0, 0);
+			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0,0xFF, 0, 0);
 			SDL_SetColorKey( optimizedSurface,1, colorkey);
 		}
 

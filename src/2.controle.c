@@ -147,6 +147,18 @@ int loadMedia() {
 	menuOverPlay = loadImage( "./media/menuOverPlay.png", screenSurface );
 	menuOverNot = loadImage( "./media/menuOverNot.png", screenSurface );
 	menuOverExit = loadImage( "./media/menuOverExit.png", screenSurface );
+	partidaBg[0] = loadImage( "./media/bgFlintstones.png", screenSurface );
+	partidaBg[1] = loadImage( "./media/bgScooby.png", screenSurface );
+	partidaBg[2] = loadImage( "./media/bgPrisao.png", screenSurface );
+	partidaBg[3] = loadImage( "./media/bgPapa.png", screenSurface );
+	partidaBg[4] = loadImage( "./media/bgLilo.png", screenSurface );
+	partidaExit0 = loadImage( "./media/partidaExit0.png", screenSurface );
+	partidaExit1 = loadImage( "./media/partidaExit1.png", screenSurface );
+	partidaHud = loadImage( "./media/partidaHud.png", screenSurface );
+	partidaMenu0 = loadImage( "./media/partidaMenu0.png", screenSurface );
+	partidaMenu1 = loadImage( "./media/partidaMenu1.png", screenSurface );
+	blackRect = loadImage( "./media/blackRect.png", screenSurface );
+
 	return success;
 }
 
