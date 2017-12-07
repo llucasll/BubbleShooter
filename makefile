@@ -1,11 +1,11 @@
 comp= gcc #compilador
 stdlibs = -lm -lpthread
-sdl = -lSDL2 -lSDL2_image
+sdl = -lSDL2 -lSDL2_image -lSDL2_mixer
 
 chatoFlags= -Wall -pedantic -ansi #prof
 outros= -D_GNU_SOURCE=1 -D_REENTRANT
 
-head = lib-headers/*.h 
+head = lib-headers/*.h
 lib = lib/*.c
 srcDir = src
 source = $(srcDir)/*.c
@@ -40,7 +40,7 @@ compilar:
 	@echo
 	$(comandos)
 	@echo
-	
+
 chato:
 	$(comandos) $(chatoFlags)
 
@@ -56,7 +56,7 @@ cleanCompleto:
 	@echo
 	rm -rf `find -name '*.o' -o -name '*.exe' -o -name '*.bak' -o -name '*.c~' -o -name 'core' -o -name 'a.out' -o -name '$(bin)' -o -name 'repetir'`
 	@echo
-	
+
 limpa: clean
 	@
 

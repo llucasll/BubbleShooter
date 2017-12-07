@@ -4,13 +4,14 @@
 /* COMPORTAMENTO DE BIBLIOTECA */
 #ifndef IUlib
 	#define IUlib
-	
+
 	#include <SDL2/SDL.h>
 	#include <SDL2/SDL_image.h>
-	
+	#include <SDL2/SDL_mixer.h>
+
 	typedef SDL_Window* Janela;
 	typedef SDL_Surface* Surface;
-	
+
 	typedef struct{
 		int x,y;
 	} Coordenadas;
@@ -31,7 +32,7 @@ struct{
 }controle;
 
 // Threads
-struct{	
+struct{
 	Thread principal; // Esse é o programa em si
 	Thread eventos; // Gerencia os eventos
 	Thread visualizacao; // Thread responsável pela apresentação

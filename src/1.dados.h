@@ -44,7 +44,7 @@
 		Coordenadas bola;
 		byte cores;
 	}extern tam;
-	
+
 	extern Surface sprites[ncores]; //Vetor de imagens :^)
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
@@ -52,5 +52,6 @@
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
 	extern Surface menuFundo;
+	extern Mix_Music *musica;
 
 #endif
