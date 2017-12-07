@@ -17,6 +17,7 @@ void menu(void){
 		on.quit();
 		return;
 	}
+	controle.principal = NULL;
 }
 
 void menuOnClick(void){
