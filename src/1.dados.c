@@ -88,7 +88,7 @@ int arredonda(int dividendo, int divisor){
 
 int getLinha(int posY){
 	//return (int) posY/tam.bola.y;
-	arredonda(posY,tam.bola.y);
+	return arredonda(posY,tam.bola.y);
 }
 
 
