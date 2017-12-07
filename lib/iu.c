@@ -17,7 +17,7 @@ int main( int argc, char* args[] ) {
 	init();
 
 	// Roda as threads
-	
+
 	threads.principal = executar(executor);
 	if(controle.eventos)
 		threads.eventos = executar(controle.eventos);
@@ -45,18 +45,18 @@ Janela newJanela(int x, int y, char nome[]) {
 	// A janela não existe
 	_novaJanela.janela = NULL;
 	//_novaJanela.thread = NULL; //TODO aqui deveria ser guardada a thread da janela, se já houver a anterior (threads.visualizacao guarda só a primeira)
-	
+
 	// Setar os valores sobre a Janela
 	_novaJanela.x = x;
 	_novaJanela.y = y;
 	_novaJanela.nome = nome;
-	
+
 	if(!threads.visualizacao) // Se não houver janela ainda
 		threads.visualizacao = executar(visualizacao); // Guardar a thread
 	else executar(visualizacao); // Senão, apenas inicia
-	
+
 	while(!_novaJanela.janela);
-	
+
 	return _novaJanela.janela;
 }
 
@@ -70,13 +70,13 @@ static void visualizacao(void){
 
 	//Start up SDL and create window
 	_novaJanela.janela = _newJanela (_novaJanela.x, _novaJanela.y, _novaJanela.nome);
-	
+
 	if( !_novaJanela.janela ) {
 		logger( "Failed to initialize the Window!\n" );
 		exit(1);
 	}
-	
-	
+
+
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
@@ -122,7 +122,7 @@ Surface loadImage( char *path, Surface base ) {
 			logger( "Unable to optimize image %s! SDL Error: %s\n", path, SDL_GetError() );
 		}
 		else{
-			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0, 0, 0, 0xFF);
+			Uint32 colorkey = SDL_MapRGBA(optimizedSurface->format, 0, 0, 0, 0);
 			SDL_SetColorKey( optimizedSurface,1, colorkey);
 		}
 

@@ -9,7 +9,9 @@ Tiro tiro;
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
 Surface sprites[ncores]; //Vetor de imagens :^)
-Surface menuFundo; //Fundo do menu
+Surface menuOverNot; //Fundo do menu
+Surface menuOverPlay; //Fundo do menu
+Surface menuOverExit; //Fundo do menu
 
 byte sortear(void){
 	return rand() % tam.cores;
@@ -26,7 +28,7 @@ void preencher(void){
 bool insere(int x, int y, byte b){
 	if(existe(x,y))
 		logger("Erro!! Bola SOBRESCRITA");
-		
+
 	matriz[y][x].cor = b;
 	matriz[y][x].existe = true;
 	matriz[y][x].morreu = false;
@@ -57,7 +59,7 @@ bool existe(int x, int y){
 		//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
 		if(b->existe)
 			return true;
-			
+
 	else return false;
 }
 

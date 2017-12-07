@@ -144,7 +144,9 @@ int loadMedia() {
 	sprites[3] = loadImage( "./media/green.png", screenSurface );
 	sprites[4] = loadImage( "./media/pink.png", screenSurface );
 	sprites[5] = loadImage( "./media/yellow.png", screenSurface );
-	menuFundo = loadImage( "./media/BG.png", screenSurface );
+	menuOverPlay = loadImage( "./media/menuOverPlay.png", screenSurface );
+	menuOverNot = loadImage( "./media/menuOverNot.png", screenSurface );
+	menuOverExit = loadImage( "./media/menuOverExit.png", screenSurface );
 	return success;
 }
 
