@@ -17,9 +17,9 @@ void partidaView(){
 							fundo.R, fundo.G, fundo.B ));
 */
 
-	for(int i=0;i<linhas;i++)
+	for(int i=0;i<linhastotal;i++)
 		for(int j=0;j<colunas;j++)
-			if(matriz[i][j].existe)
+			if(existe(j,i))
 				printBola(matriz[i][j].cor, matriz[i][j].x, matriz[i][j].y);
 
 	printBola(tiro.cor, tiro.x, tiro.y);

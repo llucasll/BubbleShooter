@@ -2,7 +2,7 @@
 
 voidvoid partida;
 voidvoid moveNPC;
-void createNPC(int x, int y, int velx, int vely, byte cor);
+voidvoid iniciarTiro;
 bool iniciarJogo(void);//iniciar globais; preparar jogo
 
 voidvoid partidaOnClick;

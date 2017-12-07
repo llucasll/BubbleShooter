@@ -24,6 +24,9 @@ void preencher(void){
 }
 
 bool insere(int x, int y, byte b){
+	if(existe(x,y))
+		logger("Erro!! Bola SOBRESCRITA");
+		
 	matriz[y][x].cor = b;
 	matriz[y][x].existe = true;
 	matriz[y][x].morreu = false;
@@ -45,6 +48,24 @@ bool insere(int x, int y, byte b){
 	//println("%d",matriz[y][x].x/tam.bola.x);
 }
 bool remover(int x, int y){
+	matriz[y][x].existe = false;
+}
+
+bool existe(int x, int y){
+	Bola* b = obter(x,y);
+	if(b)
+		//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
+		if(b->existe)
+			return true;
+			
+	else return false;
+}
+
+Bola *obter(int x, int y){
+	if(x>=0 && y>=0 && x<colunas && y<linhastotal)
+		return &matriz[y][x];
+	else
+		return NULL;
 }
 
 int getLinha(int posY){
@@ -67,7 +88,7 @@ int getColuna(int posX, int posY){
 	//printf("%d\t%d", tmp,linha);
 	return (int) tmp;*/
 	int linha = getLinha(posY);
-	return (int) arredonda((linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX), (tam.bola.x/**0.9*/));
+	return (int) (linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX)/(tam.bola.x/**0.9*/);
 }
 
 struct _medidas tam = {//TODO

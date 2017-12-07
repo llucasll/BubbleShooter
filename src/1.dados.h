@@ -26,6 +26,7 @@
 	bool insere(int x, int y, byte b);
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
+	bool existe(int x, int y);
 
 	byte sortear(void);
 	voidvoid preencher;//retornaria se houve sucesso
