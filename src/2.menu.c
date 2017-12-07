@@ -8,6 +8,9 @@
 void menu(void){
 	on.screenRefresh = menuView;
 	on.click = menuOnClick;
+	on.mouseMove = menuMouseMove;
+	
+	menuOver = menuOverNot;
 
 	if(controle.principal == partida){ //se for pra começar a partida
 		bgIndex = rand()%5;
@@ -20,16 +23,31 @@ void menu(void){
 	controle.principal = NULL;
 }
 
+void menuMouseMove(Coordenadas pos){
+	//135,85 257,200
+	//54,54 594,426
+
+	if(pos.x>=257 && pos.x<=392 && pos.y>=300 && pos.y<=385){
+		menuOver = menuOverPlay;
+	}
+	else if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
+		menuOver = menuOverExit;
+	}
+	else{
+		menuOver = menuOverNot;
+	}
+}
+
 void menuOnClick(void){
 	//println("Clicou!");
-	Coordenadas c = mousePos();
+	Coordenadas pos = getMousePos();
 
-	if(c.x>=257 && c.x<=392 &&
-		 c.y>=300 && c.y<=385){
+	if(pos.x>=257 && pos.x<=392 &&
+		 pos.y>=300 && pos.y<=385){
 			controle.principal = partida;
 	}
-	if(c.x>=594 && c.x<=648 &&
-		 c.y>=426 && c.y<=480){
+	if(pos.x>=594 && pos.x<=648 &&
+		 pos.y>=426 && pos.y<=480){
 			 quit=true;
 	}
 	//printf("\n%d,%d\n",x,y);

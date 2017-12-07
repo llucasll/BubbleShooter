@@ -12,6 +12,13 @@ int main( int argc, char* args[] ) {
 	// Inicializa a própria biblioteca com os padrões
 	on.quit = quitDefault;
 	controle.eventos = eventosDefault;
+	
+	// O resto com null
+	on.click = NULL;
+	on.mouseMove = NULL;
+	on.screenRefresh = NULL;
+	controle.principal = NULL;
+	controle.close = NULL;
 
 	// Chama o "main"
 	init();
@@ -159,6 +166,9 @@ void eventosDefault(void){
 						else quitDefault();
 					}
 					break;
+				case SDL_MOUSEMOTION:
+					if(on.mouseMove) on.mouseMove(getMousePos());
+					break;
 			}
 		}
 	}
@@ -186,7 +196,7 @@ void quitDefault(void){
 	quit = true;
 }
 
-Coordenadas mousePos(void){
+Coordenadas getMousePos(void){
 	Coordenadas out;
 	SDL_GetMouseState(&out.x,&out.y);
 	return out;

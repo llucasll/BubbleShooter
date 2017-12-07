@@ -2,3 +2,4 @@
 
 voidvoid menu;
 voidvoid menuOnClick;
+void menuMouseMove(Coordenadas pos);

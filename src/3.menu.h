@@ -2,3 +2,5 @@
 
 voidvoid menuView;
 int menuGetStatus(void);
+
+extern Surface menuOver;

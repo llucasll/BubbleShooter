@@ -40,7 +40,9 @@ struct{
 struct{
 	voidvoid *screenRefresh; // Executado periodicamente pelo atualizador
 	voidvoid *quit; // Função chamada quando é momento de fechar
+	
 	voidvoid *click; // Comportamento de resposta ao Evento
+	void (*mouseMove)(Coordenadas pos); // Comportamento de resposta ao Evento
 }on;
 
 // VARIÁVEIS COMPARTILHADAS
@@ -53,8 +55,11 @@ voidvoid eventosDefault;
 // FUNÇÕES
 Janela newJanela(int x, int y, char nome[]);
 #define surfaceFrom SDL_GetWindowSurface
+
 Surface loadImage( char *path, Surface base );
 void printSurface(Janela janela, Surface surface, int x, int y, int tamx, int tamy);
-void changeMonitor(voidvoid novo);
 
-Coordenadas mousePos(void);
+Coordenadas getMousePos(void);
+
+
+void changeMonitor(voidvoid novo);
