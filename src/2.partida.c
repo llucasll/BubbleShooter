@@ -111,6 +111,8 @@ void partida(void){
 	*/
 	
 	//While application is running
+	
+	Coordenadas destino = {-1,-1};
 	while( !quit ) {
 		moveNPC();
 	
@@ -126,43 +128,137 @@ void partida(void){
 			
 			Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 			//println("b");
-			if(b){
-				//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
-				if(b->existe){
-					//println("c");
-					//println("Cor: %d",b->cor);
+			
+			if(habitavel(x,y)){
+				//println("habitável");
+				
+				if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
+					destino.x = x;
+					destino.y = y;
+				}
+				else{
+					insere(destino.x,destino.y,tiro.cor);
 					
-					char cor[10];
+					/*
+					Bola* k = obter(destino.x,destino.y);
+					if(k){
+						println("dentro da matriz");
+						if(k->existe)
+							println("existe");
+					}
+					println("parecer do existe(): %s",existe(x,y)?"sim":"não");
+					*/
 					
-					switch (b->cor){
-						case 0:
-							sprintf(cor,"%s","blue");
-							break;
-						case 1:
-							sprintf(cor,"%s","red");
-							break;
-						case 2:
-							sprintf(cor,"%s","cian");
-							break;
-						case 3:
-							sprintf(cor,"%s","green");
-							break;
-						case 4:
-							sprintf(cor,"%s","pink");
-							break;
-						case 5:
-							sprintf(cor,"%s","yellow");
-							break;
+					destino.x = -1;
+					destino.y = -1;
+					iniciarTiro();
+					on.click = partidaOnClick;
+					
+					exibeMatriz(
+						lambda(
+							char*, (Bola b) {
+								char* saida;
+								saida = malloc(sizeof(char)*10);
+		
+								/* COORDENADAS NA TELA */
+								//sprintf(saida,"%d,%d",b.x,b.y);
+		
+								/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+								//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+		
+								/* COR */
+								//sprintf(saida,"%d",b.cor);
+		
+								/* EXISTE */
+								sprintf(saida,"%d",b.existe);
+	
+								return saida;
+							}
+						)
+					);
+				}
+				
+				/*oi();
+				Bola n = *b;
+				oi();
+				distancia(n,tiro);
+				*/
+				
+				/*
+				if(colidiu(1,y) || colidiu(x-1,y) || colidiu(x,y+1) || colidiu(x,y-1)){
+					insere(x,y,tiro.cor);
+					//oi();
+				}
+						
+				if(x%2){
+					if(colidiu(x+1,y+1) || colidiu(x,y-1)){
+						insere(x,y,tiro.cor);
+						//oi();
+					}
+				}
+				else
+					if(colidiu(x-1,y+1) || colidiu(x,y-1)){
+						insere(x,y,tiro.cor);
+						//oi();
 					}
 					
-					println("Cor: %s",cor);
-					
-					//sleep(3);
-					char c;
-					scanf("%c",&c);
-					//println("d");
+				*/
+				
+				/*||existe(x-1,y))
+					return true;
+				if(existe(x,y+1)||existe(x,y-1))
+					return true;
+				if(x%2){
+					if(existe(x+1,y+1)||existe(x,y-1))
+						return true;
 				}
+				else{
+					if(existe(x-1,y+1)||existe(x,y-1))
+						return true;
+				}*/
+				
+				//sleep(3);
 			}
+			else
+				println("não-habitável");
+			
+			/*	
+			if(existe(b)){
+				
+				//println("c");
+				//println("Cor: %d",b->cor);
+				
+				char cor[10];
+				
+				switch (b->cor){
+					case 0:
+						sprintf(cor,"%s","blue");
+						break;
+					case 1:
+						sprintf(cor,"%s","red");
+						break;
+					case 2:
+						sprintf(cor,"%s","cian");
+						break;
+					case 3:
+						sprintf(cor,"%s","green");
+						break;
+					case 4:
+						sprintf(cor,"%s","pink");
+						break;
+					case 5:
+						sprintf(cor,"%s","yellow");
+						break;
+				}
+				
+				println("Cor: %s",cor);
+				
+				//sleep(3);
+				char c;
+				scanf("%c",&c);
+				//println("d");
+			}
+			*/
 		}
 		
 		//Not so good solution, depends on your computer
@@ -213,23 +309,17 @@ void moveNPC() {
 }
 
 /* Create NPC */
-void createNPC( int x, int y, int velx, int vely, byte cor) {
-	tiro.x = x;
-	tiro.y = y;
-	tiro.vel.x = velx;
-	tiro.vel.y = vely;
-	tiro.cor = cor;
+void iniciarTiro(void){
+	tiro.x = (tam.tela.x - tam.bola.x)/2;
+	tiro.y = tam.tela.y - tam.bola.y;
+	tiro.vel.x = 0;
+	tiro.vel.y = 0;
+	tiro.cor = sortear();
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
 	preencher();
 
 	//Create NPC
-	createNPC(
-		(tam.tela.x - tam.bola.x)/2,
-		(tam.tela.y - tam.bola.y),
-		0,
-		0,
-		sortear()
-	);
+	iniciarTiro();
 }

@@ -23,6 +23,9 @@ void preencher(void){
 }
 
 bool insere(int x, int y, byte b){
+	if(existe(x,y))
+		logger("Erro!! Bola SOBRESCRITA");
+		
 	matriz[y][x].cor = b;
 	matriz[y][x].existe = true;
 	matriz[y][x].morreu = false;
@@ -47,8 +50,18 @@ bool remover(int x, int y){
 	matriz[y][x].existe = false;
 }
 
+bool existe(int x, int y){
+	Bola* b = obter(x,y);
+	if(b)
+		//println("%d %sexiste em %d,%d", b, b->existe?"":"não ",b->x,b->y);
+		if(b->existe)
+			return true;
+			
+	else return false;
+}
+
 Bola *obter(int x, int y){
-	if(x>=0 && y>=0 && x<colunas && y<linhas)
+	if(x>=0 && y>=0 && x<colunas && y<linhastotal)
 		return &matriz[y][x];
 	else
 		return NULL;
