@@ -9,13 +9,13 @@ void menu(void){
 	on.screenRefresh = menuView;
 	on.click = menuOnClick;
 	on.mouseMove = menuMouseMove;
-	
+
 	menuOver = menuOverNot;
 
-	if(controle.principal == partida){ //se for pra começar a partida
+	//if(controle.principal == partida){ //se for pra começar a partida
 		bgIndex = rand()%5;
-		return;
-	}
+	//	return;
+	//}
 	if(false){ //se for pra encerrar
 		on.quit();
 		return;
