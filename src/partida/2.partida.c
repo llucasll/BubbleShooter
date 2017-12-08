@@ -61,6 +61,9 @@ void move(void){
 
 */
 
+voidvoid partidaLoop;
+int x, y;
+
 void partida(void){
 
 	on.screenRefresh = partidaView;
@@ -74,7 +77,7 @@ void partida(void){
 
 	iniciarJogo();
 
-
+	//TODO debug
 	exibeMatriz(
 		lambda(
 			char*, (Bola b) {
@@ -99,7 +102,8 @@ void partida(void){
 	);
 
 	//TODO debug
-	int x = getColuna(tiro.x,tiro.y), y = getLinha(tiro.y);
+	x = getColuna(tiro.x,tiro.y);
+	y = getLinha(tiro.y);
 	printnl();
 	println("%d,%d",x,y);
 	printnl();
@@ -116,164 +120,161 @@ void partida(void){
 	*/
 
 	//While application is running
+	on.run = partidaLoop;
+}
 
-	Coordenadas destino = {-1,-1};
-	while( !quit ) {
-		if(on.run == menu){
-			return;
+Coordenadas destino = {-1,-1};
+void partidaLoop(void){
+	moveNPC();
+	//TODO debug
+	if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
+		x = getColuna(tiro.x,tiro.y);
+		y = getLinha(tiro.y);
+
+		printnl();
+		println("%d,%d",x,y);
+
+		//println("a");
+
+		Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
+		//println("b");
+
+
+		if(destino.x != -1){//se finalmente tem abrigo, mas já saiu dele
+			insere(destino.x,destino.y,tiro.cor);
+
+			/*
+			Bola* k = obter(destino.x,destino.y);
+			if(k){
+				println("dentro da matriz");
+				if(k->existe)
+					println("existe");
+			}
+			println("parecer do existe(): %s",existe(x,y)?"sim":"não");
+			*/
+
+			destino.x = -1;
+			destino.y = -1;
+			iniciarTiro();
+			on.click = partidaOnClick;
+
+			exibeMatriz(
+				lambda(
+					char*, (Bola b) {
+						char* saida;
+						saida = malloc(sizeof(char)*10);
+
+						/* COORDENADAS NA TELA */
+						//sprintf(saida,"%d,%d",b.x,b.y);
+
+						/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+						//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+
+						/* COR */
+						//sprintf(saida,"%d",b.cor);
+
+						/* EXISTE */
+						sprintf(saida,"%d",b.existe);
+
+						return saida;
+					}
+				)
+			);
 		}
-		moveNPC();
-		//TODO debug
-		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
-			x = getColuna(tiro.x,tiro.y);
-			y = getLinha(tiro.y);
-
-			printnl();
-			println("%d,%d",x,y);
-
-			//println("a");
-
-			Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
-			//println("b");
 
 
-			if(destino.x != -1){//se finalmente tem abrigo, mas já saiu dele
-				insere(destino.x,destino.y,tiro.cor);
+		else if(habitavel(x,y)){
+			//println("habitável");
 
-				/*
-				Bola* k = obter(destino.x,destino.y);
-				if(k){
-					println("dentro da matriz");
-					if(k->existe)
-						println("existe");
-				}
-				println("parecer do existe(): %s",existe(x,y)?"sim":"não");
-				*/
-
-				destino.x = -1;
-				destino.y = -1;
-				iniciarTiro();
-				on.click = partidaOnClick;
-
-				exibeMatriz(
-					lambda(
-						char*, (Bola b) {
-							char* saida;
-							saida = malloc(sizeof(char)*10);
-
-							/* COORDENADAS NA TELA */
-							//sprintf(saida,"%d,%d",b.x,b.y);
-
-							/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
-							//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
-
-							/* COR */
-							//sprintf(saida,"%d",b.cor);
-
-							/* EXISTE */
-							sprintf(saida,"%d",b.existe);
-
-							return saida;
-						}
-					)
-				);
+			if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabaram!
+				destino.x = x;
+				destino.y = y;
 			}
 
+			/*oi();
+			Bola n = *b;
+			oi();
+			distancia(n,tiro);
+			*/
 
-			else if(habitavel(x,y)){
-				//println("habitável");
+			/*
+			if(colidiu(1,y) || colidiu(x-1,y) || colidiu(x,y+1) || colidiu(x,y-1)){
+				insere(x,y,tiro.cor);
+				//oi();
+			}
 
-				if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabara!
-					destino.x = x;
-					destino.y = y;
+			if(x%2){
+				if(colidiu(x+1,y+1) || colidiu(x,y-1)){
+					insere(x,y,tiro.cor);
+					//oi();
 				}
-
-				/*oi();
-				Bola n = *b;
-				oi();
-				distancia(n,tiro);
-				*/
-
-				/*
-				if(colidiu(1,y) || colidiu(x-1,y) || colidiu(x,y+1) || colidiu(x,y-1)){
+			}
+			else
+				if(colidiu(x-1,y+1) || colidiu(x,y-1)){
 					insere(x,y,tiro.cor);
 					//oi();
 				}
 
-				if(x%2){
-					if(colidiu(x+1,y+1) || colidiu(x,y-1)){
-						insere(x,y,tiro.cor);
-						//oi();
-					}
-				}
-				else
-					if(colidiu(x-1,y+1) || colidiu(x,y-1)){
-						insere(x,y,tiro.cor);
-						//oi();
-					}
-
-				*/
-
-				/*||existe(x-1,y))
-					return true;
-				if(existe(x,y+1)||existe(x,y-1))
-					return true;
-				if(x%2){
-					if(existe(x+1,y+1)||existe(x,y-1))
-						return true;
-				}
-				else{
-					if(existe(x-1,y+1)||existe(x,y-1))
-						return true;
-				}*/
-
-				//sleep(3);
-			}
-			else
-				println("não-habitável");
-
-			/*
-			if(existe(b)){
-
-				//println("c");
-				//println("Cor: %d",b->cor);
-
-				char cor[10];
-
-				switch (b->cor){
-					case 0:
-						sprintf(cor,"%s","blue");
-						break;
-					case 1:
-						sprintf(cor,"%s","red");
-						break;
-					case 2:
-						sprintf(cor,"%s","cian");
-						break;
-					case 3:
-						sprintf(cor,"%s","green");
-						break;
-					case 4:
-						sprintf(cor,"%s","pink");
-						break;
-					case 5:
-						sprintf(cor,"%s","yellow");
-						break;
-				}
-
-				println("Cor: %s",cor);
-
-				//sleep(3);
-				char c;
-				scanf("%c",&c);
-				//println("d");
-			}
 			*/
-		}
 
-		//Not so good solution, depends on your computer
-		SDL_Delay(5);
+			/*||existe(x-1,y))
+				return true;
+			if(existe(x,y+1)||existe(x,y-1))
+				return true;
+			if(x%2){
+				if(existe(x+1,y+1)||existe(x,y-1))
+					return true;
+			}
+			else{
+				if(existe(x-1,y+1)||existe(x,y-1))
+					return true;
+			}*/
+
+			//sleep(3);
+		}
+		else
+			println("não-habitável");
+
+		/*
+		if(existe(b)){
+
+			//println("c");
+			//println("Cor: %d",b->cor);
+
+			char cor[10];
+
+			switch (b->cor){
+				case 0:
+					sprintf(cor,"%s","blue");
+					break;
+				case 1:
+					sprintf(cor,"%s","red");
+					break;
+				case 2:
+					sprintf(cor,"%s","cian");
+					break;
+				case 3:
+					sprintf(cor,"%s","green");
+					break;
+				case 4:
+					sprintf(cor,"%s","pink");
+					break;
+				case 5:
+					sprintf(cor,"%s","yellow");
+					break;
+			}
+
+			println("Cor: %s",cor);
+
+			//sleep(3);
+			char c;
+			scanf("%c",&c);
+			//println("d");
+		}
+		*/
 	}
+	//Not so good solution, depends on your computer
+	SDL_Delay(5);
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo

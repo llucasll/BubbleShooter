@@ -24,7 +24,7 @@
 	#define surfaceFrom SDL_GetWindowSurface
 
 	Surface loadImage( char *path, Surface base );
-	void printSurface(Janela janela, Surface surface, int x, int y, int tamx, int tamy);
+	void printSurface(Surface destino, Surface origem, int x, int y, int tamx, int tamy);
 
 	Coordenadas getMousePos(void);
 #endif

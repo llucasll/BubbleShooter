@@ -1,8 +1,14 @@
+#include "iu.h"
+
 /* PARA USO INTERNO DA BIBLIOTECA */
-static voidvoid thread_principal;
-static voidvoid thread_eventos;
-static voidvoid thread_visualizacao;
-static void _newJanela(int x, int y, char nome[]);
+
+/* FUNÇÕES QUE AS THREADS EXECUTAM */
+voidvoid _thread_principal;
+voidvoid _thread_eventos;
+voidvoid _thread_visualizacao;
+
+/* FUNÇÃO INTERNA */
+void _newJanela(int x, int y, char nome[]);
 
 /* COMUNICAÇÃO ENTRE AS THREADS */
 struct __novaJanela{
@@ -11,4 +17,4 @@ struct __novaJanela{
 	int y;
 	char* nome;
 	Thread thread;//TODO
-};
+}extern _novaJanela;

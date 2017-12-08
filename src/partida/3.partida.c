@@ -18,14 +18,14 @@ void partidaView(){
 						  SDL_MapRGB( screenSurface->format,
 						  0xFF, 0xFF, 0xFF ) );
 
-	printSurface(janela, partidaBg[bgIndex], 0, 0, 648, 480);
+	printSurface(screenSurface, partidaBg[bgIndex], 0, 0, 648, 480);
 	//printf("%d",bgIndex);
 
-	printSurface(janela, partidaHud, 0, 405, 648, 75);
+	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
 	
-	printSurface(janela, botaoExit, 594, 426, 54, 54);
+	printSurface(screenSurface, botaoExit, 594, 426, 54, 54);
 
-	printSurface(janela, botaoMenu, 535, 426, 50, 24);
+	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
 
 /*
 	//Fill the surface white
@@ -46,7 +46,7 @@ void partidaView(){
 }
 
 void printBola(byte cor, int x, int y){
-	printSurface(janela, sprites[cor], x, y, tam.bola.x, tam.bola.y);
+	printSurface(screenSurface, sprites[cor], x, y, tam.bola.x, tam.bola.y);
 }
 
 

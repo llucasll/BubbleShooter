@@ -11,7 +11,7 @@ void menuView(){
 						  SDL_MapRGB( screenSurface->format,
 						  0x00, 0x00, 0x00 ) );
 
-	printSurface(janela,menuOver,0,0,tam.tela.x,tam.tela.y);
+	printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
 		
 	//80,210,170,60
 	//Update the surface
