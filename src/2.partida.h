@@ -6,4 +6,4 @@ voidvoid iniciarTiro;
 bool iniciarJogo(void);//iniciar globais; preparar jogo
 
 voidvoid partidaOnClick;
-voidvoid partidaGetStatus;
+void partidaOnMouseMove(Coordenadas pos);

@@ -8,7 +8,7 @@
 void menu(void){
 	on.screenRefresh = menuView;
 	on.click = menuOnClick;
-	on.mouseMove = menuMouseMove;
+	on.mouseMove = menuOnMouseMove;
 
 	menuOver = menuOverNot;
 
@@ -17,13 +17,13 @@ void menu(void){
 	//	return;
 	//}
 	if(false){ //se for pra encerrar
-		on.quit();
+		on.stop();
 		return;
 	}
-	controle.principal = NULL;
+	on.run = NULL;
 }
 
-void menuMouseMove(Coordenadas pos){
+void menuOnMouseMove(Coordenadas pos){
 	//135,85 257,200
 	//54,54 594,426
 
@@ -44,11 +44,13 @@ void menuOnClick(void){
 
 	if(pos.x>=257 && pos.x<=392 &&
 		 pos.y>=300 && pos.y<=385){
-			controle.principal = partida;
+			on.run = partida;
+			return;
 	}
 	if(pos.x>=594 && pos.x<=648 &&
 		 pos.y>=426 && pos.y<=480){
-			 quit=true;
+			 on.stop();
+			 return;
 	}
 	//printf("\n%d,%d\n",x,y);
 

@@ -65,6 +65,10 @@ void partida(void){
 
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
+	on.mouseMove = partidaOnMouseMove;
+	
+	botaoExit = partidaExit0;
+	botaoMenu = partidaMenu0;
 
 	//println("%d",sortear());
 
@@ -115,11 +119,10 @@ void partida(void){
 
 	Coordenadas destino = {-1,-1};
 	while( !quit ) {
-		if(controle.principal == menu){
+		if(on.run == menu){
 			return;
 		}
 		moveNPC();
-		partidaGetStatus();
 		//TODO debug
 		if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
 			x = getColuna(tiro.x,tiro.y);
@@ -275,24 +278,24 @@ void partida(void){
 
 void partidaOnClick(){
 	//println("Clicou!");
-	int x, y;
-	SDL_GetMouseState(&x,&y);
+	Coordenadas pos = getMousePos();
 	//printf("\n%d,%d\n",x,y);
-	if(x>=594 && x<=648 && y>=426 && y<=480){
-		quit=true;
-	}
-	else if(x>=535 && x<=589 && y>=426 && y<=450){
-		controle.principal = menu;
+	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
+		on.stop();
 		return;
 	}
-	if(y>419)y=419;
-	x -= (tam.tela.x)/2;
-	y -= (tam.tela.y)-((tam.bola.y)/2);
+	else if(pos.x>=535 && pos.x<=589 && pos.y>=426 && pos.y<=450){
+		on.run = menu;
+		return;
+	}
+	if(pos.y>419)pos.y=419;
+	pos.x -= (tam.tela.x)/2;
+	pos.y -= (tam.tela.y)-((tam.bola.y)/2);
 
-	double d = sqrt( pow(x,2) + pow(y,2) );
+	double d = sqrt( pow(pos.x,2) + pow(pos.y,2) );
 
-	tiro.vel.x = x/d;
-	tiro.vel.y = y/d;
+	tiro.vel.x = pos.x/d;
+	tiro.vel.y = pos.y/d;
 
 	on.click = NULL;//TODO experimenta tirar essa linha
 }
@@ -331,22 +334,19 @@ void iniciarTiro(void){
 	tiro.cor = sortear();
 }
 
-void partidaGetStatus(void){
-	int x, y;
-	SDL_GetMouseState(&x,&y);
-
+void partidaOnMouseMove(Coordenadas pos){
 	//135,85 257,200
 	//54,54 594,426
 
-	if(x>=594 && x<=648 && y>=426 && y<=480){
-		partidaExitStatus=1;
+	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
+		botaoExit = partidaExit1;
 	}
-	else if(x>=535 && x<=589 && y>=426 && y<=450){
-		partidaMenuStatus=1;
+	else if(pos.x>=535 && pos.x<=589 && pos.y>=426 && pos.y<=450){
+		botaoMenu = partidaMenu1;
 	}
 	else{
-		partidaMenuStatus=0;
-		partidaExitStatus=0;
+		botaoExit = partidaExit0;
+		botaoMenu = partidaMenu0;
 	}
 	return;
 }

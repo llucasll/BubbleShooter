@@ -70,8 +70,8 @@ void init(void){
 
 	//println("iniciei");
 
-	controle.principal = menu;
-	controle.close = closing;
+	on.run = menu;
+	on.finish = closing;
 
 	// Intializes random number generator
 	time_t t;

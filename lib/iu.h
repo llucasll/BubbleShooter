@@ -19,16 +19,10 @@
 /* COMPORTAMENTO DE FRAMEWORK */
 
 // Função inicial (substitui a main)
+// Aqui se define o restante do ciclo de vida do programa
 voidvoid init;
 	// Ela não pode ficar em uma struct pq é um protótipo,
 	// o programa espera que haja um init assim como espera um main.
-
-// Aqui se define o restante do ciclo de vida do programa
-struct{
-	voidvoid *principal; // Função principal
-	voidvoid *eventos; // Gerencia os eventos
-	voidvoid *close; // Finaliza a execução
-}controle;
 
 // Threads
 struct{	
@@ -38,19 +32,29 @@ struct{
 }threads;
 
 struct{
+	/* THREADS */
+	voidvoid *run; // Função principal
+	voidvoid *checkEvents; // Gerencia os eventos
 	voidvoid *screenRefresh; // Executado periodicamente pelo atualizador
-	voidvoid *quit; // Função chamada quando é momento de fechar
 	
-	voidvoid *click; // Comportamento de resposta ao Evento
-	void (*mouseMove)(Coordenadas pos); // Comportamento de resposta ao Evento
+	/* Comportamentos de resposta ao Evento */
+	voidvoid *click; // O mouse clicou
+	void (*mouseMove)(Coordenadas pos); // O mouse se moveu na tela
+	voidvoid *keyDown; // Alguma tecla pressionada (no teclado)
+	//SDLKey
+	voidvoid *rightClick; // Clique direito do mouse
+	
+	/* ENCERRAMENTO DO PROGRAMA */
+	voidvoid *stop; // Inicia o encerramento do programa
+	voidvoid *finish; // Encerra o programa
 }on;
 
 // VARIÁVEIS COMPARTILHADAS
 extern bool quit; // Semáforo global que controla o término de todo o programa
 
 // FUNÇÕES-PADÃO
-voidvoid quitDefault;
-voidvoid eventosDefault;
+voidvoid stopDefault;
+voidvoid eventsDefault;
 
 // FUNÇÕES
 Janela newJanela(int x, int y, char nome[]);

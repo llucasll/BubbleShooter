@@ -2,39 +2,41 @@
 
 bool quit = false; // Semáforo global que controla o término de todo o programa
 
-/* PROTÓTIPOS */
-static voidvoid visualizacao;
-static voidvoid executor;
+/* PARA USO INTERNO DA BIBLIOTECA */
+static voidvoid thread_principal;
+static voidvoid thread_eventos;
+static voidvoid thread_visualizacao;
 static Janela _newJanela(int x, int y, char nome[]);
 
 int main( int argc, char* args[] ) {
 
 	// Inicializa a própria biblioteca com os padrões
-	on.quit = quitDefault;
-	controle.eventos = eventosDefault;
+	on.stop = stopDefault;
+	on.checkEvents = eventsDefault;
 	
 	// O resto com null
 	on.click = NULL;
 	on.mouseMove = NULL;
 	on.screenRefresh = NULL;
-	controle.principal = NULL;
-	controle.close = NULL;
+	on.run = NULL;
+	on.finish = NULL;
 
 	// Chama o "main"
 	init();
 
 	// Roda as threads
 
-	threads.principal = executar(executor);
-	if(controle.eventos)
-		threads.eventos = executar(controle.eventos);
+	threads.principal = executar(thread_principal);
+	if(on.checkEvents)
+		threads.eventos = executar(thread_eventos);
 
 	// Aguarda o fim do programa
 	while(!quit);
 	esperar(threads.visualizacao);
+	//TODO encerrar threads
 
 	// Chama a função de finalização
-	if(controle.close) controle.close();//Free resources and closing SDL
+	if(on.finish) on.finish();//Free resources and closing SDL
 
 	return 0;
 }
@@ -59,21 +61,30 @@ Janela newJanela(int x, int y, char nome[]) {
 	_novaJanela.nome = nome;
 
 	if(!threads.visualizacao) // Se não houver janela ainda
-		threads.visualizacao = executar(visualizacao); // Guardar a thread
-	else executar(visualizacao); // Senão, apenas inicia
+		threads.visualizacao = executar(thread_visualizacao); // Guardar a thread como janela principal
+	else
+		_novaJanela.thread = executar(thread_visualizacao); // Senão, guardar temporariamente
 
 	while(!_novaJanela.janela);
 
 	return _novaJanela.janela;
 }
 
-static void executor(void){
+static void thread_principal(void){
+	//While application is running
 	while(!quit)
-		if(controle.principal)
-			controle.principal();
+		if(on.run)
+			on.run();
 }
 
-static void visualizacao(void){
+static void thread_eventos(void){
+	//While application is running
+	while(!quit)
+		if(on.checkEvents)
+			on.checkEvents();
+}
+
+static void thread_visualizacao(void){
 
 	//Start up SDL and create window
 	_novaJanela.janela = _newJanela (_novaJanela.x, _novaJanela.y, _novaJanela.nome);
@@ -83,7 +94,7 @@ static void visualizacao(void){
 		exit(1);
 	}
 
-
+	//While application is running
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
@@ -141,35 +152,32 @@ Surface loadImage( char *path, Surface base ) {
 }
 
 
-void eventosDefault(void){
+void eventsDefault(void){
 	SDL_Event e; // Event handler
 
 	//podia fornecer, também, uma lista de eventos (a ser manuseada), num par ["bool teste(void)", "voidvoid comportamento"]
 
-	//While application is running
-	while( !quit ) {
-		while( SDL_PollEvent( &e ) != 0 ) {
-			switch (e.type) {
-				case SDL_QUIT:
-					if(on.quit) on.quit();
-					else quitDefault();
-					break;
-				case SDL_MOUSEBUTTONDOWN:
-					if(e.button.button == SDL_BUTTON_LEFT){
-						if(on.click)
-							on.click();
-					}
-					break;
-				case SDL_KEYDOWN:
-					if (e.key.keysym.sym == SDLK_ESCAPE) {
-						if(on.quit) on.quit();
-						else quitDefault();
-					}
-					break;
-				case SDL_MOUSEMOTION:
-					if(on.mouseMove) on.mouseMove(getMousePos());
-					break;
-			}
+	while( SDL_PollEvent( &e ) != 0 ) {
+		switch (e.type) {
+			case SDL_QUIT:
+				if(on.stop) on.stop();
+				else stopDefault();
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+				if(e.button.button == SDL_BUTTON_LEFT){
+					if(on.click)
+						on.click();
+				}
+				break;
+			case SDL_KEYDOWN:
+				if (e.key.keysym.sym == SDLK_ESCAPE) {
+					if(on.stop) on.stop();
+					else stopDefault();
+				}
+				break;
+			case SDL_MOUSEMOTION:
+				if(on.mouseMove) on.mouseMove(getMousePos());
+				break;
 		}
 	}
 }
@@ -192,7 +200,7 @@ void printSurface(Janela janela, Surface surfacetemp, int posx, int posy, int ta
 	}
 }
 
-void quitDefault(void){
+void stopDefault(void){
 	quit = true;
 }
 
@@ -202,8 +210,10 @@ Coordenadas getMousePos(void){
 	return out;
 }
 
+/*
 void changeMonitor(voidvoid novo){
 	controle.eventos = novo;
 	// TODO ENCERRAR A THREAD threads.eventos
 	executar(controle.eventos);
 }
+*/
