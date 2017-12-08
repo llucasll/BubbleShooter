@@ -201,7 +201,7 @@ void printSurface(Janela janela, Surface surfacetemp, int posx, int posy, int ta
 	if( SDL_BlitSurface( gprintSurface, &srciRect,
 						 surfaceFrom(janela), &dstiRect ) < 0 ) {
 		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
-		quit = true;
+		on.stop();
 	}
 }
 

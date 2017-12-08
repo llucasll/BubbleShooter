@@ -46,21 +46,7 @@ void partidaView(){
 }
 
 void printBola(byte cor, int x, int y){
-	SDL_Rect srciRect, dstiRect;
-	Surface gprintSurface;
-
-	srciRect.x = 0; srciRect.y = 0;
-	srciRect.w = tam.bola.x;
-	srciRect.h = tam.bola.y;
-	dstiRect.x = x;
-	dstiRect.y = y;
-	gprintSurface = sprites[cor];
-
-	if( SDL_BlitSurface( gprintSurface, &srciRect,
-						 screenSurface, &dstiRect ) < 0 ) {
-		logger( "SDL could not blit! SDL Error: %s\n", SDL_GetError() );
-		quit = true;
-	}
+	printSurface(janela, sprites[cor], x, y, tam.bola.x, tam.bola.y);
 }
 
 

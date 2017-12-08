@@ -14,6 +14,19 @@
 	typedef struct{
 		int x,y;
 	} Coordenadas;
+	
+	// FUNÇÕES-PADÃO
+	voidvoid stopDefault;
+	voidvoid eventsDefault;
+
+	// FUNÇÕES
+	Janela newJanela(int x, int y, char nome[]);
+	#define surfaceFrom SDL_GetWindowSurface
+
+	Surface loadImage( char *path, Surface base );
+	void printSurface(Janela janela, Surface surface, int x, int y, int tamx, int tamy);
+
+	Coordenadas getMousePos(void);
 #endif
 
 /* COMPORTAMENTO DE FRAMEWORK */
@@ -52,18 +65,5 @@ struct{
 // VARIÁVEIS COMPARTILHADAS
 extern bool quit; // Semáforo global que controla o término de todo o programa
 
-// FUNÇÕES-PADÃO
-voidvoid stopDefault;
-voidvoid eventsDefault;
 
-// FUNÇÕES
-Janela newJanela(int x, int y, char nome[]);
-#define surfaceFrom SDL_GetWindowSurface
-
-Surface loadImage( char *path, Surface base );
-void printSurface(Janela janela, Surface surface, int x, int y, int tamx, int tamy);
-
-Coordenadas getMousePos(void);
-
-
-void changeMonitor(voidvoid novo);
+//void changeMonitor(voidvoid novo);
