@@ -273,8 +273,9 @@ void partidaLoop(void){
 		}
 		*/
 	}
-	//Not so good solution, depends on your computer
-	SDL_Delay(5);
+	
+	if(on.run == menu) return;
+	else SDL_Delay(5);//Not so good solution, depends on your computer
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
