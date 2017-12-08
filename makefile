@@ -6,9 +6,9 @@ chatoFlags= -Wall -pedantic -ansi #prof
 outros= -D_GNU_SOURCE=1 -D_REENTRANT
 
 head = lib-headers/*.h 
-lib = lib/*.c
+lib = lib/*.c lib/*/*.c
 srcDir = src
-source = $(srcDir)/*.c
+source = $(srcDir)/*.c $(srcDir)/*/*.c
 bin = exe
 executavel = .out
 testes = testes

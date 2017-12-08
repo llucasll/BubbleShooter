@@ -1,4 +1,4 @@
-#include "0.cabecalho.h"
+#include "../0.cabecalho.h"
 
 voidvoid partida;
 voidvoid moveNPC;
@@ -6,4 +6,4 @@ voidvoid iniciarTiro;
 bool iniciarJogo(void);//iniciar globais; preparar jogo
 
 voidvoid partidaOnClick;
-voidvoid partidaGetStatus;
+void partidaOnMouseMove(Coordenadas pos);

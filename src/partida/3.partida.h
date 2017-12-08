@@ -1,4 +1,7 @@
-#include "0.cabecalho.h"
+#include "../0.cabecalho.h"
+
+extern Surface botaoMenu;
+extern Surface botaoExit;
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
 bool carregarMidia(void);

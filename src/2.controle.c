@@ -1,13 +1,13 @@
 #include "1.dados.h"//apenas pelas inicializações no init
 
-#include "2.menu.h"
-#include "3.menu.h"
+#include "menu/2.menu.h"
+#include "menu/3.menu.h"
 
-#include "2.partida.h"
-#include "3.partida.h"
+#include "partida/2.partida.h"
+#include "partida/3.partida.h"
 
-#include "2.fim.h"
-#include "3.fim.h"
+#include "fim/2.fim.h"
+#include "fim/3.fim.h"
 
 #include "2.controle.h"
 
@@ -70,8 +70,8 @@ void init(void){
 
 	//println("iniciei");
 
-	controle.principal = menu;
-	controle.close = closing;
+	on.run = menu;
+	on.finish = closing;
 
 	// Intializes random number generator
 	time_t t;
