@@ -51,6 +51,7 @@
 	extern Bola matriz[linhastotal][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
+
 	extern Surface menuOverNot;
 	extern Surface menuOverExit;
 	extern Surface menuOverPlay;
@@ -65,5 +66,7 @@
 	extern bool partidaExitStatus;
 	extern byte bgIndex;
 
+	extern Surface menuFundo;
+	extern Mix_Music *musica;
 
 #endif

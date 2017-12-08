@@ -85,12 +85,20 @@ void init(void){
 
 	screenSurface = surfaceFrom ( janela ); //Get window surface
 
+	/* Initialize Music */
+
+	/*Initialize Mixer */
+	if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ){
+		logger( "Failed to load media!\n" );
+		exit(2);
+	}
+
 	//Load media
 	if( !loadMedia() ) {
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
-
+	Mix_PlayMusic( musica, -1);
 	//init2();
 }
 
@@ -138,6 +146,8 @@ int loadMedia() {
 		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 	}*/
+	musica = Mix_LoadMUS("./media/musica.wav");
+
 	sprites[0] = loadImage( "./media/blue.png", screenSurface );
 	sprites[1] = loadImage( "./media/red.png", screenSurface );
 	sprites[2] = loadImage( "./media/cian.png", screenSurface );
@@ -174,7 +184,11 @@ void closing() {
 	SDL_DestroyWindow( janela );
 	janela = NULL;
 
+	//Free Music
+	Mix_FreeMusic(musica);
+
 	//Quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+	Mix_CloseAudio();
 }

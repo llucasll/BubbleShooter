@@ -9,6 +9,7 @@ Tiro tiro;
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
 Surface sprites[ncores]; //Vetor de imagens :^)
+
 Surface menuOverNot; //Fundo do menu
 Surface menuOverPlay; //Fundo do menu
 Surface menuOverExit; //Fundo do menu
@@ -23,6 +24,8 @@ byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;
 
+Surface menuFundo; //Fundo do menu
+Mix_Music *musica = NULL;
 
 byte sortear(void){
 	return rand() % tam.cores;
@@ -116,8 +119,8 @@ int getColuna(int posX, int posY){
 		tmp /= tam.bola.y;
 	//printf("%d\t%d", tmp,linha);
 	return (int) tmp;*/
-	
-	
+
+
 	int linha = getLinha(posY);
 	/*
 	int candidato = (int) (linha%2 ? posX-(tam.bola.x/**0.9* /)/2 : posX)/(tam.bola.x/**0.9* /);
