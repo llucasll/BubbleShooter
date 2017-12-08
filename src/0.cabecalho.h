@@ -11,7 +11,7 @@
 	/* LIBS PERSONALIZADAS */
 	#include "../lib/lib.h"
 	#include "../lib/terminal.h"
-	#include "../lib/iu.h"
+	#include "../lib/iu/iu.h"
 	#include "../lib/debug.h"
 
 	/* CONSTANTES */

@@ -1,21 +1,9 @@
 #include "iu.h"
+#include "interno.h"
+
+struct __novaJanela _novaJanela;
 
 bool quit = false; // Semáforo global que controla o término de todo o programa
-
-/* PARA USO INTERNO DA BIBLIOTECA */
-static voidvoid thread_principal;
-static voidvoid thread_eventos;
-static voidvoid thread_visualizacao;
-static void _newJanela(int x, int y, char nome[]);
-
-/* COMUNICAÇÃO ENTRE AS THREADS */
-struct{
-	Janela janela;
-	int x;
-	int y;
-	char* nome;
-	Thread thread;//TODO
-}_novaJanela;
 
 int main( int argc, char* args[] ) {
 

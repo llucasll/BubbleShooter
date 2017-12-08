@@ -1,4 +1,4 @@
-#include "1.dados.h"
+#include "../1.dados.h"
 
 #include "2.partida.h"
 #include "3.partida.h"

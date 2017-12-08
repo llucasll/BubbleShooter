@@ -1,4 +1,4 @@
-#include "0.cabecalho.h"
+#include "../0.cabecalho.h"
 
 voidvoid partida;
 voidvoid moveNPC;

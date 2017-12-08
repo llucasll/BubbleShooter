@@ -1,5 +1,5 @@
-#include "lib.h"
-#include "debug.h"
+#include "../lib.h"
+#include "../debug.h"
 
 /* COMPORTAMENTO DE BIBLIOTECA */
 #ifndef IUlib

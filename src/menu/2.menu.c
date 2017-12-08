@@ -1,9 +1,9 @@
 #include "2.menu.h"
 #include "3.menu.h"
 
-#include "2.partida.h"
+#include "../partida/2.partida.h"
 
-#include "3.debug.h"
+#include "../3.debug.h"
 
 void menu(void){
 	on.screenRefresh = menuView;
