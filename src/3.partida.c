@@ -12,6 +12,7 @@ void printBola(byte cor, int x, int y);
 void partidaView(){
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
+						  SDL_MapRGB( screenSurface->format,
 						  0xFF, 0xFF, 0xFF ) );
 
 	printSurface(janela, partidaBg[bgIndex], 0, 0, 648, 480);
