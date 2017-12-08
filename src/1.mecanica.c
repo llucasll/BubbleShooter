@@ -12,9 +12,17 @@ bool habitavel(int x, int y){
 	else
 		if(existe(x-1,y+1)||existe(x,y-1))
 			return true;
-	
+
 	return false;
 }
+
+bool colisao( Bola* b, Tiro* t){
+	if(sqrt(pow(b->x-t->x,2)+pow(b->y-t->y,2))<=tam.bola.x-3){
+		return 1;
+	}
+	return 0;
+}
+
 
 /*
 
@@ -30,7 +38,7 @@ bool colidiu(int x, int y){
 	if(existe(x,y))
 		if(distancia(obter(x,y),tiro)<tam.bola.x)
 			return true;
-			
+
 	else return false;
 }
 */

@@ -135,7 +135,26 @@ void partidaLoop(void){
 	printnl();
 	println("%d,%d",x,y);
 
-	
+	if(habitavel(x,y)){
+		if(colisao(&matriz[y][x-1],&tiro) ||
+			 colisao(&matriz[y][x+1],&tiro) ||
+			 colisao(&matriz[y-1][x],&tiro) ||
+			 colisao(&matriz[y+1][x],&tiro)){
+			insere(x,y,tiro.cor);
+		}
+		if(x%2){
+			if(colisao(&matriz[y-1][x-1],&tiro) ||
+				 colisao(&matriz[y+1][x-1],&tiro)){
+				insere(x,y,tiro.cor);
+			}
+		}
+		else{
+			if(colisao(&matriz[y-1][x+1],&tiro) ||
+				 colisao(&matriz[y+1][x+1],&tiro)){
+				insere(x,y,tiro.cor);
+			}
+		}
+	}
 			//println("a");
 
 			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
