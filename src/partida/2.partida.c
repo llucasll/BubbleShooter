@@ -69,7 +69,7 @@ void partida(void){
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
 	on.mouseMove = partidaOnMouseMove;
-	
+
 	botaoExit = partidaExit0;
 	botaoMenu = partidaMenu0;
 
@@ -130,16 +130,18 @@ void partidaLoop(void){
 	if(x != getColuna(tiro.x,tiro.y) || y != getLinha(tiro.y)){
 		x = getColuna(tiro.x,tiro.y);
 		y = getLinha(tiro.y);
+	}
 
-		printnl();
-		println("%d,%d",x,y);
+	printnl();
+	println("%d,%d",x,y);
 
+	
 			//println("a");
-			
+
 			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
 			//println("b");
-			
-			
+
+/*
 			if(destino.x != -1 && existe(x,y)){//se finalmente tem abrigo, mas já saiu dele
 				insere(destino.x,destino.y,tiro.cor);
 
@@ -152,7 +154,7 @@ void partidaLoop(void){
 			}
 			println("parecer do existe(): %s",existe(x,y)?"sim":"não");
 			*/
-
+/*
 			destino.x = -1;
 			destino.y = -1;
 			iniciarTiro();
@@ -174,7 +176,7 @@ void partidaLoop(void){
 						//sprintf(saida,"%d",b.cor);
 
 						/* EXISTE */
-						sprintf(saida,"%d",b.existe);
+	/*					sprintf(saida,"%d",b.existe);
 
 						return saida;
 					}
@@ -185,12 +187,12 @@ void partidaLoop(void){
 
 		else if(habitavel(x,y)){
 			//println("habitável");
-			
+
 			//if(destino.x == -1){//se a bola ainda está desabrigada, os problemas acabaram!
 				destino.x = x;
 				destino.y = y;
 			//}
-			
+
 			/*oi();
 			Bola n = *b;
 			oi();
@@ -231,7 +233,7 @@ void partidaLoop(void){
 			}*/
 
 			//sleep(3);
-		}
+	/*	}
 		else
 			println("não-habitável");
 
@@ -272,8 +274,8 @@ void partidaLoop(void){
 			//println("d");
 		}
 		*/
-	}
-	
+//	}
+
 	if(on.run == menu) return;
 	else SDL_Delay(5);//Not so good solution, depends on your computer
 }
