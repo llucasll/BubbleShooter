@@ -37,6 +37,10 @@ void preencher(void){
 			insere(x,y,sortear());
 		//printnl();
 	}
+	for(int y=linhas;y<linhastotal;y++){
+		for(int x=0;x<colunas;x++)
+			matriz[y][x].existe = false;
+	}
 }
 
 bool insere(int x, int y, byte b){
