@@ -276,28 +276,20 @@ void partida(void){
 	}
 }
 
-void partidaOnClick(){
-	//println("Clicou!");
-	Coordenadas pos = getMousePos();
-	//printf("\n%d,%d\n",x,y);
-	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
-		on.stop();
-		return;
-	}
-	else if(pos.x>=535 && pos.x<=589 && pos.y>=426 && pos.y<=450){
-		on.run = menu;
-		return;
-	}
-	if(pos.y>419)pos.y=419;
-	pos.x -= (tam.tela.x)/2;
-	pos.y -= (tam.tela.y)-((tam.bola.y)/2);
+bool iniciarJogo(void){//iniciar globais; preparar jogo
+	preencher();
 
-	double d = sqrt( pow(pos.x,2) + pow(pos.y,2) );
+	//Create NPC
+	iniciarTiro();
+}
 
-	tiro.vel.x = pos.x/d;
-	tiro.vel.y = pos.y/d;
-
-	on.click = NULL;//TODO experimenta tirar essa linha
+/* Create NPC */
+void iniciarTiro(void){
+	tiro.x = (tam.tela.x - tam.bola.x)/2;
+	tiro.y = tam.tela.y - tam.bola.y;
+	tiro.vel.x = 0;
+	tiro.vel.y = 0;
+	tiro.cor = sortear();
 }
 
 void moveNPC() {
@@ -325,13 +317,28 @@ void moveNPC() {
 	}
 }
 
-/* Create NPC */
-void iniciarTiro(void){
-	tiro.x = (tam.tela.x - tam.bola.x)/2;
-	tiro.y = tam.tela.y - tam.bola.y;
-	tiro.vel.x = 0;
-	tiro.vel.y = 0;
-	tiro.cor = sortear();
+void partidaOnClick(){
+	//println("Clicou!");
+	Coordenadas pos = getMousePos();
+	//printf("\n%d,%d\n",x,y);
+	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
+		on.stop();
+		return;
+	}
+	else if(pos.x>=535 && pos.x<=589 && pos.y>=426 && pos.y<=450){
+		on.run = menu;
+		return;
+	}
+	if(pos.y>419)pos.y=419;
+	pos.x -= (tam.tela.x)/2;
+	pos.y -= (tam.tela.y)-((tam.bola.y)/2);
+
+	double d = sqrt( pow(pos.x,2) + pow(pos.y,2) );
+
+	tiro.vel.x = pos.x/d;
+	tiro.vel.y = pos.y/d;
+
+	on.click = NULL;//TODO experimenta tirar essa linha
 }
 
 void partidaOnMouseMove(Coordenadas pos){
@@ -349,11 +356,4 @@ void partidaOnMouseMove(Coordenadas pos){
 		botaoMenu = partidaMenu0;
 	}
 	return;
-}
-
-bool iniciarJogo(void){//iniciar globais; preparar jogo
-	preencher();
-
-	//Create NPC
-	iniciarTiro();
 }
