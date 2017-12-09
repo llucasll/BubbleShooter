@@ -3,9 +3,6 @@
 #include "2.partida.h"
 #include "3.partida.h"
 
-Surface botaoMenu;
-Surface botaoExit;
-
 void printBola(byte cor, int x, int y);
 // Tamanho Hud: (648,75)
 //Tamanho Menu: (x é 5 de distancia do exit [checar propriedades])
@@ -23,9 +20,9 @@ void partidaView(){
 
 	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
 	
-	printSurface(screenSurface, botaoExit, 594, 426, 54, 54);
+	printSurface(screenSurface, menu.botoes.exit.view, 594, 426, 54, 54);
 
-	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
+	printSurface(screenSurface, menu.botoes.menu.view, 535, 426, 50, 24);
 
 /*
 	//Fill the surface white

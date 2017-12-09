@@ -61,6 +61,10 @@ void move(void){
 
 */
 
+struct _partida partida;
+
+//menu.botoes.exit.pos.x
+
 voidvoid partidaLoop;
 int x, y;
 
@@ -70,8 +74,8 @@ void partida(void){
 	on.click = partidaOnClick;
 	on.mouseMove = partidaOnMouseMove;
 	
-	botaoExit = partidaExit0;
-	botaoMenu = partidaMenu0;
+	menu.botoes.exit.view = partidaExit0;
+	menu.botoes.menu.view = partidaMenu0;
 
 	//println("%d",sortear());
 
@@ -348,14 +352,14 @@ void partidaOnMouseMove(Coordenadas pos){
 	//54,54 594,426
 
 	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
-		botaoExit = partidaExit1;
+		menu.botoes.exit.view = partidaExit1;
 	}
 	else if(pos.x>=535 && pos.x<=589 && pos.y>=426 && pos.y<=450){
-		botaoMenu = partidaMenu1;
+		menu.botoes.menu.view = partidaMenu1;
 	}
 	else{
-		botaoExit = partidaExit0;
-		botaoMenu = partidaMenu0;
+		menu.botoes.exit.view = partidaExit0;
+		menu.botoes.menu.view = partidaMenu0;
 	}
 	return;
 }
