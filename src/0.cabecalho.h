@@ -15,7 +15,7 @@
 	#include "../lib/debug.h"
 
 	/* CONSTANTES */
-	#define linhas 9
+	#define linhas 7
 	#define colunas 17
 	#define linhastotal 12
 	#define ncores 6

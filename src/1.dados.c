@@ -131,7 +131,7 @@ int getColuna(int posX, int posY){
 	float tolerancia = tam.bola.x/2;
 	return abs(ajuste) < tolerancia ? candidato : candidato + (sinal(ajuste));
 	*/
-	return arredonda((linha%2 ? posX+(tam.bola.x/**0.9*/)/2 : posX+(tam.bola.x/2)),(tam.bola.x/**0.9*/));
+	return arredonda((linha%2 ? posX/*+(tam.bola.x/*0.9)/2*/ : posX+(tam.bola.x/2)),(tam.bola.x/**0.9*/));
 }
 
 struct _medidas tam = {//TODO

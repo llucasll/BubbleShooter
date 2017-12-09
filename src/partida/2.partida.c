@@ -88,6 +88,7 @@ void partida(void){
 				//sprintf(saida,"%d,%d",b.x,b.y);
 
 				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+				if(existe(getLinha(b.y),getColuna(b.x,b.y)))
 				sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
 
 				/* COR */
@@ -132,35 +133,47 @@ void partidaLoop(void){
 		y = getLinha(tiro.y);
 	}
 
-	printnl();
-	println("%d,%d",x,y);
+
+
+	//printnl();
+	//println("%d,%d",x,y);
 
 	if(habitavel(x,y)){
 		if(colisao(&matriz[y][x-1],&tiro) ||
 			 colisao(&matriz[y][x+1],&tiro) ||
 			 colisao(&matriz[y-1][x],&tiro) ||
 			 colisao(&matriz[y+1][x],&tiro)){
+			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			insere(x,y,tiro.cor);
+			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
+			//println("a");
 			iniciarTiro();
-			return;
+			on.click = partidaOnClick;
 		}
 		if(x%2){
-			if(colisao(&matriz[y-1][x-1],&tiro) ||
-				 colisao(&matriz[y+1][x-1],&tiro)){
+			if(colisao(&matriz[y-1][x+1],&tiro) ||
+				 colisao(&matriz[y+1][x+1],&tiro)){
+			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
+				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
+				//println("b");
 				iniciarTiro();
-				return;
+				on.click = partidaOnClick;
 			}
 		}
 		else{
-			if(colisao(&matriz[y-1][x+1],&tiro) ||
-				 colisao(&matriz[y+1][x+1],&tiro)){
+			if(colisao(&matriz[y-1][x-1],&tiro) ||
+				 colisao(&matriz[y+1][x-1],&tiro)){
+				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
+				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
+				//println("c");
 				iniciarTiro();
-				return;
+				on.click = partidaOnClick;
 			}
 		}
 	}
+	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) println("nao habitavel");
 			//println("a");
 
 			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
