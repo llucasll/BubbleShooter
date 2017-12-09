@@ -141,17 +141,23 @@ void partidaLoop(void){
 			 colisao(&matriz[y-1][x],&tiro) ||
 			 colisao(&matriz[y+1][x],&tiro)){
 			insere(x,y,tiro.cor);
+			iniciarTiro();
+			return;
 		}
 		if(x%2){
 			if(colisao(&matriz[y-1][x-1],&tiro) ||
 				 colisao(&matriz[y+1][x-1],&tiro)){
 				insere(x,y,tiro.cor);
+				iniciarTiro();
+				return;
 			}
 		}
 		else{
 			if(colisao(&matriz[y-1][x+1],&tiro) ||
 				 colisao(&matriz[y+1][x+1],&tiro)){
 				insere(x,y,tiro.cor);
+				iniciarTiro();
+				return;
 			}
 		}
 	}

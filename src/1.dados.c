@@ -99,18 +99,17 @@ int arredonda(int dividendo, int divisor){
 
 int arredonda(int dividendo, int divisor){
 	int inteiro = dividendo/divisor;
-	float decimal = (float)dividendo/(float)divisor-inteiro;
-	if(decimal>0.5)
-		return inteiro + sinal(decimal);
-	else
+	//float decimal = (float)dividendo/(float)divisor-inteiro;
+	//if(decimal>0.5)
+	//	return inteiro + sinal(decimal);
+	//else
 		return inteiro;
 }
 
 int getLinha(int posY){
 	//return (int) posY/tam.bola.y;
-	return arredonda(posY-tam.bola.y/2,tam.bola.y);
+	return arredonda(posY+tam.bola.y/2,tam.bola.y);
 }
-
 
 
 int getColuna(int posX, int posY){
@@ -132,7 +131,7 @@ int getColuna(int posX, int posY){
 	float tolerancia = tam.bola.x/2;
 	return abs(ajuste) < tolerancia ? candidato : candidato + (sinal(ajuste));
 	*/
-	return arredonda(((linha%2 ? posX-(tam.bola.x/**0.9*/)/2 : posX)-tam.bola.x/2),(tam.bola.x/**0.9*/));
+	return arredonda((linha%2 ? posX+(tam.bola.x/**0.9*/)/2 : posX+(tam.bola.x/2)),(tam.bola.x/**0.9*/));
 }
 
 struct _medidas tam = {//TODO
