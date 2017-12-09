@@ -20,9 +20,9 @@ void partidaView(){
 
 	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
 	
-	printSurface(screenSurface, menu.botoes.exit.view, 594, 426, 54, 54);
+	printSurface(screenSurface, s_partida.botoes.exit.view, 594, 426, 54, 54);
 
-	printSurface(screenSurface, menu.botoes.menu.view, 535, 426, 50, 24);
+	printSurface(screenSurface, s_partida.botoes.menu.view, 535, 426, 50, 24);
 
 /*
 	//Fill the surface white

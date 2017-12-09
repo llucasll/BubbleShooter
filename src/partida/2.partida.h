@@ -15,8 +15,10 @@ typedef struct{
 }Botao;
 
 struct _partida{
-	struct botoes{
+	struct{
 		Botao exit;
 		Botao menu;
-	}
-};
+	}botoes;
+}extern s_partida;//struct partida
+
+enum booleano {sim, nao};//TODO
