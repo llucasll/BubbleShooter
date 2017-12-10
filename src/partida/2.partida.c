@@ -150,7 +150,7 @@ void partidaLoop(void){
 			iniciarTiro();
 			on.click = partidaOnClick;
 		}
-		if(x%2){
+		if(y%2){
 			if(colisao(&matriz[y-1][x+1],&tiro) ||
 				 colisao(&matriz[y+1][x+1],&tiro)){
 			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);

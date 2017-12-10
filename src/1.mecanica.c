@@ -6,7 +6,7 @@ bool habitavel(int x, int y){
 		return true;
 	if(existe(x,y+1)||existe(x,y-1))
 		return true;
-	if(x%2){
+	if(y%2){
 		if(existe(x+1,y+1)||existe(x+1,y-1))
 			return true;
 	}
