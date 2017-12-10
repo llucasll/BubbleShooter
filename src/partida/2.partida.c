@@ -108,7 +108,28 @@ void partida(void){
 	printnl();
 	println("%d,%d",x,y);
 	printnl();
-
+	
+	int a=2;
+	int b=2;
+	println("Vizinhos de %d,%d",a,b);
+	Bola** vizinhos = getVizinhos(a,b);
+	for(int i=0; i<6; i+=2){
+		if(vizinhos[i])
+			printf("%d",vizinhos[i]->cor);
+		else
+			printf("X");
+			
+		printf(" ");
+		
+		if(vizinhos[i+1])
+			printf("%d",vizinhos[i+1]->cor);
+		else
+			printf("X");
+		
+		printnl();
+	}
+	liberaVizinhos(&vizinhos);
+		
 	//printint((int)obter(16,8));
 	//printnl();
 
@@ -145,6 +166,7 @@ void partidaLoop(void){
 			 colisao(&matriz[y+1][x],&tiro)){
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			insere(x,y,tiro.cor);
+			printint(contar(x,y));
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
 			iniciarTiro();
@@ -155,6 +177,7 @@ void partidaLoop(void){
 				 colisao(&matriz[y+1][x+1],&tiro)){
 			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
+				printint(contar(x,y));
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("b");
 				iniciarTiro();
@@ -166,6 +189,7 @@ void partidaLoop(void){
 				 colisao(&matriz[y+1][x-1],&tiro)){
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
+				printint(contar(x,y));
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("c");
 				iniciarTiro();

@@ -9,6 +9,7 @@
 		byte cor;
 		//struct _Bola *vizinhos[6];
 		int x,y;
+		Coordenadas pos;
 		bool morreu;
 		bool existe;
 	} Bola;
@@ -28,6 +29,8 @@
 	bool remover(int x, int y);
 	bool existe(int x, int y);
 
+	Bola** getVizinhos(int x, int y);
+	void liberaVizinhos(Bola*** ptr);
 	byte sortear(void);
 	voidvoid preencher;//retornaria se houve sucesso
 	void percorrer(void *func(Bola *b));

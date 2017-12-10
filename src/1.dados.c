@@ -27,6 +27,58 @@ bool partidaMenuStatus;
 Surface menuFundo; //Fundo do menu
 Mix_Music *musica = NULL;
 
+Bola** getVizinhos(int x, int y){
+	//int x = b.pos.x, y = b.pos.y;
+	Bola** vizinhos = malloc(sizeof(Bola)*6);
+	
+	if (vizinhos == NULL) {
+		printf ("Socorro! malloc devolveu NULL!\n");
+		exit (EXIT_FAILURE);
+	}
+	
+	vizinhos[0] =
+		(y%2? existe(x,y-1) : existe(x-1,y-1))?
+			y%2? obter(x,y-1) : obter(x-1,y-1)
+		:
+			NULL;
+	vizinhos[1] =
+		(y%2? existe(x+1,y-1) : existe(x,y-1))?
+			y%2? obter(x+1,y-1) : obter(x,y-1)
+		:
+			NULL;
+	
+	vizinhos[2] =
+		existe(x-1,y)?
+			obter(x-1,y)
+		:
+			NULL;
+	vizinhos[3] =
+		existe(x+1,y)?
+			obter(x+1,y)
+		:
+			NULL;
+	
+	vizinhos[4] =
+		(y%2? existe(x,y+1) : existe(x-1,y+1))?
+			y%2? obter(x,y+1) : obter(x-1,y+1)
+		:
+			NULL;
+	vizinhos[5] =
+		(y%2? existe(x+1,y+1) : existe(x,y+1))?
+			y%2? obter(x+1,y+1) : obter(x,y+1)
+		:
+			NULL;
+	
+	return vizinhos;
+}
+
+void liberaVizinhos(Bola*** ptr){
+	for(int i=0; i<6; i+=2)
+		(*ptr)[i] = NULL;
+	free (*ptr);
+	*ptr = NULL;
+}
+
 byte sortear(void){
 	return rand() % tam.cores;
 }
@@ -50,6 +102,8 @@ bool insere(int x, int y, byte b){
 	matriz[y][x].cor = b;
 	matriz[y][x].existe = true;
 	matriz[y][x].morreu = false;
+	matriz[y][x].pos.x = x;
+	matriz[y][x].pos.y = y;
 
 	//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
 
