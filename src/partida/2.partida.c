@@ -63,6 +63,7 @@ void move(void){
 
 voidvoid partidaLoop;
 int x, y;
+byte proximoTiro;
 
 void partida(void){
 
@@ -358,6 +359,7 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 	preencher();
 
 	//Create NPC
+	proximoTiro = sortear();
 	iniciarTiro();
 }
 
@@ -367,7 +369,8 @@ void iniciarTiro(void){
 	tiro.y = tam.tela.y - tam.bola.y;
 	tiro.vel.x = 0;
 	tiro.vel.y = 0;
-	tiro.cor = sortear();
+	tiro.cor = proximoTiro;
+	proximoTiro = sortear();
 }
 
 void moveNPC() {
