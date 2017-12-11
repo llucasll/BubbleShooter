@@ -72,6 +72,7 @@ void aloca(void){
 	if(contar(x,y)){
 		estourando = true;
 		explodir(x,y);
+		score-=30;
 		estourando = false;
 	}
 	else{
