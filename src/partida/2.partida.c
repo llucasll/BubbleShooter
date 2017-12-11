@@ -65,6 +65,26 @@ voidvoid partidaLoop;
 int x, y;
 byte proximoTiro;
 
+void aloca(void){
+	insere(x,y,tiro.cor);
+	if(contar(x,y)){
+		estourando = true;
+		explodir(x,y);
+		estourando = false;
+		
+		// PARA A EXIBIÇÃO TEMPORARIAMENTE
+		on.screenRefresh = NULL;
+		while(desenhandoPartida);
+		//FAZ O QUE TIVER QUE FAZER
+		descer();
+		//VOLTA A EXIBIR
+		on.screenRefresh = partidaView;
+	}
+	sprintf(scoreString, "%010d", score);
+	iniciarTiro();
+	on.click = partidaOnClick;
+}
+
 void partida(void){
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
@@ -166,61 +186,65 @@ void partidaLoop(void){
 			 colisao(&matriz[y-1][x],&tiro) ||
 			 colisao(&matriz[y+1][x],&tiro)){
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
-			insere(x,y,tiro.cor);
+			/*insere(x,y,tiro.cor);*/
 			//printf("a%d %d\n",x,y);
-
+			aloca();
 			//printint(contar(x,y));
-			if(contar(x,y)){
+			/*if(contar(x,y)){
 				estourando = true;
 				explodir(x,y);
 				estourando = false;
 			}
-			sprintf(scoreString, "%010d", score);
+			sprintf(scoreString, "%010d", score);*/
 
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
-			iniciarTiro();
-			on.click = partidaOnClick;
+			/*iniciarTiro();
+			on.click = partidaOnClick;*/
 		}
 		if(y%2){
 			if(colisao(&matriz[y-1][x+1],&tiro) ||
 				 colisao(&matriz[y+1][x+1],&tiro)){
 			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
-				insere(x,y,tiro.cor);
+				/*insere(x,y,tiro.cor);*/
 				//printf("a%d %d\n",x,y);
 				//println("b%d %d",x,y);
-
+				aloca();
 				//printint(contar(x,y));
-				if(contar(x,y)){
+				/*if(contar(x,y)){
 					estourando = true;
 					explodir(x,y);
 					estourando = false;
 				}
-				sprintf(scoreString, "%010d", score);
+				sprintf(scoreString, "%010d", score);*/
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("b");
-				iniciarTiro();
-				on.click = partidaOnClick;
+				/*iniciarTiro();
+				on.click = partidaOnClick;*/
 			}
 		}
 		else{
 			if(colisao(&matriz[y-1][x-1],&tiro) ||
 				 colisao(&matriz[y+1][x-1],&tiro)){
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
-				insere(x,y,tiro.cor);
+				/*insere(x,y,tiro.cor);*/
 				//printf("a%d %d\n",x,y);
 
 				//printint(contar(x,y));
-				if(contar(x,y)){
+				aloca();
+				/*if(contar(x,y)){
 					estourando = true;
 					explodir(x,y);
 					estourando = false;
 				}
 				sprintf(scoreString, "%010d", score);
+				*/
+				
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//printf("a%d %d\n",x,y);
-				iniciarTiro();
-				on.click = partidaOnClick;
+				
+				/*iniciarTiro();
+				on.click = partidaOnClick;*/
 			}
 		}
 	}
@@ -412,7 +436,8 @@ void moveNPC() {
 		/*tiro.vel.x = 0;
 		tiro.vel.y = 0;*/
 		//main(0, NULL);
-		quit = true;
+		aloca();
+		//quit = true;
 	}
 }
 

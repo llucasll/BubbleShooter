@@ -1,6 +1,8 @@
 #include "1.dados.h"
 #include "1.mecanica.h"
 
+#include "3.debug.h"
+
 bool habitavel(int x, int y){
 	if(existe(x+1,y)||existe(x-1,y))
 		return true;
@@ -120,6 +122,53 @@ void explodir(int x, int y){
 			fflush(stdout);
 			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
 		}
+}
+
+static void move(int x1, int y1, int x2, int y2){//x1 = x2
+	//println("%d,%d\t%d,%d",x1,y1,x2,y2);
+	if(valido(x1,y1) && valido(x2,y2)){
+		matriz[y1][x1].cor = matriz[y2][x2].cor;
+		matriz[y1][x1].x = matriz[y2][x2].x;
+		matriz[y1][x1].y = matriz[y2][x2].y;
+		matriz[y1][x1].pos.x = matriz[y2][x2].pos.x;
+		matriz[y1][x1].pos.y = matriz[y2][x2].pos.y;
+		matriz[y1][x1].morreu = matriz[y2][x2].morreu;
+		matriz[y1][x1].existe = matriz[y2][x2].existe;
+		
+		//matriz[y1][x1] = matriz[y2][x2];
+		println("%d,%d\t%d,%d",x1,y1,x2,y2);
+		println("%d\t%d",matriz[y1][x1].cor, matriz[y2][x2].cor);
+		//matriz[y][x] = matriz[y-1][x];
+	}
+}
+
+void descer(void){
+	for(int y=linhastotal; y; y--)
+		for(int x=0; x<colunas; x++)
+			move(x,y,x,y-1);
+	exibeMatriz(
+		lambda(
+			char*, (Bola b) {
+				char* saida;
+				saida = malloc(sizeof(char)*10);
+
+				/* COORDENADAS NA TELA */
+				//sprintf(saida,"%d,%d",b.x,b.y);
+
+				/* COORDENADAS NA MATRIZ (getLinha/getColuna) */
+				//if(existe(getLinha(b.y),getColuna(b.x,b.y)))
+				//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
+
+				/* COR */
+				//sprintf(saida,"%d",b.cor);
+
+				/* EXISTE */
+				sprintf(saida,"%d",b.existe);
+
+				return saida;
+			}
+		)
+	);
 }
 
 /*

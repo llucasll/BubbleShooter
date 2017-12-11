@@ -29,6 +29,7 @@
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
 	bool existe(int x, int y);
+	bool valido(int x, int y);
 
 	Bola** getVizinhos(int x, int y);
 	void liberaVizinhos(Bola*** ptr);

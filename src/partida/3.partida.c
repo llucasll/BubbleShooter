@@ -12,7 +12,11 @@ void printBola(byte cor, int x, int y);
 //Tamanho Exit: (54 por 54)
 //Tamanho VidaCover (91,19) (inicia em: 193,422)
 
+bool desenhandoPartida = false;
+
 void partidaView(){
+	desenhandoPartida = true;
+	
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,
@@ -48,6 +52,7 @@ void partidaView(){
 	printScore();
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
+	desenhandoPartida = false;
 }
 
 void printBola(byte cor, int x, int y){

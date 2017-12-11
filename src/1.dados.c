@@ -102,31 +102,39 @@ void preencher(void){
 	}
 }
 
+bool valido(int x, int y){
+	if(x>=0 && y>=0 && x<colunas && y<linhastotal)
+		return true;
+	else return false;
+}
+
 bool insere(int x, int y, byte b){
 	if(existe(x,y))
 		logger("Erro!! Bola SOBRESCRITA");
 
-	matriz[y][x].cor = b;
-	matriz[y][x].existe = true;
-	matriz[y][x].morreu = false;
-	matriz[y][x].pos.x = x;
-	matriz[y][x].pos.y = y;
+	if(valido(x,y)){
+		matriz[y][x].cor = b;
+		matriz[y][x].existe = true;
+		matriz[y][x].morreu = false;
+		matriz[y][x].pos.x = x;
+		matriz[y][x].pos.y = y;
 
-	//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
+		//printint(tam.bola.x * x + (y%2?tam.bola.x/2:0));
 
-	matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
-	matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
+		matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
+		matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
 
-	//printf("%d,%d\t",getColuna(matriz[y][x],getLinha(matriz[y][x])),getLinha(matriz[y][x]));
+		//printf("%d,%d\t",getColuna(matriz[y][x],getLinha(matriz[y][x])),getLinha(matriz[y][x]));
 
-	//println("%d\t%d\n%d\t%d\n", matriz[y][x].x, getLinha(matriz[y][x]), matriz[y][x].y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
-	///println("%d\t%d\n%d\t%d\n", x, getLinha(matriz[y][x]), y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
-	//getColuna(matriz[y][x],getLinha(matriz[y][x]));
+		//println("%d\t%d\n%d\t%d\n", matriz[y][x].x, getLinha(matriz[y][x]), matriz[y][x].y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+		///println("%d\t%d\n%d\t%d\n", x, getLinha(matriz[y][x]), y, getColuna(matriz[y][x],getLinha(matriz[y][x])));
+		//getColuna(matriz[y][x],getLinha(matriz[y][x]));
 
-	//println("%d dividido por %d = %d",x,y,arredonda(x,y));
+		//println("%d dividido por %d = %d",x,y,arredonda(x,y));
 
-	///printnl();
-	//println("%d",matriz[y][x].x/tam.bola.x);
+		///printnl();
+		//println("%d",matriz[y][x].x/tam.bola.x);
+	}
 }
 bool remover(int x, int y){
 	matriz[y][x].existe = false;
@@ -143,7 +151,7 @@ bool existe(int x, int y){
 }
 
 Bola *obter(int x, int y){
-	if(x>=0 && y>=0 && x<colunas && y<linhastotal)
+	if(valido(x,y))
 		return &matriz[y][x];
 	else
 		return NULL;

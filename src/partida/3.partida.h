@@ -2,6 +2,7 @@
 
 extern Surface botaoMenu;
 extern Surface botaoExit;
+extern bool desenhandoPartida;
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
 bool carregarMidia(void);
