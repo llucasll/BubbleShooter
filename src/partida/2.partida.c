@@ -65,7 +65,7 @@ voidvoid partidaLoop;
 int x, y;
 byte proximoTiro;
 
-byte vidas = vidastotal;
+byte vidas;
 
 void aloca(void){
 	insere(x,y,tiro.cor);
@@ -75,9 +75,9 @@ void aloca(void){
 		estourando = false;
 	}
 	else{
-		printint(vidas);
+		//printint(vidas);
 		vidas--;
-		printint(vidas);
+		//printint(vidas);
 		if(vidas<1){
 			// PARA A EXIBIÇÃO TEMPORARIAMENTE
 			on.screenRefresh = NULL;
@@ -91,9 +91,11 @@ void aloca(void){
 			
 			vidas=5;
 		}
-		printint(vidas);
-		printnl();
+		//printint(vidas);
+		//printnl();
 	}
+	
+	println("Vidas: %d",vidas);
 	
 	sprintf(scoreString, "%010d", score);
 	iniciarTiro();
@@ -413,6 +415,8 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 	score = 0;
 	sprintf(scoreString, "%010d", score);
 
+	vidas = vidastotal;
+	
 	preencher();
 
 	//Create NPC

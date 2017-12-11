@@ -26,7 +26,6 @@ INTERFACE
 MECÂNICA
 
 	Descer:
-		...E quando você levar cinco faltas uma nova linha de bolas aparece no topo da tela.
 		O número de faltas permitido antes de uma nova linha aparecer é mostrado por uma linha de bolas de cor prata na parte inferior esquerda da tela.
 	
 	Contagem de Pontos
@@ -55,3 +54,5 @@ FEITO
 	
 	MECÂNICA
 		Explosão
+		Descer:
+			...E quando você levar cinco faltas uma nova linha de bolas aparece no topo da tela.
