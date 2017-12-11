@@ -67,6 +67,7 @@
 	extern Surface blackRect;
 	extern bool partidaMenuStatus;
 	extern bool partidaExitStatus;
+	extern bool estourando;
 	extern byte bgIndex;
 
 	extern Surface menuFundo;

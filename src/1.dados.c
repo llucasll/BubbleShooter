@@ -23,6 +23,7 @@ Surface blackRect;
 byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;
+bool estourando;
 
 Surface menuFundo; //Fundo do menu
 Mix_Music *musica = NULL;

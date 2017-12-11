@@ -170,8 +170,11 @@ void partidaLoop(void){
 			//printf("a%d %d\n",x,y);
 
 			//printint(contar(x,y));
-			if(contar(x,y))
+			if(contar(x,y)){
+				estourando = true;
 				explodir(x,y);
+				estourando = false;
+			}
 
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
@@ -187,9 +190,11 @@ void partidaLoop(void){
 				//println("b%d %d",x,y);
 
 				//printint(contar(x,y));
-				if(contar(x,y))
+				if(contar(x,y)){
+					estourando = true;
 					explodir(x,y);
-
+					estourando = false;
+				}
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("b");
 				iniciarTiro();
@@ -204,8 +209,11 @@ void partidaLoop(void){
 				//printf("a%d %d\n",x,y);
 
 				//printint(contar(x,y));
-				if(contar(x,y))
+				if(contar(x,y)){
+					estourando = true;
 					explodir(x,y);
+					estourando = false;
+				}
 
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//printf("a%d %d\n",x,y);
@@ -360,6 +368,7 @@ void partidaLoop(void){
 }
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
+	estourando = false;
 	preencher();
 
 	//Create NPC

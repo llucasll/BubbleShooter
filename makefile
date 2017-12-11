@@ -1,11 +1,11 @@
 comp= gcc #compilador
 stdlibs = -lm -lpthread
-sdl = -lSDL2 -lSDL2_image -lSDL2_mixer
+sdl = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
 chatoFlags= -Wall -pedantic -ansi #prof
 outros= -D_GNU_SOURCE=1 -D_REENTRANT
 
-head = lib-headers/*.h 
+head = lib-headers/*.h
 lib = lib/*.c lib/*/*.c
 srcDir = src
 source = $(srcDir)/*.c $(srcDir)/*/*.c

@@ -22,7 +22,7 @@ void partidaView(){
 	//printf("%d",bgIndex);
 
 	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
-	
+
 	printSurface(screenSurface, botaoExit, 594, 426, 54, 54);
 
 	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
@@ -38,8 +38,8 @@ void partidaView(){
 		for(int j=0;j<colunas;j++)
 			if(existe(j,i))
 				printBola(matriz[i][j].cor, matriz[i][j].x, matriz[i][j].y);
-
-	printBola(tiro.cor, tiro.x, tiro.y);
+	if(!estourando)
+		printBola(tiro.cor, tiro.x, tiro.y);
 
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );

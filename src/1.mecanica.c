@@ -18,7 +18,7 @@ bool habitavel(int x, int y){
 }
 
 bool colisao( Bola* b, Tiro* t){
-	if(sqrt(pow(b->x-t->x,2)+pow(b->y-t->y,2))<=tam.bola.x && b->existe==true){
+	if(sqrt(pow(b->x-t->x,2)+pow(b->y-t->y,2))<=tam.bola.x-3 && b->existe==true){
 		return 1;
 	}
 	return 0;
@@ -107,11 +107,17 @@ void explodir(int x, int y){
 	byte cor = obter(x,y)->cor;
 	Bola** vizinho = getVizinhos(x,y);
 
+	usleep(50000);
+	fflush(stdout);
+
 	remover(x,y);
 
 	for(int i=0; i<6; i++)
-		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
+		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor){
+			usleep(50000);
+			fflush(stdout);
 			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
+		}
 }
 
 /*
