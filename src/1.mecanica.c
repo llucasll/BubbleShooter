@@ -24,6 +24,95 @@ bool colisao( Bola* b, Tiro* t){
 	return 0;
 }
 
+/* TODO debug
+byte contar(int x, int y){
+	byte cor = obter(x,y)->cor;
+	int count = 0;
+	
+	Bola** vizinho = getVizinhos(x,y);
+	
+	for(int i=0; i<6; i++){
+		println("ptr %d",vizinho[i]);
+		if(vizinho[i]){
+			println("EXISTE: %d",vizinho[i]->existe);
+			if(vizinho[i]->existe){
+				println("cor: %d",vizinho[i]->cor);
+				println("cor ==: %d",vizinho[i]->cor ==cor);
+				if(vizinho[i]->cor == cor){
+					count++;
+				}
+			}
+		}
+		//printnl();
+	}
+	if(count>1){
+		oi();
+		liberaVizinhos(&vizinho);
+		return 2;
+	}
+	else if(count==1)
+		for(int i=0; i<6; i++)
+			if(vizinho[i]){ if(vizinho[i]->existe){ if(vizinho[i]->cor == cor){
+				Bola** vizinho2 = getVizinhos(vizinho[i]->pos.x,vizinho[i]->pos.y);
+				for(int j=0; j<6; j++)
+					if(vizinho2[j]){ if(vizinho2[j]->existe){ if(vizinho2[j]->cor == cor){
+						oi();
+						liberaVizinhos(&vizinho);
+						liberaVizinhos(&vizinho2);
+						return 3;
+					}}}
+			}}}
+	return count;//
+}
+
+*/
+
+bool contar(int x, int y){
+	byte cor = obter(x,y)->cor;
+	int count = 0;
+	
+	Bola** vizinho = getVizinhos(x,y);
+	
+	for(int i=0; i<6; i++){
+		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
+			count++;
+		if(count>1){
+			//oi();
+			liberaVizinhos(&vizinho);
+			return true;
+		}
+	}
+	if(count==1)
+		for(int i=0; i<6; i++)
+			if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor){
+				Bola** vizinho2 = getVizinhos(vizinho[i]->pos.x,vizinho[i]->pos.y);
+				int count2 = 0;
+				for(int j=0; j<6; j++){
+					if(vizinho2[j]) if(vizinho2[j]->existe) if(vizinho2[j]->cor == cor)
+						count2++;
+					if(count2>1){
+						//oi();
+						liberaVizinhos(&vizinho);
+						liberaVizinhos(&vizinho2);
+						return true;
+					}
+				}
+				liberaVizinhos(&vizinho2);
+			}
+	liberaVizinhos(&vizinho);
+	return false;//
+}
+
+void explodir(int x, int y){
+	byte cor = obter(x,y)->cor;
+	Bola** vizinho = getVizinhos(x,y);
+	
+	remover(x,y);
+	
+	for(int i=0; i<6; i++)
+		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
+			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
+}
 
 /*
 

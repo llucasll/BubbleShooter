@@ -7,3 +7,5 @@ bool iniciarJogo(void);//iniciar globais; preparar jogo
 
 voidvoid partidaOnClick;
 void partidaOnMouseMove(Coordenadas pos);
+
+extern byte proximoTiro;
