@@ -24,6 +24,7 @@ byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;
 bool estourando;
+bool musicPlay;
 TTF_Font* fonte;
 SDL_Color ttfCor;
 Surface msgPontos;

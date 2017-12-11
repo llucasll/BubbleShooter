@@ -49,7 +49,8 @@ void partidaView(){
 	if(!estourando)
 		printBola(tiro.cor, tiro.x, tiro.y);
 
-	printScore();
+	printScore(20,61,61,0,tam.tela.x*3/4-20-2,tam.tela.y-30+2);
+	printScore(20,244,244,0,tam.tela.x*3/4-20,tam.tela.y-30);
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
 	desenhandoPartida = false;
@@ -59,15 +60,16 @@ void printBola(byte cor, int x, int y){
 	printSurface(screenSurface, sprites[cor], x, y, tam.bola.x, tam.bola.y);
 }
 
-void printScore(void){
-	fonte = TTF_OpenFont("./font/fonteFolks.ttf",20);
+
+void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY){
+	fonte = TTF_OpenFont("./font/fonteFolks.ttf",tamFonte);
 
 	SDL_Rect msgRect;
 
-	ttfCor.r=244; ttfCor.g=244; ttfCor.b=0;
+	ttfCor.r=r; ttfCor.g=g; ttfCor.b=b;
 
-	msgRect.x = tam.tela.x*3/4-20;
-	msgRect.y = tam.tela.y-30;
+	msgRect.x = posiX;
+	msgRect.y = posiY;
 	msgRect.w = 150;
 	msgRect.h = 40;
 
