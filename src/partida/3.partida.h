@@ -11,5 +11,6 @@ voidvoid iniciarInterface;
 /* ETAPA DE MECÂNICA */
 voidvoid moverSeta;
 voidvoid partidaView;
+voidvoid printScore;
 
 /* ETAPA DE FINALIZAÇÃO */

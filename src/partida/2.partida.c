@@ -67,7 +67,6 @@ byte proximoTiro;
 
 void partida(void){
 	score=0;
-	msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
 	on.mouseMove = partidaOnMouseMove;
