@@ -20,16 +20,10 @@ INTERFACE
 		Modificar parâmetros do jogo ou
 		Mostrar uma tela de ajuda.
 		Deve ser possível pelo menos desligar ou ligar a música que acompanha o jogo.
-
-	Logo abaixo deste tabuleiro há uma área que contém a bolha a ser atirada
-
-	Além disso nesta parte também é mostrada a quantidade de pontos que o jogador fez até o momento.
 	
 	Na parte inferior esquerda da tela também aparece a cor da próxima bolha que você irá atirar.
 
 MECÂNICA
-
-	Explosão
 
 	Descer:
 		...E quando você levar cinco faltas uma nova linha de bolas aparece no topo da tela.
@@ -50,3 +44,14 @@ EXTRAS
 		Botão para abrir a tela
 		O jogo deve incluir uma maneira de permitir ao usu ́ario fornecer seu nome para que ele entre nas estatísticas de pontos.
 
+//
+
+FEITO
+
+	INTERFACE
+		Logo abaixo deste tabuleiro há uma área que contém a bolha a ser atirada
+
+		Além disso nesta parte também é mostrada a quantidade de pontos que o jogador fez até o momento.
+	
+	MECÂNICA
+		Explosão

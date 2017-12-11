@@ -27,7 +27,7 @@ void partidaView(){
 
 	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
 
-	println("%s",scoreString);
+	//println("%s",scoreString);
 
 	//msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
 	//printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
