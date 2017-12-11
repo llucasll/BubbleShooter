@@ -50,6 +50,12 @@ Onde alojamos nossa biblioteca personalizada.
 
 O arquivos do jogo propriamente dito se dividem entre src/ (código-fonte) e media/ (arquivos de mídia, como imagens e sons).
 
+As telas possuem diretórios próprios dentro da estrutura de diretórios do projeto. Elas podem ser encontradas em
+
+	src/menu/
+	src/partida/
+	src/fim/
+
 #### Convenções de nomenclatura
 	
 * Variável/Função - primeiroSegundo
