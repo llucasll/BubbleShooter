@@ -30,12 +30,12 @@ Mix_Music *musica = NULL;
 Bola** getVizinhos(int x, int y){
 	//int x = b.pos.x, y = b.pos.y;
 	Bola** vizinhos = malloc(sizeof(Bola)*6);
-	
+
 	if (vizinhos == NULL) {
 		printf ("Socorro! malloc devolveu NULL!\n");
 		exit (EXIT_FAILURE);
 	}
-	
+
 	vizinhos[0] =
 		(y%2? existe(x,y-1) : existe(x-1,y-1))?
 			y%2? obter(x,y-1) : obter(x-1,y-1)
@@ -46,7 +46,7 @@ Bola** getVizinhos(int x, int y){
 			y%2? obter(x+1,y-1) : obter(x,y-1)
 		:
 			NULL;
-	
+
 	vizinhos[2] =
 		existe(x-1,y)?
 			obter(x-1,y)
@@ -57,7 +57,7 @@ Bola** getVizinhos(int x, int y){
 			obter(x+1,y)
 		:
 			NULL;
-	
+
 	vizinhos[4] =
 		(y%2? existe(x,y+1) : existe(x-1,y+1))?
 			y%2? obter(x,y+1) : obter(x-1,y+1)
@@ -68,7 +68,7 @@ Bola** getVizinhos(int x, int y){
 			y%2? obter(x+1,y+1) : obter(x,y+1)
 		:
 			NULL;
-	
+
 	return vizinhos;
 }
 

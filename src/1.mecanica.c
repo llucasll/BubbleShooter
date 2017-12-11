@@ -18,7 +18,7 @@ bool habitavel(int x, int y){
 }
 
 bool colisao( Bola* b, Tiro* t){
-	if(sqrt(pow(b->x-t->x,2)+pow(b->y-t->y,2))<=tam.bola.x-3){
+	if(sqrt(pow(b->x-t->x,2)+pow(b->y-t->y,2))<=tam.bola.x && b->existe==true){
 		return 1;
 	}
 	return 0;
@@ -28,9 +28,9 @@ bool colisao( Bola* b, Tiro* t){
 byte contar(int x, int y){
 	byte cor = obter(x,y)->cor;
 	int count = 0;
-	
+
 	Bola** vizinho = getVizinhos(x,y);
-	
+
 	for(int i=0; i<6; i++){
 		println("ptr %d",vizinho[i]);
 		if(vizinho[i]){
@@ -70,9 +70,9 @@ byte contar(int x, int y){
 bool contar(int x, int y){
 	byte cor = obter(x,y)->cor;
 	int count = 0;
-	
+
 	Bola** vizinho = getVizinhos(x,y);
-	
+
 	for(int i=0; i<6; i++){
 		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
 			count++;
@@ -106,9 +106,9 @@ bool contar(int x, int y){
 void explodir(int x, int y){
 	byte cor = obter(x,y)->cor;
 	Bola** vizinho = getVizinhos(x,y);
-	
+
 	remover(x,y);
-	
+
 	for(int i=0; i<6; i++)
 		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
 			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);

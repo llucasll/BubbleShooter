@@ -15,10 +15,11 @@
 	#include "../lib/debug.h"
 
 	/* CONSTANTES */
-	#define linhas 2
+	#define linhas 7
 	#define colunas 17
 	#define linhastotal 12
 	#define ncores 6
+	#define tiroVelocidade 3
 
 	/* Global Variables */
 	extern Janela janela; //The window we'll be rendering to

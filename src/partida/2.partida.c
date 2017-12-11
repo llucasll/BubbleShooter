@@ -109,7 +109,7 @@ void partida(void){
 	printnl();
 	println("%d,%d",x,y);
 	printnl();
-	
+
 	int a=2;
 	int b=2;
 	println("Vizinhos de %d,%d",a,b);
@@ -119,18 +119,18 @@ void partida(void){
 			printf("%d",vizinhos[i]->cor);
 		else
 			printf("X");
-			
+
 		printf(" ");
-		
+
 		if(vizinhos[i+1])
 			printf("%d",vizinhos[i+1]->cor);
 		else
 			printf("X");
-		
+
 		printnl();
 	}
 	liberaVizinhos(&vizinhos);
-		
+
 	//printint((int)obter(16,8));
 	//printnl();
 
@@ -167,11 +167,12 @@ void partidaLoop(void){
 			 colisao(&matriz[y+1][x],&tiro)){
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			insere(x,y,tiro.cor);
-			
+			//printf("a%d %d\n",x,y);
+
 			//printint(contar(x,y));
 			if(contar(x,y))
 				explodir(x,y);
-			
+
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
 			iniciarTiro();
@@ -182,8 +183,9 @@ void partidaLoop(void){
 				 colisao(&matriz[y+1][x+1],&tiro)){
 			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
+				//printf("a%d %d\n",x,y);
 				//println("b%d %d",x,y);
-			
+
 				//printint(contar(x,y));
 				if(contar(x,y))
 					explodir(x,y);
@@ -200,19 +202,19 @@ void partidaLoop(void){
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
 				//printf("a%d %d\n",x,y);
-			
+
 				//printint(contar(x,y));
 				if(contar(x,y))
 					explodir(x,y);
-				
+
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
-				//println("c");
+				//printf("a%d %d\n",x,y);
 				iniciarTiro();
 				on.click = partidaOnClick;
 			}
 		}
 	}
-	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) println("nao habitavel");
+	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) println("%d %d",x,y);
 			//println("a");
 
 			//Bola* b = obter(getColuna(tiro.x,tiro.y), getLinha(tiro.y));
@@ -412,14 +414,14 @@ void partidaOnClick(){
 		on.run = menu;
 		return;
 	}
-	if(pos.y>419)pos.y=419;
+	else if(pos.y>419)return;
 	pos.x -= (tam.tela.x)/2;
 	pos.y -= (tam.tela.y)-((tam.bola.y)/2);
 
 	double d = sqrt( pow(pos.x,2) + pow(pos.y,2) );
 
-	tiro.vel.x = pos.x/d;
-	tiro.vel.y = pos.y/d;
+	tiro.vel.x = pos.x/d * tiroVelocidade;
+	tiro.vel.y = pos.y/d * tiroVelocidade;
 
 	on.click = NULL;//TODO experimenta tirar essa linha
 }
