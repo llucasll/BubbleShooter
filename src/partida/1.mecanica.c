@@ -1,4 +1,3 @@
-#include "1.dados.h"
 #include "1.mecanica.h"
 
 #include "3.debug.h"
@@ -103,25 +102,6 @@ bool contar(int x, int y){
 			}
 	liberaVizinhos(&vizinho);
 	return false;//
-}
-
-void explodir(int x, int y){
-	byte cor = obter(x,y)->cor;
-	Bola** vizinho = getVizinhos(x,y);
-
-	usleep(50000);
-	fflush(stdout);
-	score+=20;
-	println("%d",score);
-
-	remover(x,y);
-
-	for(int i=0; i<6; i++)
-		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor){
-			usleep(50000);
-			fflush(stdout);
-			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
-		}
 }
 
 static void move(int x1, int y1, int x2, int y2){//x1 = x2

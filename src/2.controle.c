@@ -1,4 +1,4 @@
-#include "1.dados.h"//apenas pelas inicializações no init
+//#include "1.dados.h"//apenas pelas inicializações no init
 
 #include "menu/2.menu.h"
 #include "menu/3.menu.h"

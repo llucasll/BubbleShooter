@@ -29,6 +29,8 @@
 
 	extern const Coordenadas campo;//tamanhos
 
+	#include "1.dados.h"
+
 	/* ERROS */
 	//#define
 #endif

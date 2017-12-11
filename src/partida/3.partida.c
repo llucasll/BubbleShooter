@@ -1,4 +1,4 @@
-#include "../1.dados.h"
+#include "1.dados.h"
 
 #include "2.partida.h"
 #include "3.partida.h"
@@ -60,7 +60,6 @@ void printBola(byte cor, int x, int y){
 	printSurface(screenSurface, sprites[cor], x, y, tam.bola.x, tam.bola.y);
 }
 
-
 void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY){
 	fonte = TTF_OpenFont("./media/fonts/fonteFolks.ttf",tamFonte);
 
@@ -79,6 +78,25 @@ void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY){
 	//printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
 	SDL_FreeSurface(msgPontos);
 	TTF_CloseFont(fonte);
+}
+
+void explodir(int x, int y){
+	byte cor = obter(x,y)->cor;
+	Bola** vizinho = getVizinhos(x,y);
+
+	usleep(50000);
+	fflush(stdout);
+	score+=20;
+	println("%d",score);
+
+	remover(x,y);
+
+	for(int i=0; i<6; i++)
+		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor){
+			usleep(50000);
+			fflush(stdout);
+			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
+		}
 }
 
 /* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */

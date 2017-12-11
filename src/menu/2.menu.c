@@ -3,7 +3,7 @@
 
 #include "../partida/2.partida.h"
 
-#include "../3.debug.h"
+//#include "partida/3.debug.h"
 
 void menu(void){
 	on.screenRefresh = menuView;

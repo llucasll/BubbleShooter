@@ -1,12 +1,11 @@
-#include "../1.dados.h"
-#include "../1.mecanica.h"
+#include "1.mecanica.h"
 
 #include "2.partida.h"
 #include "3.partida.h"
 
 #include "../menu/2.menu.h"
 #include "../fim/2.fim.h"
-#include "../3.debug.h"
+#include "3.debug.h"
 
 /*
 Este arquivo contém a parte de Controle do programa mais relacionada à lógica do jogo.
