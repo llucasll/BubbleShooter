@@ -103,6 +103,17 @@ bool contar(int x, int y){
 	return false;//
 }
 
+void explodir(int x, int y){
+	byte cor = obter(x,y)->cor;
+	Bola** vizinho = getVizinhos(x,y);
+	
+	remover(x,y);
+	
+	for(int i=0; i<6; i++)
+		if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->cor == cor)
+			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
+}
+
 /*
 
 float distancia(Bola* b, Tiro t){

@@ -1,0 +1,52 @@
+BÁSICO
+
+	Manual do usuário, contendo:
+		Informações sobre
+			como instalar
+			e executar o jogo,
+		bem como informações sobre o jogo em si.
+	
+	GARIMPAR O CÓDIGO
+
+INTERFACE
+
+	Tela inicial
+		O nome do jogo,
+		os nomes dos integrantes do grupo e
+		possíveis opções para o jogo.
+	
+	Botões que permitem:
+		Recomeçar o jogo,
+		Modificar parâmetros do jogo ou
+		Mostrar uma tela de ajuda.
+		Deve ser possível pelo menos desligar ou ligar a música que acompanha o jogo.
+
+	Logo abaixo deste tabuleiro há uma área que contém a bolha a ser atirada
+
+	Além disso nesta parte também é mostrada a quantidade de pontos que o jogador fez até o momento.
+	
+	Na parte inferior esquerda da tela também aparece a cor da próxima bolha que você irá atirar.
+
+MECÂNICA
+
+	Explosão
+
+	Descer:
+		...E quando você levar cinco faltas uma nova linha de bolas aparece no topo da tela.
+		O número de faltas permitido antes de uma nova linha aparecer é mostrado por uma linha de bolas de cor prata na parte inferior esquerda da tela.
+	
+	Contagem de Pontos
+		# Um tiro que estoura 6 bolhas recebe mais pontos do que dois tiros com 3 estouros cada.
+		Um grupo de 3 bolhas explodidas vale 30 pontos.
+		Cada bolha adicional vale 20 pontos.
+	
+	Vitória ou derrota
+
+EXTRAS
+	Ilhas
+		Quando após um tiro e a explosão das bolhas aparecer uma ilha de bolhas separada do agrupamento principal o jogo explode todas as bolas desta ilha. Cada bolha da ilha que for explodida vale 100 pontos.
+	High Score
+		Cadastrar jogadores e armazenar seus resultados de modo a mostrar a classificação dos melhores.
+		Botão para abrir a tela
+		O jogo deve incluir uma maneira de permitir ao usu ́ario fornecer seu nome para que ele entre nas estatísticas de pontos.
+

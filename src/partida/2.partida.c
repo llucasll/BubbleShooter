@@ -166,7 +166,11 @@ void partidaLoop(void){
 			 colisao(&matriz[y+1][x],&tiro)){
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			insere(x,y,tiro.cor);
-			printint(contar(x,y));
+			
+			//printint(contar(x,y));
+			if(contar(x,y))
+				explodir(x,y);
+			
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
 			iniciarTiro();
@@ -177,7 +181,11 @@ void partidaLoop(void){
 				 colisao(&matriz[y+1][x+1],&tiro)){
 			//	printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
-				printint(contar(x,y));
+			
+				//printint(contar(x,y));
+				if(contar(x,y))
+					explodir(x,y);
+				
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("b");
 				iniciarTiro();
@@ -189,7 +197,11 @@ void partidaLoop(void){
 				 colisao(&matriz[y+1][x-1],&tiro)){
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				insere(x,y,tiro.cor);
-				printint(contar(x,y));
+			
+				//printint(contar(x,y));
+				if(contar(x,y))
+					explodir(x,y);
+				
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("c");
 				iniciarTiro();
