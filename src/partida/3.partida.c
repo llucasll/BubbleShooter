@@ -42,10 +42,10 @@ void partidaView(){
 							fundo.R, fundo.G, fundo.B ));
 */
 
-	for(int i=0;i<linhastotal;i++)
-		for(int j=0;j<colunas;j++)
-			if(existe(j,i))
-				printBola(matriz[i][j].cor, matriz[i][j].x, matriz[i][j].y);
+	for(int y=0;y<linhastotal;y++)
+		for(int x=0;x<colunas;x++)
+			if(existe(x,y))
+				printBola(matriz[y][x].cor, matriz[y][x].x, matriz[y][x].y);
 	if(!estourando)
 		printBola(tiro.cor, tiro.x, tiro.y);
 

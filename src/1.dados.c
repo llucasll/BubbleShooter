@@ -97,8 +97,13 @@ void preencher(void){
 		//printnl();
 	}
 	for(int y=linhas;y<linhastotal;y++){
-		for(int x=0;x<colunas;x++)
+		for(int x=0;x<colunas;x++){
 			matriz[y][x].existe = false;
+			matriz[y][x].x = tam.bola.x * x + (y%2?tam.bola.x/2:0);
+			matriz[y][x].y = tam.bola.y * y/*- 4*y */  /* * 0.9*/;//TODO
+			matriz[y][x].pos.x = x;
+			matriz[y][x].pos.y = y;
+		}
 	}
 }
 
