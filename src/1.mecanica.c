@@ -127,6 +127,7 @@ void explodir(int x, int y){
 static void move(int x1, int y1, int x2, int y2){//x1 = x2
 	//println("%d,%d\t%d,%d",x1,y1,x2,y2);
 	if(valido(x1,y1) && valido(x2,y2)){
+		println("%d\t%d",matriz[y1][x1].cor, matriz[y2][x2].cor);
 		matriz[y1][x1].cor = matriz[y2][x2].cor;
 		matriz[y1][x1].x = matriz[y2][x2].x;
 		matriz[y1][x1].y = matriz[y2][x2].y;
@@ -138,6 +139,7 @@ static void move(int x1, int y1, int x2, int y2){//x1 = x2
 		//matriz[y1][x1] = matriz[y2][x2];
 		println("%d,%d\t%d,%d",x1,y1,x2,y2);
 		println("%d\t%d",matriz[y1][x1].cor, matriz[y2][x2].cor);
+		printnl();
 		//matriz[y][x] = matriz[y-1][x];
 	}
 }
@@ -160,10 +162,10 @@ void descer(void){
 				//sprintf(saida,"%d,%d",getColuna(b.x,b.y),getLinha(b.y));
 
 				/* COR */
-				//sprintf(saida,"%d",b.cor);
+				sprintf(saida,"%d",b.cor);
 
 				/* EXISTE */
-				sprintf(saida,"%d",b.existe);
+				//sprintf(saida,"%d",b.existe);
 
 				return saida;
 			}
