@@ -24,7 +24,7 @@
 
 	/* PROTÓTIPOS */
 
-	
+
 	bool insere(int x, int y, byte b);
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
@@ -72,6 +72,7 @@
 	extern bool partidaMenuStatus;
 	extern bool partidaExitStatus;
 	extern bool estourando;
+	extern bool musicPlay;
 	extern byte bgIndex;
 
 	extern Surface menuFundo;
