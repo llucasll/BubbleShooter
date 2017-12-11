@@ -24,6 +24,7 @@
 
 	/* PROTÓTIPOS */
 
+	
 	bool insere(int x, int y, byte b);
 	Bola *obter(int x, int y);
 	bool remover(int x, int y);
@@ -48,6 +49,9 @@
 		byte cores;
 	}extern tam;
 
+	extern int score;
+	extern char scoreString[scoreDigit];
+
 	extern Surface sprites[ncores]; //Vetor de imagens :^)
 	extern Coordenadas velocidade;
 	//extern Bola ***matriz;
@@ -71,6 +75,10 @@
 	extern byte bgIndex;
 
 	extern Surface menuFundo;
-	extern Mix_Music *musica;
+	extern Mix_Music* musica;
+	extern TTF_Font* fonte;
+	extern SDL_Color ttfCor;
+	extern Surface msgPontos;
+
 
 #endif

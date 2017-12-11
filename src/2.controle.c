@@ -92,7 +92,11 @@ void init(void){
 		logger( "Failed to load media!\n" );
 		exit(2);
 	}
-
+	/*Initialize TTF*/
+	if (TTF_Init() == -1){
+		logger( "Failed to load media!\n" );
+		exit(2);
+	}
 	//Load media
 	if( !loadMedia() ) {
 		logger( "Failed to load media!\n" );
@@ -168,6 +172,9 @@ int loadMedia() {
 	partidaMenu0 = loadImage( "./media/partidaMenu0.png", screenSurface );
 	partidaMenu1 = loadImage( "./media/partidaMenu1.png", screenSurface );
 	blackRect = loadImage( "./media/blackRect.png", screenSurface );
+	fonte = TTF_OpenFont("./font/fonteFolks.ttf",10);
+	ttfCor.r=244; ttfCor.g=244; ttfCor.b=244;
+	msgPontos= NULL;
 
 	return success;
 }

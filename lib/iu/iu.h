@@ -4,18 +4,19 @@
 /* COMPORTAMENTO DE BIBLIOTECA */
 #ifndef IUlib
 	#define IUlib
-	
+
 	#include <SDL2/SDL.h>
 	#include <SDL2/SDL_image.h>
 	#include <SDL2/SDL_mixer.h>
-	
+	#include <SDL2/SDL_ttf.h>
+
 	typedef SDL_Window* Janela;
 	typedef SDL_Surface* Surface;
-	
+
 	typedef struct{
 		int x,y;
 	} Coordenadas;
-	
+
 	// FUNÇÕES-PADÃO
 	voidvoid stopDefault;
 	voidvoid eventsDefault;
@@ -39,7 +40,7 @@ voidvoid init;
 	// o programa espera que haja um init assim como espera um main.
 
 // Threads
-struct{	
+struct{
 	Thread principal; // Esse é o programa em si
 	Thread eventos; // Gerencia os eventos
 	Thread visualizacao; // Thread responsável pela apresentação
@@ -50,14 +51,14 @@ struct{
 	voidvoid *run; // Função principal
 	voidvoid *checkEvents; // Gerencia os eventos
 	voidvoid *screenRefresh; // Executado periodicamente pelo atualizador
-	
+
 	/* Comportamentos de resposta ao Evento */
 	voidvoid *click; // O mouse clicou
 	void (*mouseMove)(Coordenadas pos); // O mouse se moveu na tela
 	voidvoid *keyDown; // Alguma tecla pressionada (no teclado)
 	//SDLKey
 	voidvoid *rightClick; // Clique direito do mouse
-	
+
 	/* ENCERRAMENTO DO PROGRAMA */
 	voidvoid *stop; // Inicia o encerramento do programa
 	voidvoid *finish; // Encerra o programa

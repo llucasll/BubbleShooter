@@ -24,9 +24,15 @@ byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;
 bool estourando;
+TTF_Font* fonte;
+SDL_Color ttfCor;
+Surface msgPontos;
+int score;
+char scoreString[scoreDigit];
 
 Surface menuFundo; //Fundo do menu
 Mix_Music *musica = NULL;
+
 
 Bola** getVizinhos(int x, int y){
 	//int x = b.pos.x, y = b.pos.y;

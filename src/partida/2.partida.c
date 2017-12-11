@@ -66,7 +66,8 @@ int x, y;
 byte proximoTiro;
 
 void partida(void){
-
+	score=0;
+	msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
 	on.mouseMove = partidaOnMouseMove;
@@ -75,6 +76,7 @@ void partida(void){
 	botaoMenu = partidaMenu0;
 
 	//println("%d",sortear());
+
 
 	iniciarJogo();
 
@@ -175,6 +177,7 @@ void partidaLoop(void){
 				explodir(x,y);
 				estourando = false;
 			}
+			sprintf(scoreString, "%010d", score);
 
 			//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 			//println("a");
@@ -195,6 +198,7 @@ void partidaLoop(void){
 					explodir(x,y);
 					estourando = false;
 				}
+				sprintf(scoreString, "%010d", score);
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//println("b");
 				iniciarTiro();
@@ -214,7 +218,7 @@ void partidaLoop(void){
 					explodir(x,y);
 					estourando = false;
 				}
-
+				sprintf(scoreString, "%010d", score);
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//printf("a%d %d\n",x,y);
 				iniciarTiro();
@@ -369,6 +373,8 @@ void partidaLoop(void){
 
 bool iniciarJogo(void){//iniciar globais; preparar jogo
 	estourando = false;
+	score = 0;
+
 	preencher();
 
 	//Create NPC

@@ -41,6 +41,8 @@ void partidaView(){
 	if(!estourando)
 		printBola(tiro.cor, tiro.x, tiro.y);
 
+	msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
+	printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
 }

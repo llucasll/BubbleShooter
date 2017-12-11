@@ -109,6 +109,8 @@ void explodir(int x, int y){
 
 	usleep(50000);
 	fflush(stdout);
+	score+=10;
+	println("%d",score);
 
 	remover(x,y);
 
