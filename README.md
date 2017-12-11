@@ -46,11 +46,11 @@ For general information about this repository, please open the file
 
 	about.info
 
-#### Aviso
+#### Notice
 
 The game is being developed and can be unstable.
 
-## Instalação
+## Instalation
 
 To play the game on the Ubuntu is required get installed the following packages:
 * libsdl2-dev
