@@ -129,10 +129,10 @@ static void move(int x1, int y1, int x2, int y2){//x1 = x2
 	if(valido(x1,y1) && valido(x2,y2)){
 		println("%d\t%d",matriz[y1][x1].cor, matriz[y2][x2].cor);
 		matriz[y1][x1].cor = matriz[y2][x2].cor;
-		matriz[y1][x1].x = matriz[y2][x2].x;
-		matriz[y1][x1].y = matriz[y2][x2].y;
-		matriz[y1][x1].pos.x = matriz[y2][x2].pos.x;
-		matriz[y1][x1].pos.y = matriz[y2][x2].pos.y;
+		//matriz[y1][x1].x = matriz[y2][x2].x;
+		//matriz[y1][x1].y = matriz[y2][x2].y;
+		//matriz[y1][x1].pos.x = matriz[y2][x2].pos.x;
+		//matriz[y1][x1].pos.y = matriz[y2][x2].pos.y;
 		matriz[y1][x1].morreu = matriz[y2][x2].morreu;
 		matriz[y1][x1].existe = matriz[y2][x2].existe;
 		
