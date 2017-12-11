@@ -9,3 +9,4 @@ voidvoid partidaOnClick;
 void partidaOnMouseMove(Coordenadas pos);
 
 extern byte proximoTiro;
+extern byte vidas;

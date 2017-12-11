@@ -65,21 +65,36 @@ voidvoid partidaLoop;
 int x, y;
 byte proximoTiro;
 
+byte vidas = vidastotal;
+
 void aloca(void){
 	insere(x,y,tiro.cor);
 	if(contar(x,y)){
 		estourando = true;
 		explodir(x,y);
 		estourando = false;
-		
-		// PARA A EXIBIÇÃO TEMPORARIAMENTE
-		on.screenRefresh = NULL;
-		while(desenhandoPartida);
-		//FAZ O QUE TIVER QUE FAZER
-		descer();
-		//VOLTA A EXIBIR
-		on.screenRefresh = partidaView;
 	}
+	else{
+		printint(vidas);
+		vidas--;
+		printint(vidas);
+		if(vidas<1){
+			// PARA A EXIBIÇÃO TEMPORARIAMENTE
+			on.screenRefresh = NULL;
+			while(desenhandoPartida);
+			
+			//FAZ O QUE TIVER QUE FAZER
+			descer();
+			
+			//VOLTA A EXIBIR
+			on.screenRefresh = partidaView;
+			
+			vidas=5;
+		}
+		printint(vidas);
+		printnl();
+	}
+	
 	sprintf(scoreString, "%010d", score);
 	iniciarTiro();
 	on.click = partidaOnClick;

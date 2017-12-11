@@ -21,6 +21,7 @@
 	#define ncores 6
 	#define tiroVelocidade 3
 	#define scoreDigit 10
+	#define vidastotal 5
 
 	/* Global Variables */
 	extern Janela janela; //The window we'll be rendering to
