@@ -2,6 +2,7 @@
 
 #include "2.partida.h"
 #include "3.partida.h"
+#include "../3.visualizacao.h"
 
 #include "../menu/2.menu.h"
 #include "../fim/2.fim.h"
@@ -84,21 +85,21 @@ void aloca(void){
 			// PARA A EXIBIÇÃO TEMPORARIAMENTE
 			on.screenRefresh = NULL;
 			while(desenhandoPartida);
-			
+
 			//FAZ O QUE TIVER QUE FAZER
 			descer();
-			
+
 			//VOLTA A EXIBIR
 			on.screenRefresh = partidaView;
-			
+
 			vidas=5;
 		}
 		//printint(vidas);
 		//printnl();
 	}
-	
+
 	println("Vidas: %d",vidas);
-	
+
 	sprintf(scoreString, "%010d", score);
 	iniciarTiro();
 	on.click = partidaOnClick;
@@ -258,10 +259,10 @@ void partidaLoop(void){
 				}
 				sprintf(scoreString, "%010d", score);
 				*/
-				
+
 				//printf("%d %d %d\n%d %d %d\n%d %d %d\n",matriz[y-1][x-1].cor,matriz[y-1][x].cor,matriz[y-1][x+1].cor,matriz[y][x-1].cor,matriz[y][x].cor,matriz[y][x+1].cor,matriz[y+1][x-1].cor,matriz[y+1][x].cor,matriz[y+1][x+1].cor);
 				//printf("a%d %d\n",x,y);
-				
+
 				/*iniciarTiro();
 				on.click = partidaOnClick;*/
 			}
@@ -418,7 +419,7 @@ bool iniciarJogo(void){//iniciar globais; preparar jogo
 	sprintf(scoreString, "%010d", score);
 
 	vidas = vidastotal;
-	
+
 	preencher();
 
 	//Create NPC
@@ -474,7 +475,19 @@ void partidaOnClick(){
 		on.run = menu;
 		return;
 	}
+	else if(pos.x>=0 && pos.x<=54 && pos.y>=426 && pos.y<=480){
+		if(musicaOn){
+			Mix_VolumeMusic(0);
+			musicaOn = false;
+		}
+		else if(!musicaOn){
+			Mix_VolumeMusic(100);
+			musicaOn = true;
+		}
+		return;
+	}
 	else if(pos.y>419)return;
+
 	pos.x -= (tam.tela.x)/2;
 	pos.y -= (tam.tela.y)-((tam.bola.y)/2);
 

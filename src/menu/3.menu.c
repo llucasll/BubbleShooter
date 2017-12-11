@@ -2,6 +2,7 @@
 
 #include "2.menu.h"
 #include "3.menu.h"
+#include "../3.visualizacao.h"
 
 Surface menuOver;
 
@@ -12,7 +13,7 @@ void menuView(){
 						  0x00, 0x00, 0x00 ) );
 
 	printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
-		
+
 	//80,210,170,60
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );

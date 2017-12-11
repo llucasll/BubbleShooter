@@ -1,5 +1,6 @@
 #include "2.fim.h"
 #include "3.fim.h"
+#include "../3.visualizacao.h"
 
 #include "../menu/2.menu.h"
 #include "../partida/2.partida.h"

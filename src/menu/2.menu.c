@@ -2,6 +2,7 @@
 #include "3.menu.h"
 
 #include "../partida/2.partida.h"
+#include "../3.visualizacao.h"
 
 //#include "partida/3.debug.h"
 

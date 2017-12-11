@@ -5,6 +5,7 @@
 
 #include "partida/2.partida.h"
 #include "partida/3.partida.h"
+#include "3.visualizacao.h"
 
 #include "fim/2.fim.h"
 #include "fim/3.fim.h"
@@ -103,6 +104,7 @@ void init(void){
 		exit(2);
 	}
 	Mix_PlayMusic( musica, -1);
+	musicaOn = true;
 	//init2();
 }
 
@@ -150,7 +152,7 @@ int loadMedia() {
 		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
 		success = false;
 	}*/
-	musica = Mix_LoadMUS("./media/musica.wav");
+	musica = Mix_LoadMUS("./media/Carnival_Kerfuffle.mp3");
 
 	sprites[0] = loadImage( "./media/blue.png", screenSurface );
 	sprites[1] = loadImage( "./media/red.png", screenSurface );
