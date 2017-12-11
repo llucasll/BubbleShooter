@@ -66,7 +66,6 @@ int x, y;
 byte proximoTiro;
 
 void partida(void){
-	score=0;
 	on.screenRefresh = partidaView;
 	on.click = partidaOnClick;
 	on.mouseMove = partidaOnMouseMove;
@@ -373,6 +372,7 @@ void partidaLoop(void){
 bool iniciarJogo(void){//iniciar globais; preparar jogo
 	estourando = false;
 	score = 0;
+	sprintf(scoreString, "%010d", score);
 
 	preencher();
 

@@ -55,18 +55,18 @@ void printBola(byte cor, int x, int y){
 }
 
 void printScore(void){
-	fonte = TTF_OpenFont("./font/fonteFolks.ttf",10);
+	fonte = TTF_OpenFont("./font/fonteFolks.ttf",20);
 
 	SDL_Rect msgRect;
 
 	ttfCor.r=244; ttfCor.g=244; ttfCor.b=0;
 
-	msgRect.x = tam.tela.x*3/4;
-	msgRect.y = tam.tela.y-20;
+	msgRect.x = tam.tela.x*3/4-20;
+	msgRect.y = tam.tela.y-30;
 	msgRect.w = 150;
 	msgRect.h = 40;
 
-	msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
+	msgPontos = TTF_RenderText_Solid( fonte, scoreString, ttfCor);
 	SDL_BlitSurface(msgPontos, NULL, screenSurface, &msgRect);
 
 	//printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
