@@ -12,14 +12,8 @@ void menu(void){
 
 	menuOver = menuOverNot;
 
-	//if(controle.principal == partida){ //se for pra começar a partida
 	bgIndex = rand()%5;
-	//	return;
-	//}
-	if(false){ //se for pra encerrar
-		on.stop();
-		return;
-	}
+
 	on.run = NULL;
 }
 

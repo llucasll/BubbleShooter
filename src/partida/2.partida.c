@@ -5,6 +5,7 @@
 #include "3.partida.h"
 
 #include "../menu/2.menu.h"
+#include "../fim/2.fim.h"
 #include "../3.debug.h"
 
 /*
@@ -74,6 +75,7 @@ void aloca(void){
 		explodir(x,y);
 		score-=30;
 		estourando = false;
+		on.run = vitoria;
 	}
 	else{
 		//printint(vidas);

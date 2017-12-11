@@ -1,3 +1,4 @@
 #include "../0.cabecalho.h"
 
-voidvoid fimView;
+voidvoid vitoriaView;
+voidvoid derrotaView;

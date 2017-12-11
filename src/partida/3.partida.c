@@ -62,7 +62,7 @@ void printBola(byte cor, int x, int y){
 
 
 void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY){
-	fonte = TTF_OpenFont("./font/fonteFolks.ttf",tamFonte);
+	fonte = TTF_OpenFont("./media/fonts/fonteFolks.ttf",tamFonte);
 
 	SDL_Rect msgRect;
 
