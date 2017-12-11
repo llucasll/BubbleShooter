@@ -2,6 +2,7 @@
 
 #include "2.partida.h"
 #include "3.partida.h"
+#include "../3.visualizacao.h"
 
 Surface botaoMenu;
 Surface botaoExit;
@@ -16,7 +17,7 @@ bool desenhandoPartida = false;
 
 void partidaView(){
 	desenhandoPartida = true;
-	
+
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,

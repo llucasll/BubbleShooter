@@ -1,5 +1,6 @@
 #include "1.dados.h"
 #include "1.mecanica.h"
+#include "3.visualizacao.h"
 
 #include "3.debug.h"
 
@@ -135,7 +136,7 @@ static void move(int x1, int y1, int x2, int y2){//x1 = x2
 		//matriz[y1][x1].pos.y = matriz[y2][x2].pos.y;
 		matriz[y1][x1].morreu = matriz[y2][x2].morreu;
 		matriz[y1][x1].existe = matriz[y2][x2].existe;
-		
+
 		//matriz[y1][x1] = matriz[y2][x2];
 		/*println("%d,%d\t%d,%d",x1,y1,x2,y2);
 		println("%d\t%d",matriz[y1][x1].cor, matriz[y2][x2].cor);
