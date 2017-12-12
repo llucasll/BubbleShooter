@@ -62,7 +62,7 @@ void aloca(void){
 		}
 	}
 
-	println("Vidas: %d",vidas);
+	logger("Vidas: %d",vidas);
 
 	sprintf(scoreString, "%010d", score);
 	iniciarTiro();
@@ -107,15 +107,15 @@ void partida(void){
 	//TODO debug
 	x = getColuna(tiro.x,tiro.y);
 	y = getLinha(tiro.y);
-	printnl();
-	println("%d,%d",x,y);
-	printnl();
+	logger("");
+	logger("%d,%d",x,y);
+	logger("");
 
 	int a=2;
 	int b=2;
-	println("Vizinhos de %d,%d",a,b);
+	logger("Vizinhos de %d,%d",a,b);
 	Bola** vizinhos = getVizinhos(a,b);
-	for(int i=0; i<6; i+=2){
+	for(int i=0; i<6; i+=2){/* TODO
 		if(vizinhos[i])
 			printf("%d",vizinhos[i]->cor);
 		else
@@ -128,7 +128,7 @@ void partida(void){
 		else
 			printf("X");
 
-		printnl();
+		printnl();*/
 	}
 	liberaVizinhos(&vizinhos);
 
@@ -165,7 +165,7 @@ void partidaLoop(void){
 			}
 		}
 	}
-	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) println("%d %d",x,y);
+	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) logger("%d %d",x,y);
 	
 	if(on.run == menu) return;
 	else SDL_Delay(5);//Not so good solution, depends on your computer

@@ -82,7 +82,7 @@ void explodir(int x, int y){
 	usleep(50000);
 	fflush(stdout);
 	score+=20;
-	println("%d",score);
+	logger("%d",score);
 
 	remover(x,y);
 
