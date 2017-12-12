@@ -75,6 +75,14 @@ int loadMedia() {
 	partidaHud = loadImage( "./media/partida/partidaHud.png", screenSurface );
 	partidaMenu0 = loadImage( "./media/partida/partidaMenu0.png", screenSurface );
 	partidaMenu1 = loadImage( "./media/partida/partidaMenu1.png", screenSurface );
+	fimOverScores0 = loadImage( "./media/fimOverScores0.png", screenSurface );
+	fimOverScores1 = loadImage( "./media/fimOverScores1.png", screenSurface );
+	fimExit0 = loadImage( "./media/partida/partidaExit0.png", screenSurface );
+	fimExit1 = loadImage( "./media/partida/partidaExit1.png", screenSurface );
+	sound1 = loadImage( "./media/menuSound1.png", screenSurface );
+	sound0 = loadImage( "./media/menuSound0.png", screenSurface );
+	menuCredits0 = loadImage( "./media/menu/menuCredits0.png", screenSurface );
+	menuCredits1 = loadImage( "./media/menu/menuCredits1.png", screenSurface );
 
 	fimFundo = loadImage( "./media/fimFundo.png", screenSurface );
 

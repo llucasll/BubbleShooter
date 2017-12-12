@@ -3,3 +3,5 @@
 voidvoid menu;
 voidvoid menuOnClick;
 void menuOnMouseMove(Coordenadas pos);
+
+extern bool credits;

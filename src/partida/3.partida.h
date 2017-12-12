@@ -13,7 +13,7 @@ voidvoid iniciarInterface;
 /* ETAPA DE MECÂNICA */
 voidvoid moverSeta;
 voidvoid partidaView;
-void printScore( int tamFonte, int r, int g, int b,int posiX,int PosiY);
+void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY);
 void explodir(int x, int y);
 
 /* ETAPA DE FINALIZAÇÃO */

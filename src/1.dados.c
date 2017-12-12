@@ -8,6 +8,10 @@ Surface sprites[ncores]; //Vetor de imagens :^)
 Surface menuOverNot; //Fundo do menu
 Surface menuOverPlay; //Fundo do menu
 Surface menuOverExit; //Fundo do menu
+Surface menuCredits0;
+Surface menuCredits1;
+Surface sound0;
+Surface sound1;
 Surface partidaExit0;
 Surface partidaExit1;
 Surface partidaBg[5];
@@ -16,6 +20,10 @@ Surface partidaMenu0;
 Surface partidaMenu1;
 Surface blackRect;
 Surface fimFundo;
+Surface fimOverScores0;
+Surface fimOverScores1;
+Surface fimExit0;
+Surface fimExit1;
 byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;

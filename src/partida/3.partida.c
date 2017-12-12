@@ -25,11 +25,16 @@ void partidaView(){
 
 	printSurface(screenSurface, partidaBg[bgIndex], 0, 0, 648, 480);
 
-	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
+	printSurface(screenSurface, partidaHud, 0, 410, 648, 70);
 
 	printSurface(screenSurface, botaoExit, 594, 426, 54, 54);
 
 	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
+
+	printBola(proximoTiro, 228, 442); //Next
+
+	if(musicaOn)printSurface(screenSurface,sound1,0,tam.tela.y-54,54,tam.tela.y);
+	else printSurface(screenSurface,sound0,0,tam.tela.y-54,54,tam.tela.y);
 
 	for(int y=0;y<linhastotal;y++)
 		for(int x=0;x<colunas;x++)
@@ -38,12 +43,12 @@ void partidaView(){
 	if(!estourando)
 		printBola(tiro.cor, tiro.x, tiro.y);
 
-	printScore(20,61,61,0,tam.tela.x*3/4-20-2,tam.tela.y-30+2);
+	printScore(20,20,20,20,tam.tela.x*3/4-20+2,tam.tela.y-30+2);
 	printScore(20,244,244,0,tam.tela.x*3/4-20,tam.tela.y-30);
-	
+
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
-	
+
 	desenhandoPartida = false;
 }
 

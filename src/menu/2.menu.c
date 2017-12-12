@@ -4,12 +4,15 @@
 #include "../partida/2.partida.h"
 #include "../3.visualizacao.h"
 
+bool credits;
+
 void menu(void){
 	on.screenRefresh = menuView;
 	on.click = menuOnClick;
 	on.mouseMove = menuOnMouseMove;
 
 	menuOver = menuOverNot;
+	credits = false;
 
 	bgIndex = rand()%5;
 
@@ -29,6 +32,8 @@ void menuOnMouseMove(Coordenadas pos){
 	else{
 		menuOver = menuOverNot;
 	}
+	if(pos.x>=297 && pos.x<=351 && pos.y>=426 && pos.y<=480) credits = true;
+	else credits = false;
 }
 
 void menuOnClick(void){
@@ -39,9 +44,20 @@ void menuOnClick(void){
 			on.run = partida;
 			return;
 	}
-	if(pos.x>=594 && pos.x<=648 &&
+	else if(pos.x>=594 && pos.x<=648 &&
 		 pos.y>=426 && pos.y<=480){
 			 on.stop();
 			 return;
+	}
+	else if(pos.x>=0 && pos.x<=54 && pos.y>=426 && pos.y<=480){
+		if(musicaOn){
+			Mix_VolumeMusic(0);
+			musicaOn = false;
+		}
+		else if(!musicaOn){
+			Mix_VolumeMusic(100);
+			musicaOn = true;
+		}
+		return;
 	}
 }

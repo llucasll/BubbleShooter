@@ -21,6 +21,10 @@
 	extern Surface menuOverNot;
 	extern Surface menuOverExit;
 	extern Surface menuOverPlay;
+	extern Surface menuCredits0;
+	extern Surface menuCredits1;
+	extern Surface sound0;
+	extern Surface sound1;
 	extern Surface partidaExit0;
 	extern Surface partidaExit1;
 	extern Surface partidaBg[5];
@@ -29,6 +33,10 @@
 	extern Surface partidaMenu1;
 	extern Surface blackRect;
 	extern Surface fimFundo;
+	extern Surface fimOverScores0;
+	extern Surface fimOverScores1;
+	extern Surface fimExit0;
+	extern Surface fimExit1;
 	extern bool partidaMenuStatus;
 	extern bool partidaExitStatus;
 	extern bool estourando;
