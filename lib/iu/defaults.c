@@ -20,8 +20,8 @@ void eventsDefault(void){
 				break;
 			case SDL_KEYDOWN:
 				if (e.key.keysym.sym == SDLK_ESCAPE) {
-					if(on.stop) on.stop();
-					else stopDefault();
+					//if(on.stop) on.stop();
+					//else stopDefault();
 				}
 				break;
 			case SDL_MOUSEMOTION:
