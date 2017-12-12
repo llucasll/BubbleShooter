@@ -59,6 +59,7 @@ void liberaVizinhos(Bola*** ptr){
 
 byte sortear(void){
 	return rand() % tam.cores;
+	//return 0;
 }
 
 void preencher(void){
@@ -110,7 +111,9 @@ bool insere(int x, int y, byte b){
 
 		///printnl();
 		//println("%d",matriz[y][x].x/tam.bola.x);
+		return true;
 	}
+	else return false;
 }
 bool remover(int x, int y){
 	matriz[y][x].existe = false;

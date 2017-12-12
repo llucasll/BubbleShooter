@@ -69,13 +69,25 @@ byte proximoTiro;
 byte vidas;
 
 void aloca(void){
-	insere(x,y,tiro.cor);
+	if(!insere(x,y,tiro.cor)){
+		on.run = derrota;
+		return;
+	}
+	
 	if(contar(x,y)){
 		estourando = true;
 		explodir(x,y);
 		score-=30;
 		estourando = false;
+		
 		on.run = vitoria;
+		for(int i=0; i<colunas; i++)
+			if(existe(i,0)){
+				on.run = partidaLoop;
+				break;
+			}
+		if(on.run == vitoria)
+			return;
 	}
 	else{
 		//printint(vidas);
@@ -87,6 +99,11 @@ void aloca(void){
 			while(desenhandoPartida);
 
 			//FAZ O QUE TIVER QUE FAZER
+			for(int i=0; i<colunas; i++)
+				if(existe(i,linhastotal-1)){
+					on.run = derrota;
+					return;
+				}
 			descer();
 
 			//VOLTA A EXIBIR
