@@ -99,3 +99,20 @@ void explodir(int x, int y){
 			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
 		}
 }
+void afundaIlha(int x, int y){
+	Bola** vizinho = getVizinhos(x,y);
+
+	usleep(50000);
+	fflush(stdout);
+	score+=100;
+	logger("%d",score);
+
+	remover(x,y);
+
+	for(int i=0; i<6; i++)
+		if(vizinho[i]) if(vizinho[i]->existe){
+			usleep(50000);
+			fflush(stdout);
+			afundaIlha(vizinho[i]->pos.x, vizinho[i]->pos.y);
+		}
+}

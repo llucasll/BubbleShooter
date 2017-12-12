@@ -18,18 +18,19 @@ byte proximoTiro;
 
 byte vidas;
 
+
 void aloca(void){
 	if(!insere(x,y,tiro.cor)){
 		on.run = derrota;
 		return;
 	}
-	
+
 	if(contar(x,y)){
 		estourando = true;
 		explodir(x,y);
 		score-=30;
 		estourando = false;
-		
+
 		on.run = vitoria;
 		for(int i=0; i<colunas; i++)
 			if(existe(i,0)){
@@ -76,7 +77,7 @@ void partida(void){
 
 	botaoExit = partidaExit0;
 	botaoMenu = partidaMenu0;
-	
+
 	iniciarJogo();
 
 	//TODO debug
@@ -166,7 +167,15 @@ void partidaLoop(void){
 		}
 	}
 	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) logger("%d %d",x,y);
-	
+
+	for(int x=0; x<colunas; x++){
+		for(int y=0; y<linhastotal; y++){
+			preencheAcheque();
+			if(existe(x,y))
+				if(checkIlha(&matriz[y][x])) afundaIlha(x,y);
+		}
+	}
+
 	if(on.run == menu) return;
 	else SDL_Delay(5);//Not so good solution, depends on your computer
 }
@@ -197,7 +206,7 @@ void iniciarTiro(void){
 }
 
 void moveNPC() {
-	
+
 	tiro.x += tiro.vel.x;
 	tiro.y += tiro.vel.y;
 
@@ -218,7 +227,7 @@ void moveNPC() {
 
 void partidaOnClick(){
 	Coordenadas pos = getMousePos();
-	
+
 	if(pos.x>=594 && pos.x<=648 && pos.y>=426 && pos.y<=480){
 		on.stop();
 		return;

@@ -26,6 +26,44 @@ bool colisao( Bola* b, Tiro* t){
 	return 0;
 }
 
+void preencheAcheque(void){
+	int i, j;
+	for(i=0;i<colunas;i++){
+		for(j=0;j<linhastotal;j++){
+			//printf("a");
+			if(existe(i,j))
+				matriz[j][i].acheque=true;
+		}
+	}
+}
+bool checaAcheque(void){
+	int i, j;
+	for(i=0;i<colunas;i++){
+		for(j=0;i<linhastotal;j++){
+			if(&matriz[j][i]) if(matriz[j][i].existe) if(matriz[j][i].acheque) return 1;
+		}
+	}
+	return 0;
+}
+bool checkIlha(Bola *b) {
+	if(b->acheque){
+		int i,j;
+		Bola** vizinho = getVizinhos(b->pos.x,b->pos.y);
+
+		b->acheque = false;
+
+		if(!b->pos.y) return false;
+
+		for(i=0;i<6;i++){
+			if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->acheque){
+				if(!checkIlha(vizinho[i])) return false;
+			}
+		}
+		return true;
+	}
+	else return true;
+}
+
 bool contar(int x, int y){
 	byte cor = obter(x,y)->cor;
 	int count = 0;
@@ -102,4 +140,3 @@ void descer(void){
 		)
 	);
 }
-

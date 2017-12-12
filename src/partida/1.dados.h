@@ -1,6 +1,6 @@
 #ifndef DADOS //evitar inclusões cíclicas ("guarda de cabeçalho")
 	#define DADOS
-	
+
 	#include "../0.cabecalho.h"
 
 	/* TIPOS */
@@ -11,6 +11,7 @@
 		Coordenadas pos;
 		bool morreu;
 		bool existe;
+		bool acheque;
 	} Bola;
 
 	typedef struct{
@@ -29,6 +30,7 @@
 	bool existe(int x, int y);
 	bool valido(int x, int y);
 
+
 	Bola** getVizinhos(int x, int y);
 	void liberaVizinhos(Bola*** ptr);
 	byte sortear(void);
@@ -43,5 +45,5 @@
 	extern Bola matriz[linhastotal][colunas];
 	extern int ordem[linhas][colunas];
 	extern Tiro tiro;
-	
+
 #endif

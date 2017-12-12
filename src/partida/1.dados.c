@@ -5,6 +5,8 @@ Coordenadas velocidade;
 Bola matriz[linhastotal][colunas];
 Tiro tiro;
 
+
+
 Bola** getVizinhos(int x, int y){
 	Bola** vizinhos = malloc(sizeof(Bola)*6);
 
@@ -89,10 +91,10 @@ bool insere(int x, int y, byte b){
 
 	if(valido(x,y)){
 		matriz[y][x].cor = b;
-		
+
 		matriz[y][x].existe = true;
 		matriz[y][x].morreu = false;
-		
+
 		matriz[y][x].pos.x = x;
 		matriz[y][x].pos.y = y;
 

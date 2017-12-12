@@ -15,5 +15,6 @@ voidvoid moverSeta;
 voidvoid partidaView;
 void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY);
 void explodir(int x, int y);
+void afundaIlha(int x,int y);
 
 /* ETAPA DE FINALIZAÇÃO */
