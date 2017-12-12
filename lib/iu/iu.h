@@ -67,5 +67,3 @@ struct{
 // VARIÁVEIS COMPARTILHADAS
 extern bool quit; // Semáforo global que controla o término de todo o programa
 
-
-//void changeMonitor(voidvoid novo);

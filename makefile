@@ -46,4 +46,13 @@ limpa: clean
 
 limpar: clean
 	@
+	
+%:
+	@echo
+	rm -rf $@
+	@echo
+	$(comp) -o $(testes)/$@$(executavel) lib/terminal.c $(testes)/$@.c
+	@echo
+	./$(testes)/$@$(executavel)
+	@echo
 

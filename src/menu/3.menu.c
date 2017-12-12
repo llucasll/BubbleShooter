@@ -15,6 +15,5 @@ void menuView(){
 	printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
 
 	//80,210,170,60
-	//Update the surface
-	SDL_UpdateWindowSurface( janela );
+	SDL_UpdateWindowSurface( janela );//Update the surface
 }

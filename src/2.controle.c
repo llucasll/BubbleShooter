@@ -12,64 +12,7 @@
 
 #include "2.controle.h"
 
-/*
-bool iniciarSDL(void);//iu
-bool carregarMidia(void);//iu
-bool iniciarJogo(void);//dados
-void finalizarInterface(void);//iu
-*/
-
-/*
-
-bool iniciar(void){
-	if(!carregarMidia()){
-		//erro
-	}
-	else if(!iniciarSDL()){
-		//erro
-	}
-	else{
-		bool ok = iniciarJogo();
-		iniciarInterface();
-		return ok;
-	}
-	return false;
-}
-
-void encerrar(void){//finalizar o jogo, com a IU inclusive
-}
-
-void erro(){//erro de execução durante o jogo
-	println("Desculpe, um erro grave interrompeu a execução do jogo.");
-	exit(1);
-}
-
-*/
-
-//voidvoid bubbleShooter;
-
-/*
-void init2(void){
-	//Start up SDL and create window
-	janela = newJanela(tam.tela.x, tam.tela.y, "Bubble Shooter 0.1");
-	if( !janela ) {// TODO modularizar tratamentos de erro
-		logger( "Failed to initialize!\n" );
-		exit(1);
-	}
-	else {
-		screenSurface = surfaceFrom ( janela ); //Get window surface
-	}
-
-	//Load media
-	if( !loadMedia() ) {
-		logger( "Failed to load media!\n" );
-		exit(2);
-	}
-}*/
-
 void init(void){
-
-	//println("iniciei");
 
 	on.run = menu;
 	on.finish = closing;
@@ -86,9 +29,7 @@ void init(void){
 
 	screenSurface = surfaceFrom ( janela ); //Get window surface
 
-	/* Initialize Music */
-
-	/*Initialize Mixer */
+	/* Initialize Mixer */
 	if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 ){
 		logger( "Failed to load media!\n" );
 		exit(2);
@@ -108,50 +49,11 @@ void init(void){
 	//init2();
 }
 
-/*
-void bubbleShooter (void){
-
-	menu();
-	partida();
-	fim();
-}
-*/
-
 int loadMedia() {
 
 	int success = true; //Loading success flag
 
-	/*uint32_t colorKey;*/
-
-	/*
-
-	///int quantasImgs;
-
-	///FILE *pse = popen("find | grep \"png\" | wc -l","w");
-
-	//fscanf(pse, "%d", &quantasImgs);
-	//println("%d",quantasImgs);
-
-	//char mmm[900];
-	//fscanf(pse, "%s", mmm); //fgets(mmm,900,pse);
-
-	char sai[900] = "merda";
-	//sprintf(sai,"lucas\noi\nlucas");
-	println("%soi",sai);
-
-	///Surface imagens[quantasImgs];
-
-	// find | grep \"png\" | wc -l
-
-	*/
-
-	//Load PNG surface
-	//TODO fazer a verificação.
-	/*gJPGSurface = loadImage( "./media/circle.jpeg", screenSurface);
-	if( gJPGSurface == NULL ) {
-		logger( "Failed to load image! SDL Error: %s\n", SDL_GetError() );
-		success = false;
-	}*/
+	/* Initialize Music */
 	musica = Mix_LoadMUS("./media/sounds/Carnival_Kerfuffle.mp3");
 
 	sprites[0] = loadImage( "./media/balls/blue.png", screenSurface );
@@ -182,11 +84,6 @@ int loadMedia() {
 
 void closing() {
 	println("\t* Encerrando... *");
-
-	//Free loaded image
-	/*SDL_FreeSurface( gJPGSurface );
-	gJPGSurface = NULL;*/
-	//TODO
 
 	//Destroy window
 	SDL_DestroyWindow( janela );

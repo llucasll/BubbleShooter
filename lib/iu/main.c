@@ -34,11 +34,3 @@ int main( int argc, char* args[] ) {
 	return 0;
 }
 
-
-/*
-void changeMonitor(voidvoid novo){
-	controle.eventos = novo;
-	// TODO ENCERRAR A THREAD threads.eventos
-	executar(controle.eventos);
-}
-*/

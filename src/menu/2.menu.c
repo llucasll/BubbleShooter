@@ -4,8 +4,6 @@
 #include "../partida/2.partida.h"
 #include "../3.visualizacao.h"
 
-//#include "partida/3.debug.h"
-
 void menu(void){
 	on.screenRefresh = menuView;
 	on.click = menuOnClick;
@@ -34,7 +32,6 @@ void menuOnMouseMove(Coordenadas pos){
 }
 
 void menuOnClick(void){
-	//println("Clicou!");
 	Coordenadas pos = getMousePos();
 
 	if(pos.x>=257 && pos.x<=392 &&
@@ -47,17 +44,4 @@ void menuOnClick(void){
 			 on.stop();
 			 return;
 	}
-	//printf("\n%d,%d\n",x,y);
-
-	/*
-	x -= (tam.tela.x)/2;
-	y -= (tam.tela.y)-((tam.bola.y)/2);
-
-	double d = sqrt( pow(x,2) + pow(y,2) );
-
-	tiro.vel.x = x/d;
-	tiro.vel.y = y/d;
-
-	on.click = NULL;//TODO experimenta tirar essa linha
-	*/
 }

@@ -9,9 +9,9 @@ Surface botaoExit;
 
 void printBola(byte cor, int x, int y);
 // Tamanho Hud: (648,75)
-//Tamanho Menu: (x é 5 de distancia do exit [checar propriedades])
-//Tamanho Exit: (54 por 54)
-//Tamanho VidaCover (91,19) (inicia em: 193,422)
+// Tamanho Menu: (x é 5 de distancia do exit [checar propriedades])
+// Tamanho Exit: (54 por 54)
+// Tamanho VidaCover (91,19) (inicia em: 193,422)
 
 bool desenhandoPartida = false;
 
@@ -24,24 +24,12 @@ void partidaView(){
 						  0xFF, 0xFF, 0xFF ) );
 
 	printSurface(screenSurface, partidaBg[bgIndex], 0, 0, 648, 480);
-	//printf("%d",bgIndex);
 
 	printSurface(screenSurface, partidaHud, 0, 405, 648, 75);
 
 	printSurface(screenSurface, botaoExit, 594, 426, 54, 54);
 
 	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
-
-	//println("%s",scoreString);
-
-	//msgPontos= TTF_RenderText_Solid( fonte, scoreString, ttfCor);
-	//printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
-/*
-	//Fill the surface white
-	SDL_FillRect( gScreenSurface, NULL,
-							SDL_MapRGB( gScreenSurface->format,
-							fundo.R, fundo.G, fundo.B ));
-*/
 
 	for(int y=0;y<linhastotal;y++)
 		for(int x=0;x<colunas;x++)
@@ -52,8 +40,10 @@ void partidaView(){
 
 	printScore(20,61,61,0,tam.tela.x*3/4-20-2,tam.tela.y-30+2);
 	printScore(20,244,244,0,tam.tela.x*3/4-20,tam.tela.y-30);
+	
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
+	
 	desenhandoPartida = false;
 }
 
@@ -76,7 +66,6 @@ void printScore( int tamFonte, int r, int g, int b,int posiX,int posiY){
 	msgPontos = TTF_RenderText_Solid( fonte, scoreString, ttfCor);
 	SDL_BlitSurface(msgPontos, NULL, screenSurface, &msgRect);
 
-	//printSurface(screenSurface,msgPontos,0,0,tam.tela.x/2,tam.tela.y/2);
 	SDL_FreeSurface(msgPontos);
 	TTF_CloseFont(fonte);
 }
@@ -99,17 +88,3 @@ void explodir(int x, int y){
 			explodir(vizinho[i]->pos.x, vizinho[i]->pos.y);
 		}
 }
-
-/* ETAPA DE INICIALIZAÇÃO DO **CONTROLE** */
-bool carregarMidia(void){//iu
-}
-bool iniciarSDL(void){//iu
-}
-void iniciarInterface(void){//iu
-}
-
-/* ETAPA DE MECÂNICA */
-void moverSeta(){
-}
-
-/* ETAPA DE FINALIZAÇÃO */
