@@ -18,6 +18,8 @@ Surface partidaBg[5];
 Surface partidaHud;
 Surface partidaMenu0;
 Surface partidaMenu1;
+Surface partidaGridVida;
+Surface partidaVida;
 Surface blackRect;
 Surface fimFundo;
 Surface fimOverScores0;

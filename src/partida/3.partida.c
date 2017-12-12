@@ -31,6 +31,12 @@ void partidaView(){
 
 	printSurface(screenSurface, botaoMenu, 535, 426, 50, 24);
 
+	for(int i=0;i<vidas;i++){
+		printSurface(screenSurface, partidaVida, i*11, 0, tam.tela.x/2,tam.tela.y);
+	}
+
+	printSurface(screenSurface, partidaGridVida, 0, 0, 648, 480);
+
 	printBola(proximoTiro, 228, 442); //Next
 
 	if(musicaOn)printSurface(screenSurface,sound1,0,tam.tela.y-54,54,tam.tela.y);

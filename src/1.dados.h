@@ -31,6 +31,8 @@
 	extern Surface partidaHud;
 	extern Surface partidaMenu0;
 	extern Surface partidaMenu1;
+	extern Surface partidaGridVida;
+	extern Surface partidaVida;
 	extern Surface blackRect;
 	extern Surface fimFundo;
 	extern Surface fimOverScores0;

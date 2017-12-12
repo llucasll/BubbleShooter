@@ -83,6 +83,8 @@ int loadMedia() {
 	sound0 = loadImage( "./media/menuSound0.png", screenSurface );
 	menuCredits0 = loadImage( "./media/menu/menuCredits0.png", screenSurface );
 	menuCredits1 = loadImage( "./media/menu/menuCredits1.png", screenSurface );
+	partidaGridVida = loadImage( "./media/partida/partidaGridVida.png", screenSurface );
+	partidaVida = loadImage( "./media/partida/partidaVida.png", screenSurface );
 
 	fimFundo = loadImage( "./media/fimFundo.png", screenSurface );
 
