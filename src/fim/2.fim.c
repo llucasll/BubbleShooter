@@ -13,6 +13,7 @@ static voidvoid *animacao;
 void vitoria(void){
 	animacao = vitoriaView;
 	estourando = true;
+	score *= 2;
 	fim();
 }
 

@@ -5,7 +5,7 @@ Coordenadas velocidade;
 Bola matriz[linhastotal][colunas];
 Tiro tiro;
 
-
+byte emJogo[ncores];
 
 Bola** getVizinhos(int x, int y){
 	Bola** vizinhos = malloc(sizeof(Bola)*6);
@@ -59,11 +59,25 @@ void liberaVizinhos(Bola*** ptr){
 }
 
 byte sortear(void){
-	return rand() % tam.cores;
+	byte tmp;
+	do{
+		tmp = rand() % tam.cores;
+		//println("%d",tmp);
+	}
+	while(emJogo[tmp]<0 || tmp>1);//quando der zero iremos para -1 (em remover)
+	
+	return tmp;
 	//return 0;
 }
 
 void preencher(void){
+	for(int i=0; i<ncores; i++)
+		emJogo[i] = 0;
+		
+	for(int y=linhas;y<linhastotal;y++)
+		for(int x=0;x<colunas;x++)
+			matriz[y][x].existe = false;
+
 	for(int y=0;y<linhas;y++){
 		for(int x=0;x<colunas;x++)
 			insere(x,y,sortear());
@@ -92,6 +106,8 @@ bool insere(int x, int y, byte b){
 	if(valido(x,y)){
 		matriz[y][x].cor = b;
 
+		emJogo[matriz[y][x].cor]++;
+
 		matriz[y][x].existe = true;
 		matriz[y][x].morreu = false;
 
@@ -107,6 +123,16 @@ bool insere(int x, int y, byte b){
 }
 bool remover(int x, int y){
 	matriz[y][x].existe = false;
+	emJogo[matriz[y][x].cor]--;
+	println("Cor %d tem %d em jogo",matriz[y][x].cor,emJogo[matriz[y][x].cor]);
+	if(!emJogo[matriz[y][x].cor]){
+		emJogo[matriz[y][x].cor]--;
+		if(tiro.cor == matriz[y][x].cor)
+			tiro.cor = sortear();
+		extern byte proximoTiro;//2.partida.h
+		if(proximoTiro == matriz[y][x].cor)
+			proximoTiro = sortear();
+	}
 }
 
 bool existe(int x, int y){
