@@ -1,8 +1,8 @@
-comp= gcc #compilador
+comp = gcc #compilador
 stdlibs = -lm -lpthread
 sdl = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf
 
-chatoFlags= -Wall -pedantic -ansi #prof
+flagsChatas = -Wall -pedantic -ansi
 outros= -D_GNU_SOURCE=1 -D_REENTRANT
 
 head = lib-headers/*.h
@@ -15,25 +15,9 @@ testes = testes
 
 comandos = $(comp) -o $(bin)$(executavel) $(lib) $(source) $(stdlibs) $(sdl)
 
-testar: cleanSimples repetir
-	@echo
-
-repetir:
-	@$(comp) -o repetir$(executavel) repetir.c
-	@./repetir$(executavel)
-	@make cleanSimples --no-print-directory
-
-%:
-	@echo
-	rm -rf $@
-	@echo
-	$(comp) -o $(testes)/$@$(executavel) lib/terminal.c $(testes)/$@.c
-	@echo
-	./$(testes)/$@$(executavel)
-	@echo
-
 exec: compilar
 	./$(bin)$(executavel)
+	@make cleanSimples --no-print-directory
 	@echo
 
 compilar:
@@ -63,8 +47,3 @@ limpa: clean
 limpar: clean
 	@
 
-#%:
-#	@echo
-#	@echo sua mensagem foi:
-#	@echo $@
-#	@echo
