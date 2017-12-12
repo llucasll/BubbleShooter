@@ -2,7 +2,7 @@
 
 #ifndef GLOBAIS
 	#define GLOBAIS
-	
+
 	/* GLOBAIS */
 
 	struct _medidas{
@@ -28,6 +28,7 @@
 	extern Surface partidaMenu0;
 	extern Surface partidaMenu1;
 	extern Surface blackRect;
+	extern Surface fimFundo;
 	extern bool partidaMenuStatus;
 	extern bool partidaExitStatus;
 	extern bool estourando;
@@ -39,5 +40,5 @@
 	extern TTF_Font* fonte;
 	extern SDL_Color ttfCor;
 	extern Surface msgPontos;
-	
+
 #endif

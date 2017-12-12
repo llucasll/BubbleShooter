@@ -15,6 +15,7 @@ Surface partidaHud;
 Surface partidaMenu0;
 Surface partidaMenu1;
 Surface blackRect;
+Surface fimFundo;
 byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;

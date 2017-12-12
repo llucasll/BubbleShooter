@@ -8,7 +8,7 @@ void vitoriaView(void){
 						  0xEE, 0xEE, 0xEE ) );
 
 	//printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
-		
+
 	//80,210,170,60
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
@@ -21,7 +21,7 @@ void derrotaView(void){
 						  0x22, 0x22, 0x22 ) );
 
 	//printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
-		
+
 	//80,210,170,60
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );
@@ -31,10 +31,11 @@ void fimView(void){
 	//Fill the surface white
 	SDL_FillRect( screenSurface, NULL,
 						  SDL_MapRGB( screenSurface->format,
-						  0x00, 0x00, 0x00 ) );
+						  0x66, 0x66, 0x66 ) );
 
-	//printSurface(screenSurface,menuOver,0,0,tam.tela.x,tam.tela.y);
-		
+
+	printSurface(screenSurface,fimFundo,0,0,tam.tela.x,tam.tela.y);
+
 	//80,210,170,60
 	//Update the surface
 	SDL_UpdateWindowSurface( janela );

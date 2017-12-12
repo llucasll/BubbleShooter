@@ -22,19 +22,19 @@ void derrota(void){
 void fim(void){
 	on.click = NULL;
 	on.mouseMove = NULL;
-	
-	for(int i=0; i<4; i++){
+
+	for(int i=0; i<10; i+=1){
 		on.screenRefresh = animacao;
-		usleep(500000); fflush(stdout);
-		
+		usleep(i*10000); fflush(stdout);
+
 		on.screenRefresh = partidaView;
-		usleep(1500000); fflush(stdout);
+		usleep(i*5000); fflush(stdout);
 	}
-	
+
 	on.screenRefresh = fimView;
 	on.click = fimOnClick;
 	on.mouseMove = fimOnMouseMove;
-	
+
 	on.run = NULL;
 }
 
