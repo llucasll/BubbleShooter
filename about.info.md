@@ -12,7 +12,7 @@ Para desenvolvê-lo, tomamos como base o código-fonte de "06_moving_images" que
 
 Os requisitos do projeto podem ser encontrados em
 
-	http://equipe.nce.ufrj.br/adriano/c/projetos/proj20172/proj20172.htm
+	http://equipe.nce.ufrj.br/adriano/c/projetos/proj20172/projeto/projeto.pdf
 
 O projeto deve utilizar a biblioteca SDL 2.
 
