@@ -18,10 +18,6 @@ INTERFACE
 	Na parte inferior esquerda da tela também aparece a cor da próxima bolha que você irá atirar.
 	
 	O número de faltas permitido antes de uma nova linha aparecer é mostrado por uma linha de bolas de cor prata na parte inferior esquerda da tela.
-	
-MECÂNICA
-	
-	Vitória ou derrota
 
 EXTRAS
 
@@ -57,3 +53,4 @@ FEITO
 			# Um tiro que estoura 6 bolhas recebe mais pontos do que dois tiros com 3 estouros cada.
 			Um grupo de 3 bolhas explodidas vale 30 pontos.
 			Cada bolha adicional vale 20 pontos.
+		Vitória ou derrota

@@ -2,3 +2,4 @@
 
 voidvoid vitoriaView;
 voidvoid derrotaView;
+voidvoid fimView;

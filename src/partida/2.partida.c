@@ -86,8 +86,10 @@ void aloca(void){
 				on.run = partidaLoop;
 				break;
 			}
-		if(on.run == vitoria)
-			return;
+		if(on.run == vitoria){
+			score *= 2;
+			//return;
+		}
 	}
 	else{
 		//printint(vidas);
