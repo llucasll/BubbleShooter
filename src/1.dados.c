@@ -3,18 +3,32 @@
 /* Global Variables */
 Janela janela = NULL; //The window we'll be rendering to
 Surface screenSurface = NULL; //The surface contained by the window
-Surface sprites[ncores]; //Vetor de imagens :^)
 
-Surface menuOverNot; //Fundo do menu
-Surface menuOverPlay; //Fundo do menu
-Surface menuOverExit; //Fundo do menu
-Surface partidaExit0;
-Surface partidaExit1;
-Surface partidaBg[5];
-Surface partidaHud;
-Surface partidaMenu0;
-Surface partidaMenu1;
-Surface blackRect;
+struct _visualizacao{
+	
+	struct{
+		/* FUNDOS DO MENU */
+		Surface overNot;
+		Surface overPlay;
+		Surface overExit;
+	}menu;
+	
+	struct{
+		Surface sprites[ncores]; //Vetor de imagens :^)
+
+		Surface bg[5]; // Backgrounds
+		Surface hud; // Barra inferior
+
+		/* BOTÕES DA PARTIDA */
+		Surface exit0;
+		Surface exit1;
+		Surface menu0;
+		Surface menu1;
+	}partida;
+};
+
+struct _visualizacao view;
+
 byte bgIndex;
 bool partidaExitStatus;
 bool partidaMenuStatus;
