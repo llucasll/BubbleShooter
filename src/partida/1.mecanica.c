@@ -1,5 +1,6 @@
 #include "1.mecanica.h"
 #include "../3.visualizacao.h"
+#include "3.partida.h"//afundaIlha
 
 #include "3.debug.h"
 
@@ -24,6 +25,16 @@ bool colisao( Bola* b, Tiro* t){
 		return 1;
 	}
 	return 0;
+}
+
+void cacarIlhas(void){
+	for(int x=0; x<colunas; x++){
+		for(int y=0; y<linhastotal; y++){
+			preencheAcheque();
+			if(existe(x,y))
+				if(checkIlha(&matriz[y][x])) afundaIlha(x,y);
+		}
+	}
 }
 
 void preencheAcheque(void){
@@ -52,13 +63,14 @@ bool checkIlha(Bola *b) {
 
 		b->acheque = false;
 
-		if(!b->pos.y) return false;
-
+		if(!b->pos.y){ liberaVizinhos(&vizinho); return false; }
+ 
 		for(i=0;i<6;i++){
 			if(vizinho[i]) if(vizinho[i]->existe) if(vizinho[i]->acheque){
-				if(!checkIlha(vizinho[i])) return false;
-			}
+				if(!checkIlha(vizinho[i])){ liberaVizinhos(&vizinho); return false; }
+ 			}
 		}
+		liberaVizinhos(&vizinho);
 		return true;
 	}
 	else return true;

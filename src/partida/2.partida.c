@@ -37,9 +37,6 @@ void aloca(void){
 				on.run = partidaLoop;
 				break;
 			}
-		if(on.run == vitoria){
-			score *= 2;
-		}
 	}
 	else{
 		vidas--;
@@ -68,6 +65,8 @@ void aloca(void){
 	sprintf(scoreString, "%010d", score);
 	iniciarTiro();
 	on.click = partidaOnClick;
+	
+	cacarIlhas();
 }
 
 void partida(void){
@@ -167,14 +166,6 @@ void partidaLoop(void){
 		}
 	}
 	else if(!((int)tiro.y%tam.bola.y) || !((int)tiro.x%tam.bola.x)) logger("%d %d",x,y);
-
-	for(int x=0; x<colunas; x++){
-		for(int y=0; y<linhastotal; y++){
-			preencheAcheque();
-			if(existe(x,y))
-				if(checkIlha(&matriz[y][x])) afundaIlha(x,y);
-		}
-	}
 
 	if(on.run == menu) return;
 	else SDL_Delay(5);//Not so good solution, depends on your computer
