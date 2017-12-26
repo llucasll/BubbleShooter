@@ -1,8 +1,5 @@
 #include "terminal.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
 void println(const char *format, ...){
 	va_list arg;
 

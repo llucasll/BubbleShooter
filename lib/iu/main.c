@@ -1,10 +1,9 @@
-
 #include "interno.h"
 
 int main( int argc, char* args[] ) {
 
 	// Inicializa com os padrões biblioteca, o resto fica a cargo do init
-	on.run = NULL;
+	on.run = init; //NULL; // Chama o "main"
 	on.checkEvents = eventsDefault;
 	on.screenRefresh = NULL;
 	
@@ -15,9 +14,6 @@ int main( int argc, char* args[] ) {
 	
 	on.stop = stopDefault;
 	on.finish = NULL;
-
-	// Chama o "main"
-	init();
 
 	// Iniciar as threads
 	threads.principal = executar(_thread_principal);

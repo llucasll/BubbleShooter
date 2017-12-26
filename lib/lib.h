@@ -4,6 +4,8 @@
 	/* BIBLIOTECAS OBRIGATÓRIAS */
 	#include <stdbool.h>
 	#include <stdarg.h>
+	#include <time.h>
+	#include <stdlib.h>
 	
 	/* TIPOS */
 	typedef void voidvoid(void);
@@ -39,5 +41,8 @@
 	);
 	
     */
+    
+    /* FUNÇÕES */
+    int aleatorio(int max);
 	
 #endif

@@ -59,7 +59,7 @@ void liberaVizinhos(Bola*** ptr){
 }
 
 byte sortear(void){
-	return rand() % tam.cores;
+	return aleatorio(tam.cores);
 	//return 0;
 }
 

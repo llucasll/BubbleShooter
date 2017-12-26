@@ -13,3 +13,18 @@ Thread executar(voidvoid *executavel){
 	}
 	return t;
 }
+
+static bool semente = false;
+
+int aleatorio(int max){
+	
+	if(!semente){
+		// Intializes random number generator
+		time_t t;
+		srand((unsigned) time(&t));
+		
+		semente = true;
+	}
+	
+	return rand()%max;
+}

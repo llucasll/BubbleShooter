@@ -14,7 +14,7 @@ void menu(void){
 	menuOver = menuOverNot;
 	credits = false;
 
-	bgIndex = rand()%5;
+	bgIndex = aleatorio(5);
 
 	on.run = NULL;
 }

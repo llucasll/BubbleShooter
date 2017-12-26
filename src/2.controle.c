@@ -17,10 +17,6 @@ void init(void){
 	on.run = menu;
 	on.finish = closing;
 
-	// Intializes random number generator
-	time_t t;
-	srand((unsigned) time(&t));
-
 	printnl();
 	println("\t* Carregando... *");
 	printnl();
