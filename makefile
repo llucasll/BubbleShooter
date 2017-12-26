@@ -67,5 +67,6 @@ limpar: clean
 	$(comp) -o $(testes)/$@.$(executavel) lib/terminal.c $(testes)/$@.c
 	@echo
 	./$(testes)/$@.$(executavel)
+	@make cleanSimples --no-print-directory
 	@echo
 
