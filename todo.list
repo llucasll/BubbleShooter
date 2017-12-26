@@ -1,0 +1,9 @@
+3.apresentacao.c
+	SDL_MapRGB: criar var
+
+mecanica
+	testar colisão: distancia(b.pos.x - outrabola.pos.x, b.pos.y - outrabola.pos.y)<diametro
+
+Melhorar tratamentos de erro
+
+Consertar encaixe das bolas
