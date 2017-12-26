@@ -1,4 +1,4 @@
-#include "../lib/terminal.h"
+#include "../../lib/terminal.h"
 
 #define sinal(x) (x<0 ? -1 : 1)
 

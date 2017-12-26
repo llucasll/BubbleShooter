@@ -13,7 +13,8 @@ srcDir = src
 source = $(srcDir)/*.c $(srcDir)/*/*.c
 bin = exe
 executavel = out
-testes = testes
+dev = dev
+testes = $(dev)/testes
 
 # resultado
 comandos = $(comp) -o $(bin).$(executavel) $(lib) $(source) $(stdlibs) $(sdl)
@@ -25,8 +26,8 @@ exec: compilar
 	@echo
 
 repetir: cleanSimples
-	@$(comp) -o repetir.$(executavel) repetir.c
-	@./repetir.$(executavel)
+	@$(comp) -o $(dev)/repetir.$(executavel) $(dev)/repetir.c
+	@./$(dev)/repetir.$(executavel)
 	@make cleanSimples --no-print-directory
 	@echo
 

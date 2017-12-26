@@ -6,7 +6,7 @@ The english version of this file can be found below.
 
 Para informações gerais sobre este repositório, por favor acesse 
 
-	about.info.md
+	about/info.md
 
 #### Aviso
 
@@ -44,7 +44,7 @@ Em seguida, o comando make é o suficiente para sua compilação e execução.
 
 For general information about this repository, please open the file 
 
-	about.info.md
+	about/info.md
 
 #### Notice
 
