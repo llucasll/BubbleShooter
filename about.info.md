@@ -1,6 +1,6 @@
 # Português
 
-The english version of this file can be found below.
+The english version of this file ~can be found below~ is in building.
 
 ## Sobre
 

@@ -24,7 +24,9 @@ int main( int argc, char* args[] ) {
 	threads.eventos = executar(_thread_eventos);
 
 	// Aguarda o fim do programa
-	while(!quit);
+	while(!quit)
+		usleep(1000);
+	
 	esperar(threads.visualizacao);
 	//TODO encerrar threads
 

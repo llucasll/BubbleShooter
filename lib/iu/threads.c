@@ -3,16 +3,20 @@
 
 void _thread_principal(void){
 	//While application is running
-	while(!quit)
+	while(!quit){
 		if(on.run)
-			on.run();
+			on.run();		
+		usleep(1000);
+	}
 }
 
 void _thread_eventos(void){
 	//While application is running
-	while(!quit)
+	while(!quit){
 		if(on.checkEvents)
 			on.checkEvents();
+		usleep(1000);
+	}
 }
 
 void _thread_visualizacao(void){
@@ -30,6 +34,6 @@ void _thread_visualizacao(void){
 	while(!quit){
 		if(on.screenRefresh)
 			on.screenRefresh();
-		//usleep(1000000/24);
+		usleep(1000000/24);
 	}
 }
