@@ -7,8 +7,11 @@ The english version of this file ~can be found below~ is in building.
 Projeto desenvolvido pelos estudantes Lucas Camilo e Rafael Aguiar para a disciplina de Computação I do Bacharelado em Ciência da Computação da Universidade Federal do Rio de Janeiro, ministrada pelo professor Adriano Cruz em 2017.2.
 
 Para desenvolvê-lo, tomamos como base o código-fonte de "06_moving_images" que pode ser encontrado em
-	
-	http://equipe.nce.ufrj.br/adriano/sdl/sdl.htm
+
+	https://sites.google.com/nce.ufrj.br/adrianocruz/p%C3%A1gina-inicial/classes-and-talks/c/projetos-de-jogos/projeto-de-20172
+	(Anteriormente a URL era: http://equipe.nce.ufrj.br/adriano/sdl/sdl.htm )
+
+Ou na branch 'versoes', na pasta '0. original'.
 
 Os requisitos do projeto podem ser encontrados em
 
