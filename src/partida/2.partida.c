@@ -115,7 +115,7 @@ void partida(void){
 	int b=2;
 	logger("Vizinhos de %d,%d",a,b);
 	Bola** vizinhos = getVizinhos(a,b);
-	for(int i=0; i<6; i+=2){/* TODO
+	/*for(int i=0; i<6; i+=2){ TODO
 		if(vizinhos[i])
 			printf("%d",vizinhos[i]->cor);
 		else
@@ -128,8 +128,8 @@ void partida(void){
 		else
 			printf("X");
 
-		printnl();*/
-	}
+		printnl();
+	}*/
 	liberaVizinhos(&vizinhos);
 
 	//While application is running
@@ -182,7 +182,7 @@ bool iniciarJogo(void){
 	preencher();
 
 	//Create NPC
-	proximoTiro = sortear();
+	proximoTiro = sortear(); //unnecessary
 	iniciarTiro();
 }
 
@@ -193,7 +193,19 @@ void iniciarTiro(void){
 	tiro.vel.x = 0;
 	tiro.vel.y = 0;
 	tiro.cor = proximoTiro;
-	proximoTiro = sortear();
+	bool teste = 0;
+	bool exists = 0;
+	while (teste == 0){
+		proximoTiro = sortear();
+		for(int y=0;y<linhastotal;y++)
+			for(int x=0;x<colunas;x++)
+				if(existe(x,y)){
+					if(matriz[y][x].cor == proximoTiro)
+						teste = 1;
+					exists = 1;
+				}
+		if(exists == 0) break;
+	}
 }
 
 void moveNPC() {

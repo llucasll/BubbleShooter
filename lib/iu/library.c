@@ -28,7 +28,7 @@ void _newJanela(int x, int y, char nome[]) {
 		logger( "SDL could not initialize! SDL Error: %s\n", SDL_GetError() );
 	else {
 		//Create window
-		janela = SDL_CreateWindow( nome, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, SDL_WINDOW_SHOWN );
+		janela = SDL_CreateWindow( nome, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, x, y, SDL_WINDOW_BORDERLESS );
 		if( janela == NULL )
 			logger( "Window could not be created! SDL Error: %s\n", SDL_GetError() );
 		else {

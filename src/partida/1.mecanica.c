@@ -120,14 +120,27 @@ static void move(int x1, int y1, int x2, int y2){//x1 = x2
 		matriz[y1][x1].morreu = matriz[y2][x2].morreu;
 		matriz[y1][x1].existe = matriz[y2][x2].existe;
 	}
-	for(int x=0; x<colunas; x++)
-		insere(x,0,sortear());
+	
 }
 
 void descer(void){
 	for(int y=linhastotal; y; y--)
 		for(int x=0; x<colunas; x++)
 			move(x,y,x,y-1);
+	byte corret;
+	bool teste = 0;
+	for(int x=0; x<colunas; x++){
+	    teste = 0;
+		while (teste == 0){
+			corret = sortear();
+			for(int y=0;y<linhastotal;y++)
+				for(int x=0;x<colunas;x++)
+					if(existe(x,y))
+						if(matriz[y][x].cor == corret)
+							teste = 1;
+		}
+		insere(x,0,corret);
+	}
 	exibeMatriz(
 		lambda(
 			char*, (Bola b) {
