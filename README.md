@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/llucasll/BubbleShooter) 
+
 # BubbleShooter (Português)
 
 The english version of this file can be found below.
